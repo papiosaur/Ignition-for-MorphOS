@@ -1,0 +1,14 @@
+==base _TextEditBase
+==basetype struct Library *
+==libname pTextEdit.gadget
+==copyright Copyright © 2010 pinc Software
+==bias 30
+==public
+==include <exec/types.h>
+==include <gadgets/TextEdit.h>
+Class * GetClass() ()
+void Text2Clipboard(UBYTE unit, STRPTR string, LONG len) (d0,a0,d1)
+STRPTR TextFromClipboard(UBYTE unit, APTR pool) (d0,a0)
+void FreeEditList(struct EditGData * ed) (a0)
+void PrepareEditText(struct EditGData * ed, struct RastPort * rp, STRPTR string) (a0,a1,a2)
+==end
