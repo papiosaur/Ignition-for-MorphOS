@@ -1,0 +1,836 @@
+ignition-History
+
+Copyright ©2001-2005 pinc Software.
+
+----------------------------- 16.1.2001 -----------------------------
+ · Das Page-Gadget erlaubt nun, das Gadgets auf einer Seite entfernt oder
+   hinzugefügt werden (PAGEGA_BeginUpdatePage, PAGEGA_EndUpdatePage).
+
+ · Die Einstellungen eines Diagramms werden nun zu WDT_DIAGRAM bei Bedarf
+   hinzugefügt, aber noch nicht ausgewertet.
+
+----------------------------- 19.1.2001 -----------------------------
+ · Die Objekt-Attribute können nun direkt in WDT_DIAGRAM geändert werden,
+   seltsamerweise werden die Gadgets aber nicht aktualisiert...
+
+ · Das Balken-Diagramm kann nun wahlweise die Balken auch ohne Rahmen
+   zeichnen.
+
+----------------------------- 21.1.2001 -----------------------------
+ · Die Objekt-Attribute werden in WDT_DIAGRAM nun auch korrekt aktualisiert.
+
+ · Unzulässige Papiergrößen (kleiner 1 mm) werden nun abgefangen.
+
+----------------------------- 4.2.2001 ------------------------------
+ · Bei den Achsen kann man nun auch die Hintergrundfarbe setzen.
+
+ · Achsen-Klasse leicht umgestaltet (GCAM_GETBOUNDS -> Attribute).
+
+ · Pseudo-3D Modus für die Achsen begonnen.
+
+----------------------------- 19.2.2001 -----------------------------
+ · Pseudo-3D Modus wird nun von den Achsen und dem Balken-Diagramm
+   unterstützt.
+
+ · SetPenColor() (und andere) unterstützen jetzt True-Color Modi; es
+   wird also immer genau die gewünschte Farbe gesetzt.
+
+----------------------------- 20.2.2001 -----------------------------
+ · Wenn beim Achsen-Diagramm Minimum und Maximum gleich waren, hängte
+   sich das Programm auf.
+
+ · Objekte & Diagramme werden nun mit GCM_INSERTREMOVECELLS benachrichtigt,
+   wenn Zellen eingefügt oder entfernt werden.
+
+ · Diagramme reagieren nun auf GCM_INSERTREMOVECELLS.
+
+ · Bei einer Änderung des Diagrammdatenblocks, werden nun soviel Daten
+   wie möglich aus den alten Daten übernommen (Farben und Flags).
+
+ · Im Pseudo-3D Modus werden mehrere Datenreihen jetzt hintereinander
+   dargestellt.
+
+ · "3D-Balken" aus der Diagrammauswahl erstmal entfernt.
+
+ · Der ListView-Hook für die Diagrammdaten/-farben unterstützt nun
+   auch TrueColor-Modi.
+
+----------------------------- 21.2.2001 -----------------------------
+ · Bei WDT_CELLSIZE wird nach dem Setzen der Größe der aktuellen Zelle
+   automatisch in den "exakt"-Größenmodus gewechselt.
+
+----------------------------- 1.3.2001 ------------------------------
+ · Grafikschnittstelle noch ein wenig erweitert.
+
+ · Diagramme können nun auch externe Add-Ons sein.
+
+ · Beim Laden von Projekten mit Objekten wurde die Array-Größe von
+   pg_ObjectOrder nicht gesetzt.
+
+ · Beim Freigeben einer Seite wurde bei pg_ObjectOrder möglicherweise
+   die falsche Größe angegeben.
+
+ · Neuer Diagrammtyp Fläche (mit Pseudo-3D-Modus).
+
+ · Balken-Diagramm in Add-Ons ausgegliedert.
+
+ · Richtig schwer zu findenden und sehr alten Bug im Constructor von
+   gDiagram entfernt, der ein wenig Speicher (ein paar Bytes nach der
+   zugehörigen gClass) zugemüllt hat.
+
+----------------------------- 2.3.2001 ------------------------------
+ · gLink-Attribute für Diagramme werden jetzt über die Methode
+   GCDM_SETLINKATTR gesetzt.
+
+ · 3D-Zeugs erstmal auskommentiert (zur Verkleinerung der Programmgröße).
+
+ · Methoden-Interface für Achsendiagramme geändert, Anpassung vom Flächen-
+   und Balken-Diagramm darauf.
+
+ · Wechselt man den Typ eines bereits bestehenden Diagramms, werden nun
+   auch alle Referenzen auf das alte Diagramm aktualisiert.
+
+----------------------------- 4.3.2001 ------------------------------
+ · Bei WDT_DIAGRAM wurde pg_gDiagrams nicht richtig berücksichtigt, was
+   auch zum Absturz führen konnte.
+
+ · Es liessen sich mehrere WDT_DIAGRAM Fenster zu einem einzigen Diagramm
+   öffnen.
+
+ · I/O-Module können nun Einstellungsfenster haben, die von WDT_FILETYPE
+   heraus aufgerufen werden können, existierende I/O-Module angepaßt.
+
+ · Werden solche Einstellungen geändert, werden sie automatisch in der
+   Modulbeschreibung gespeichert.
+
+ · gMakeRefObject() erzeugte einen Enforcer-Hit, wenn die Seite, auf der
+   das Objekt erzeugt werden soll, kein Fenster zugewiesen ist.
+
+----------------------------- 5.3.2001 ------------------------------
+ · ASCII-I/O-Modul in externes Modul ausgegliedert.
+
+ · Altes ignition-Format deaktiviert (und vorhandene Sheets konvertiert).
+
+----------------------------- 14.3.2001 -----------------------------
+ · GetCellIterator() funktionierte unter Umständen nicht richtig (so wurden
+   z.B. Tabellen mit nur einer Zeile nicht gespeichert).
+
+ · Andere Einstellungen als Namen & Formatvorlagen werden nun auch gespeichert
+   und geladen.
+
+ · Beim Aktualisieren von PRF_DISPLAY werden nun nicht mehr grundsätzlich
+   alle Fenster aktualisiert, sondern nur noch soviel wie notwendig.
+
+ · lpDisp() aktualisiert nun auch die Mindestgrößen für die Tabellenbetitelung.
+
+ · Nach dem Laden eines Projektes oder einer Einstellungsdatei werden alle
+   Einstellungsmodule aktualisiert.
+
+----------------------------- 17.3.2001 -----------------------------
+ · Einige fehlerträchtige Referenzen aufs globale "wd" entfernt.
+
+ · WDT_PREFDISP ließ bei lokalen Einstellungen das Programm abstürzen.
+
+ · Bei WDT_PREFDISP wird nun bei lokalen Einstellungen immer erstmal das
+   entsprechende Einstellungs-Modul benutzt.
+
+ · Die TrueColor Farbroutinen berücksichtigten die Hintergrundfarbe nicht
+   korrekt.
+
+ · Der Modus "durchgezogen" beim Tabellenraster funktioniert nun wieder.
+
+ · Die Farben des Tabellenrasters werden nun etwas netter bestimmt.
+
+----------------------------- 28.3.2001 -----------------------------
+ · Seperator-Zeilen lassen sich beim PopUpHook() nun auf Wunsch nicht mehr
+   anwählen.
+
+ · Bei der Seitenauswahl bei WDT_PROJECT kann man nun auch eine neue Seite
+   zur Mappe hinzufügen.
+
+ · Interne Kommandos werden nun zusätzlich in einem Array gespeichert und
+   mit binärer Suche gefunden.
+
+----------------------------- 14.4.2001 -----------------------------
+ · Objekte können nun auch Gadgets vom Typ GIT_CYCLE haben.
+
+ · Objekte können eine über GCM_UPDATE_UI die Aktualisierung des Benutzer-
+   interfaces veranlassen.
+
+ · Neue Klasse für Checkbox-Gadgets.
+
+ · "Sanftere" Standard-Farben für die Knopfarten, Aussehen ein wenig
+   verschönert.
+
+ · Farbsystem noch ein wenig aufgeräumt.
+
+ · WDT_GCLASSES ist nun auch frei vergrößerbar.
+
+ · WDT_CLIP war noch nicht auf VisualPrefs angepaßt.
+
+ · RenderHook() zentriert nun die Bilder innerhalb der Standardgrößen.
+
+----------------------------- 15.4.2001 -----------------------------
+ · WDT_NOTES & WDT_SCRIPTS sind nun beide frei vergrößerbar.
+
+ · Das verstecken von Zellen sollte nun richtig funktionieren; zusätzliche
+   Funktion, versteckte Zellen zu zeigen.
+
+ · Das Installations-Skript testet nun, ob ein Update durchgeführt wird;
+   in diesem wird bisher aber nur das Dokumentenverzeichnis automatisch
+   gewählt.
+
+----------------------------- 16.4.2001 -----------------------------
+ · Der Screen wird nun mittels SA_PubTask/SA_PubSig geschlossen, wenn
+   beim Beenden von ignition noch fremde Fenster offen sind.
+
+ · Der Aufruf von RefreshPrefsModules() nach dem Laden der Einstellungen
+   war nicht nötig.
+
+ · Bei WDT_DIAGRAM ist das "Legende darstellen" Gadget erstmal verschwunden,
+   bei der "Darstellung"-Seite gibt es nun einen Hinweistext, wenn noch
+   kein Diagrammtyp ausgewählt wurde.
+
+ · Neues Diagramm: Linien.
+
+ · Bei "Speichern als..." wird nun nachgefragt, wenn eine Datei überschrieben
+   würde.
+
+----------------------------- 26.4.2001 -----------------------------
+ · Hilfe-Texte für kontextsensitive Hilfe auf den aktuellen Stand gebracht,
+   aber noch nicht erweitert.
+
+----------------------------- 27.5.2001 -----------------------------
+ · Neue ArrayList-"Klasse" (dynamisches Array als Liste)
+
+ · Referenzen zur automatisierten Berechnung von abhängigen Zellen begonnen.
+
+----------------------------- 30.5.2001 -----------------------------
+ · Die "Short"-Kennung einer Funktion ist jetzt eine ID vom Typ ULONG.
+
+ · Referenz-System weitergeführt und geplant.
+
+----------------------------- 12.6.2001 -----------------------------
+ · Das Referenz-System funktioniert nun grundsätzlich, es ist aber noch nicht
+   komplett.
+
+----------------------------- 16.6.2001 -----------------------------
+ · Umfangreiche Debug-Ausgabe für die Berechnungs-Referenzen.
+
+ · Die Befehlsliste war leer, da allocSort() auch das Leeren der Liste
+   übernahm (jetzt SortListWith()).
+
+----------------------------- 13.5.2002 -----------------------------
+ · Dateitypen, die das NODEFAULT Flag nicht gesetzt haben, werden nun beim 
+   Speichern korrekt übernommen.
+
+ · "mainPool" nun endgültig überall zu "pool" überführt.
+
+ · Das Referenz-System kommt nun mit zirkulären Referenzen zurecht und
+   meldet diese, so daß der Benutzer eine Rückmeldung bekommt.
+
+ · RTYPE_LOCKED wird nun nicht mehr benutzt (hatte eh nie funktioniert).
+
+ · Referenzen in der gTimedRefs Liste werden nun auch wieder berechnet.
+
+ · Neuen Coding-Style eingeführt, und bei geändertem Code angewandt - unter
+   anderem werden jetzt die Typen "int32" gegenüber "LONG" bevorzugt.
+
+ · FreeTableField() gab möglicherweise noch bestehende Referenzen nicht frei,
+   was zum Crash bei der gTimedRefs-Auswertung führte.
+
+ · Der Timer benutzt nun UNIT_WAITUNTIL und ist damit unabhängig von der Zeit,
+   die die Message-Bearbeitung benötigt.
+
+----------------------------- 14.5.2002 -----------------------------
+ · Eingefügte Felder, die tf_Root bereits gesetzt haben (z.B. bei Undo/Redo),
+   werden nun auch wieder korrekt ins Referenz-System eingebunden.
+
+ · Verweist ein Objekt mehrmals auf ein anderes, wir nur noch eine Verbindung
+   erstellt.
+
+----------------------------- 20.5.2002 -----------------------------
+ · FreeReference() findet nun Zellen in unaufgelösten Bereichen, und erhöht
+   deren Zähler.
+
+ · AssignUnresolvedReferencesForCell() arbeitete mit unaufgelösten Bereichen
+   fehlerhaft.
+
+ · Ein einmal erstellter Formel-Tree wurde doch tatsächlich nur beim Freigeben
+   der Zelle gelöscht, blieb aber beim Ändern des Zelltextes als Leiche zurück...
+   vielleicht war es doch eine gute Idee, das Referenz-System als letztes
+   einzubauen :-)
+
+----------------------------- 4.7.2002 ------------------------------
+ · Verweise auf Formeln, die sowohl Text als auch Wert sind (z.B. leere Zellen
+   oder "42 Häuser"), werden nun rechtsbündig als Zahl ausgerichtet
+
+----------------------------- 1.10.2002 -----------------------------
+ · RefreshContextMenus() setzt nun den ITextFont zurück auf den Screen-Font.
+
+ · Neue "Spalte/Reihe einfügen" in den Standard-Context-Menüs für vertikale und
+   horizontale Titel.
+
+----------------------------- 2.11.2002 -----------------------------
+ · Die Achsenklasse und benutzende Diagramme sind nun auflösungsunabhängig.
+
+ · Jetzt gibt es auch ein Kreisdiagramm.
+
+ · Diagramme ans Referenz-System angeschlossen.
+
+----------------------------- 2.1.2003 ------------------------------
+ · Globale Stringpuffer-Handhabung in calc.c Routinen überarbeitet.
+
+ · Referenzen auf andere Seiten benötigen jetzt nur noch ein '#' - für Seiten-
+   bezeichnungen mit Leerzeichen werden Anführungszeichen benötigt (z.B.: "Tabelle 2"#b3)
+
+ · CopyTableField() in CopyCell() umbenannt - Referenzen werden nun korrekt
+   nicht mit übernommen, was viele Abstürze beseitigt.
+
+ · Neues "Farbverlauf"-Grafikobjekt (so richtig nur bei 24-bit).
+
+ · OBJECTTOBACK funktionierte nicht, da es falsch in die Liste einsortiert war
+
+ · InsertTableField(), RemoveTableField(), UpdateTFText() umbenannt zu InsertCell(),
+   RemoveCell() und UpdateCellText().
+
+ · InsertCell() kann jetzt auf Wunsch den Text aktualisieren, wodurch ein UpdateReferences()
+   gespart werden kann, wenn danach direkt UpdateCell() aufgerufen wurde.
+
+ · In Preferences/Display die Einstellung "Raster nach Zellbreite" erstmal deaktiviert.
+
+----------------------------- 14.1.2003 -----------------------------
+ · Namen ans Referenz-System angeschlossen.
+
+ · Referenz-System vereinfacht: es gibt nun keine Special-References mehr, um einige Laufzeit-
+   Optimierungen möglich zu machen (struct Reference benötigt nun 54 anstelle von 34 Bytes)
+
+ · Wenn eine Reference zur Unresolved-Reference wurde, wurden die Referenzen aus der
+   ReferencedBy-Liste nicht aktualisiert (dank Auflösung der SpecialReferences nun nicht
+   mehr notwendig).
+
+ · FreeReference() darf eine Referenz nicht freigeben, wenn neben einer Range auch noch
+   einzelne Verweise existieren.
+
+ · Einige andere Bugfixes und Aufräumarbeiten.
+
+----------------------------- 15.1.2003 -----------------------------
+ · Beim Löschen von Referenzen werden die Referenzierenden jetzt neu (und richtig) berechnet.
+
+ · UpdateNamesGadget() setzte das Typen Cycle-Gadget nicht richtig.
+
+----------------------------- 21.1.2003 -----------------------------
+ · Nach den letzten Änderungen funktionierte TermToText() nicht mehr richtig (unter anderem
+   wegen openBracket() und closeBracket()); Positionsübergabe verbessert.
+
+ · In AssignUnresolvedReferencesForX() wurde die Objektreferenz nicht immer korrekt gesetzt.
+
+ · PasteCells() funktionierte für Formeln nicht mehr richtig.
+
+----------------------------- 22.1.2003 -----------------------------
+ · RemoveCell() kann nun auch wahlweise eine Neuberechnung vornehmen.
+
+ · Amiga-Guide-Hilfe benutzt nun Strings um Fenster zu identifizieren, keine Nummern mehr.
+
+----------------------------- 25.1.2003 -----------------------------
+ · Neue Funktion ggT() (größter gemeinsamer Teiler).
+
+----------------------------- 29.1.2003 -----------------------------
+ · MakeCellStream() sicherte nicht immer alle Font-Attribute korrekt.
+
+----------------------------- 31.1.2003 -----------------------------
+ · Hintergrund-Popper neu angeordnet in WDT_DIAGRAM/Achse (war zu breit).
+
+ · Beim Index-Gadget wurde der Text offensichtlich zu nah abgeschnitten.
+
+----------------------------- 9.2.2003 -----------------------------
+ · Versucht sich nicht mehr zu beenden, wenn die Bildschirmauflösung geändert wird.
+
+ · Screen-Funktionen nach screen.c ausgegliedert.
+
+ · version.h beinhaltet nun die versionsabhängigen Strings, nicht mehr windefs.h.
+
+----------------------------- 10.2.2003 ----------------------------
+ · "normaler Modus" ist nun der "Editier-Modus", "i"/"n" im Statusfeld sind nun "inter"/"edit",
+   Hilfstexte aktualisiert.
+
+ · Gibt nun eine Fehlermeldung aus, wenn kein Screen geöffnet werden konnte.
+
+ · Add/Replace Einstellung für PrefsModule Format & Name wird jetzt gespeichert (aber noch nicht geladen).
+
+----------------------------- 12.2.2003 ----------------------------
+ · Das Picture-Objekt hat nun zwei neue Einstellungen: "Proportionen beibehalten", und "Zentrieren".
+
+----------------------------- 1.3.2003 -----------------------------
+ · Der Double-Buffer Zeichenmodus kann nicht mehr abgeschaltet werden, als vorübergehende Maßnahme
+   wegen des Picture-Objektes (malt Müll).
+
+ · Add/Replace Einstellung für PrefsModule Format & Name wird jetzt auch geladen.
+
+----------------------------- 2.3.2003 -----------------------------
+ · "instsize" in Grafik-Klassen heißt nun instanceSize.
+
+ · neue "superClass" Variable für Grafik-Klassen als Sicherheit hinzugefügt.
+
+ · Darstellungsprobleme/Enforcer-Hits beim Diagramm-Preview mit Achsen-Diagrammen beseitigt.
+
+----------------------------- 3.3.2003 -----------------------------
+ · Achsenhintergrund kann nun auch transparent sein.
+
+ · gMakeRefObject() setzt nun auf Wunsch einen alternativen Undo-Text.
+
+ · Der Referenz-Name wird nun vom referenzierten Objekt und nicht von der Klasse des referenzierten
+   Objektes gebildet.
+
+----------------------------- 4.3.2003 -----------------------------
+ · Wenn es bei Diagrammen nur eine Reihe von Werten gibt, werden die Farben von jedem Wert
+   anders vorinitialisiert.
+
+ · Das Achsen-Objekt unterstützt nun GAA_ShowNumbers.
+
+ · Neue "union"s in UndoNode und winData eingeführt, um überlagern von Variabled (Programmfehler :-)
+   (in Zukunft) zu vermeiden.
+
+ · globale "wid", "hei" & "dpi" zu gWidth, gHeight & gDPI umbenannt, globale aber unbenutzte xdpi
+   und ydpi entfernt.
+
+ · Aufräumaktionen und andere Umbenennungen, z.B. UNT_OBJECTSMOVE zu UNT_OBJECTS_MOVE.
+
+ · Der Anfang für Undo/Redo für Diagramme (hinzufügen & Diagrammtyp ändern funktioniert bereits,
+   solange WDT_DIAGRAM nicht geöffnet ist).
+
+----------------------------- 5.3.2003 -----------------------------
+ · Wenn Objekte entfernt werden, werden nun auch dessen Fenster geschlossen - neue Methode
+   GCM_CLOSEWINDOW eingeführt, die von RemoveGObject() bei Bedarf aufgerufen wird.
+
+ · Die Embedded-Diagramm-Klasse leitet GCM_CLOSEWINDOW an das referenzierte Diagramm weiter;
+   gd->gd_Object.go_Window wird nun korrekt gepflegt.
+
+----------------------------- 7.3.2003 -----------------------------
+ · WDD_PAGE entfernt; wird jetzt in wd_CurrentPage gespeichert.
+
+ · struct winData hat jetzt auch ein Feld, um die Pages-Liste eines Index-Gadgets zu speichern
+   (ermöglicht dynamische Anforderung dieser Liste, damit Fenster entsprechende Fenster mehr als
+   einmal geöffnet werden können).
+
+ · wd_Page zu wd_PageHandlingGadget umbenannt, da dort normalerweise das Index-Gadget angegeben
+   wird, da es für den User für das Umschalten der Pages verantwortlich ist.
+
+ · WDT_DIAGRAM kann nun mehrfach geöffnet werden, ohne den Rechner zum Absturz zu bringen.
+
+ · WA_ExtData6 entfernt und durch WA_Map ersetzt, daß momentan nur bei WDT_DEFINECMD Funktion hat.
+
+ · WDT_OBJECT/WDT_DIAGRAM werden nun auch geschlossen, wenn ein Objekt durch Undo wieder
+   entfernt wird.
+
+ · Wenn WDT_DIAGRAM mit einem bereits bestehendem Diagramm geöffnet wird, werden jetzt ganz
+   normal Undo/Redo Nodes erzeugt.
+
+----------------------------- 8.3.2003 -----------------------------
+ · Es wurde seit einiger Zeit der falsche Wochentag ausgerechnet - der 1.1.0001 ist nun Tag 1;
+   Montag ist Wochentag 1.
+
+ · WDT_DIAGRAM hat nun keine "Ok" & "Abbrechen" Gadgets mehr, wenn ein bestehendes Diagramm
+   geändert wird; es wird auch keine Kopie des Diagramms (für Abbrechen) gemacht, sondern
+   direkt das Diagramm bearbeitet (incl. Undo/Redo Möglichkeit).
+
+ · ApplyDiagramTypeUndoRedo() kann nun mit einem offenen WDT_DIAGRAM umgehen.
+
+ · Die Elemente von WDT_DIAGRAM/WDT_OBJECT werden nun bei Undo/Redo auch aktualisiert.
+
+ · SetDiagramType() erstellt beim Aufruf von SetDiagramAttrsA() nun keine UndoNode mehr.
+
+----------------------------- 10.3.2003 ----------------------------
+ · GetGInterfaceTag() findet den gesuchten Tag nun auch in den Super-Klassen - dadurch
+   funktioniert Undo/Redo z.B. auch für die Einstellungen bei den Achsen-Diagrammen.
+
+ · "root" & "diagram" exportieren nun ein gInterface, was sowohl zum Undo/Redo, als auch
+   für REXX benutzt wird.
+
+ · Die Achsen-Klasse definiert nun auch Namen, damit man die Werte per REXX abfragen kann.
+
+ · Die Gadgets in WDT_DIAGRAM/Inhalt werden nun zu den GGadgets hinzugefügt, damit Undo/Redo
+   funktioniert.
+
+ · Das Namen-Gadget in WDT_OBJECT ist nun auch ein GGadget, was dazu führt, daß es bei
+   Undo/Redo richtig aktualisiert wird.
+
+----------------------------- 11.3.2003 ----------------------------
+ · FreeObjectAttrs() arbeitete nicht korrekt, und benutzte immer das erste Tag, um den Typ
+   des zu deallokierenden Objektes zu bestimmen.
+
+ · Freigabe von UNT_OBJECT_SIZE arbeitete auch nicht korrekt (falsche Anzahl an Knobs).
+
+ · Objekt-Undo/Redo benutzt nun durchgehend typsichere Unions.
+
+ · Die Diagramm-Klasse hatte GCM_GET nicht implementiert, weswegen Undo/Redo nicht korrekt
+   funktionierte.
+
+ · GDA_DataPage hatte die falsche Page und wurde deshalb immer mit den Achsen-Gadgets neu
+   gezeichnet.
+
+----------------------------- 7.5.2003 -----------------------------
+ · GCAM_GETBORDERS ist nun unabhängig von der Auflösung.
+
+ · Das Balken-Diagramm ist nun auch im Pseudo-3D-Modus unabhängig von der Auflösung, Werte
+   knapp unter Null werden jetzt auch korrekt gezeichnet.
+
+ · Flächendiagramm etwas verbessert - hat aber noch Probleme bei Vorzeichenwechsel im
+   Pseudo-3D-Modus.
+
+ · Die AmigaGuide-Library ist nun optional (fehlt bei MorphOS) - Kontext-Hilfe funktioniert
+   dann natürlich nicht.
+
+ · CheckFormat() etwas umgestaltet (funktioniert hoffentlich wieder).
+
+ · Wochentage & Monate werden nun wieder korrekt erkannt, und auch die Locale-Informationen
+   werden jetzt zu Hilfe genommen.
+
+----------------------------- 8.5.2003 -----------------------------
+ · Das Kreisdiagramm zeigt nicht nur noch Grafikmüll, wenn alle Werte 0 sind.
+
+ · lpFormat() entfernt doppelte Einträge nun korrekt.
+
+ · LoadProject() überprüft, ob die verwendeten Formate mindestens die "0" enthalten.
+
+ · Ist das Prefs-Module bei spFormat()/spName() noch nicht vorhanden, benutzt das neu
+   erstellte nun PMF_ADD, nicht mehr eine ungesetzte Vererbung (was meistens als PMF_REPLACE
+   interpretiert wurde).
+
+ · CheckFormat() gab möglicherweise CFR_FITS | CFR_FITS_PARTIALLY zurück - jetzt nur noch
+   entweder oder, was GetFormatOfValue() nicht mehr verwirrt.
+
+----------------------------- 9.5.2003 -----------------------------
+ · "Escape" beendet nun ein TabGadget und macht alle Änderungen rückgängig (und es wird kein
+   unerlaubtes Zeichen mehr eingefügt).
+
+----------------------------- 10.5.2003 ----------------------------
+ · Fügt Reference nun nicht mehr mehrmals in die gTimedRefs-Liste ein, wenn mehrere RTYPE_TIMED
+   Beziehungen existieren (Crash beim Schließen des Projektes).
+
+----------------------------- 7.6.2003 -----------------------------
+ · Einige MorphOS Anpassungen: fehlende Fonts, pointer.prefs können nun geladen werden.
+
+ · Fonts werden nun nach ihren Fähigkeiten entsprechend korrekt ausgewählt.
+
+ · Der ausgewählte basis Shear/EmboldenX-Wert wird nun extra gespeichert, damit er beim
+   Suchen nicht immer extra angepaßt werden muß.
+
+ · Die PopUpList() öffnet jetzt ein Fenster, und malt nicht mehr direkt im Screen herum - so
+   wie es schon von Anfang an hätte sein sollen.
+
+----------------------------- 28.6.2003 ----------------------------
+ · Die Embedded-Diagramm Klasse kopiert nun das referenzierte Diagramm, wenn es kopiert
+   wird, und fügt nicht nur die Kopie in die Liste der Referenten ein, wie es die
+   Superklasse tut (und setzt go_Page auch korrekt und fügt das Diagramm in die Liste ein).
+
+ · Einige Debug/Dump-Funktionen und ein ASSERT() Makro hinzugefügt.
+
+ · PasteClip() verschob tf_Original nur für TFT_FORMULA zu tf_Text (für InsertCell()) -
+   zeigte sich z.B. im fehlenden "#" beim eingefügten "#text".
+
+----------------------------- 29.6.2003 ----------------------------
+ · Neues Text-Objekt hinzugefügt.
+
+----------------------------- 28.7.2003 ----------------------------
+ · Locale-Fähigkeit begonnen, bereits über 100 Strings übersetzt (englisch & deutsch).
+ 
+----------------------------- 30.7.2003 ----------------------------
+ · Lokalisierung fortgeführt (windows.c, hooks.c, font.c & prefs.c).
+ 
+ · WDT_PREFS bekam einen falschen Fenstertitel.
+
+----------------------------- 30.7.2003 ----------------------------
+ · Lokalisierung fortgeführt (table.c, handlewindows.c, screen.c, database.c & search.c).
+
+----------------------------- 1.8.2003 -----------------------------
+ · Lokalisierung fortgeführt (handleprefs.c, gadgets.c)
+
+ · Größenveränderbare Fenster werden nun ein bißchen anders erstellt (create-gadgets Routine
+   wird	in der gCreateWinData Struktur gespeichert), OpenAppWindow() ist nun etwas intelligenter
+   im Umgang mit diesen Fenstern.
+
+ · Die Größe von größenveränderbaren Fenstern wird nun beim nächsten Öffnen wieder hergestellt.
+ 
+----------------------------- 2.8.2003 -----------------------------
+ · Lokalisierung fortgeführt, alles bis auf rexx.c, prefsgadgets.c & printer.c ist übersetzt;
+   alle konstanten Arraylisten fehlen aber noch.
+
+----------------------------- 3.8.2003 -----------------------------
+ · Lokalisierung fortgeführt, rexx.c, prefsgadgets.c und printer.c übersetzt.
+ 
+ · Fenstertitel lokalisiert.
+							
+----------------------------- 4.8.2003 -----------------------------
+ · Alle Tastaturkürzel auf Locale-Benutzung umgestellt.
+
+ · Einige Array-String-Listen umgestellt, printer.c & prefsgadget.c komplett.
+ 
+ · MakeShortCutString() funktionierte nicht richtig.
+ 
+----------------------------- 5.8.2003 -----------------------------
+ · Alle Array-Listen in gadgets.c, io.c, color.c und ignition.c lokalisiert.
+
+ · gc_FreeClass() wurde nie aufgerufen.
+
+ · Vordefinierte Kontext-Menüs lokalisiert.
+ 
+ · Catalog-IDs ein wenig aufgeräumt.
+ 
+ · viele andere Lokalisierungsprobleme beseitigt.
+
+ · Der "Pattern" Shortcut funktioniert nun in WDT_PREFSCREEN.
+ 
+ · Die Liste der möglichen Vergrößerungen enthält nun ein Separator zwischen dem letzten
+   Prozentwert und dem "Übersicht" Menüpunkt.
+
+ · Die Tastaturkürzel bei WDT_DOCINFO funktionieren nun auch.
+ 
+ · Der ITextFont der globalen itext-Struktur wurde nicht immer korrekt zurückgesetzt.
+ 
+ · WDT_PREFNAMES erlaubte seinen Tastaturkürzeln deaktiviert Gadgets zu edieren.
+ 
+----------------------------- 6.8.2003 -----------------------------
+ · WDT_PREFFORMAT & WDT_PREFTABLE-Größen der Lokalisierung angepaßt.
+
+ · CELL Argumente SHIFTBELOW/SHIFTABOVE nach SHIFTDOWN/SHIFTUP umbenannt.
+
+ · Englische Einstellungen erstellt.
+ 
+ · WDT_PREFKEYS ist nun größenveränderbar und akzeptiert Befehls-Objekt-Drops.
+ 
+ · Grafik Add-Ons bekommen nun auch einen Zeiger auf die Locale-Library übermittelt.
+ 
+ · add-ons/gclass.h nutzt nun proto/*.h, wodurch eine manuelle Definition der jeweiligen
+   Library-Basen überflüssig wird.
+
+ · Lokalisierung des Hauptprogrammes abgeschlossen!
+
+ · Add-ons "Text", "Checkbox" und "Button" lokalisiert.
+ 
+----------------------------- 7.8.2003 -----------------------------
+ · Alle grafischen Add-ons lokalisiert.
+ 
+ · Der Gradient-Add-on benutzt nun ein Cycle-Gadget für die Richtung, kein Checkbox mehr.
+ 
+ · Die ".gcdescr" & ".iodescr" Dateien erlauben nun die Angabe von lokalisierten Namen -
+   allerdings muß für die I/O-Descriptions auch noch die Beschreibung des Moduls lokalisierbar
+   sein.
+		
+----------------------------- 8.8.2003 -----------------------------
+ · I/O-Module können nun auch mehrsprachige Beschreibungen definieren.
+
+ · Alle ".iodescr" übersetzt.
+ 
+----------------------------- 11.8.2003 ----------------------------
+ · Neue Funktion gmtabstand() gibt den Abstand zur GMT Zeitzone an.
+ 
+ · "Rechnen mit allen Grundtypen" Dokument übersetzt.
+ 
+ · Paste vom Clipboard funktionierte nicht mehr richtig.
+ 
+ · Beim Pasten von Texten konnte Müll mit gepastet werden, wenn das letzte Zeichen
+   kein '\n' oder '\0' war.
+ 
+ · LoadCells() benutzte beim Tag CELL_FONTNAME die falsche Font-Liste, und konnte daher
+   dort nie einen passenden Zeichensatz finden.
+   
+ · Funktionsnamen komplett übersetzt.
+ 
+ · Einige Konfigurationsdateien in neuen Ordner "config" verschoben: ignition.prefs,
+   ignition.session, pointer.prefs, #?.functions.
+
+ · Die Texteingabe erstellte keine Undo-Zelle, wenn noch kein Zell-Text gesetzt war (d.h. ein
+   Undo löschte die Zelle, anstatt die vorherige einzusetzen).
+
+----------------------------- 12.8.2003 ----------------------------
+ · Beim Ausschneiden/Löschen von Zellen wurde die maximale Zellbreite beim Neuzeichnen der
+   Tabelle nicht berücksichtigt.
+ 
+ · In EditRexxScript() wurde SYS_Input/Output nicht auf NULL gesetzt; SystemTags() schloß
+   also Input() und Output() der Applikation.
+   
+ · WDT_PRINTER/"Optionen..." öffnet nun das Printer-Voreinstellungen Programm.
+ 
+ · Das Schließen des Bildschirmes auf Signal funktionierte nicht, wenn die
+   Einstellung "wie Workbench" aktiviert war.
+   
+ · WDT_SCRIPT funktionierte nicht mehr - hing sich auf, da wd_Data falsch gesetzt war...
+ 
+ · Filter werden nun auch gespeichert und geladen (und dabei wieder korrekt hergestellt).
+ 
+ · Schrifthöhe auf 128 pt begrenzt (wegen unzulänglicher Font-Libraries...).
+ 
+ · FIT_SEARCH Filter benutzen nun die sprachunabhängige pat() Funktion, nicht mehr muster().
+ 
+ · Wenn ein Name bei SESSIONLIST/PROJECTLIST zweimal vorkommt, wird nun noch eine
+   Pfadinformation angehängt, um die beiden Einträge unterscheiden zu können.
+
+----------------------------- 13.8.2003 ----------------------------
+ · Die Einstellungen wurden über den PREFS Befehl nicht von ihrer neuen Lage aus geladen/gespeichert.
+ 
+----------------------------- 14.8.2003 ----------------------------
+ · Farbsystem benutzt nun eine ColorContext-Struktur in RastPort->RP_User um die richtigen
+   Farbroutinen aufzurufen (hauptsächlich fürs Drucken, ermöglicht aber z.B. einfacheres
+   Spezialhandling für MorphOS/AmigaOS 4 TrueColor).
+   
+----------------------------- 16.8.2003 ----------------------------
+ · Installationsroutinen auf lokalisierte Dateistruktur umzustellen begonnen.
+ 
+----------------------------- 20.8.2003 ----------------------------
+ · Bei WDT_FILETYPE funktioniert nun auch die Help-Taste.
+ 
+ · Help-Guide weiter vervollständigt, (fehlendes) Tutorial entfernt; kommt ins Manual.
+ 
+----------------------------- 22.8.2003 ----------------------------
+ · Überflüssige "Sitzungen" Option im File-Prefsmodule entfernt (auch in WDT_PREFFILE).
+ 
+ · Help-Guide weiter vervollständigt.
+ 
+----------------------------- 30.8.2003 ----------------------------
+ · In WDT_PRINTER "Optionen"-Gadget zum Drucker hinzugefügt, altes "Optionen" Gadget zu
+   "Einstellungen..." umbenannt.
+
+ · Help-Guide weiter vervollständigt.
+ 
+----------------------------- 21.9.2003 ----------------------------
+ · Anfänger-Modus verfeinert: es fehlt nun auch WDT_PREFCONTEXT in der Liste, und einige Optionen
+   in WDT_PREFSYS.
+
+ · Einige Beschränkungen der "Lite Edition" umgesetzt: Rexx-Port nicht mehr erreichbar (nur
+   noch aus AmigaGuides), kein WDT_PREFMENU & WDT_PREFCONTEXT, keine Datenbank-Einstellungen,
+   kein interaktiver Modus, keine internen Skripte, WDT_DOCUMENT angepaßt (Gadgets disabled).
+
+ · Help-Guide weiter vervollständigt, beinhaltet jetzt Standard & Lite Edition - wird automatisch
+   mit "make" gebaut.
+
+ · ignition wird jetzt wahlweise nach Definition von IGNITION_LITE_EDITION als "Lite Edition"
+   compiliert.
+ 
+----------------------------- 22.9.2003 ----------------------------
+ · Tabellengröße für Lite Edition auf 30x50 Zellen beschränkt.
+ 
+ · Der Schriftzug "Lite Edition" wird nun in WDT_INFO und der Screenbar gezeigt (wenn
+   IGNITION_LITE_EDITION definiert ist).
+
+ · Drucken funktioniert nun zuverlässig; asynchroner Modus vorübergehend deaktiviert.
+															
+----------------------------- 23.9.2003 ----------------------------
+ · Maximale Fontgröße der Lite Edition auf 72 pt reduziert, wegen der ft2.library in MorphOS.
+
+ · Die Lite Edition weist sich gegenüber Add-Ons nun anders aus ('IGL\0').
+
+ · Help-Guide weiter vervollständigt.
+
+ · Version auf 1.0ß erhöht!
+ 
+----------------------------- 24.9.2003 ----------------------------
+ · Enforcer-Hit in GetColorContext() gefixt (darf nun mit NULL als RastPort aufgerufen werden).
+
+ · FreeMenuList() griff auf bereits freigegebenen Speicher zu.
+
+ · ReleaseAppColors() konnte beim Laden von Einstellungen auf einen nicht vorhandenen Screen
+   zugreifen, was in einem Absturz endete.
+
+ · Auch CreateStyleImages() konnte auf einen nicht vorhandenen Screen zugreifen.
+
+ · Add-Ons der Lite Edition werden nun von der normalen Version auch benutzt, umgekehrt
+   kann die Lite Edition aber nicht die Add-Ons der normalen Version benutzen.
+
+ · Die Pfadgenerierung in MakeMenuList() fing NULL Pfade nicht ab (mal wieder Enforcer-Hits).
+
+ · Deutsches Help-Guide für Lite Edition fertiggestellt!
+								
+ · Seriennummer-Abfrage eingebaut (Aber isch abe noch keine Seriennummer).
+
+----------------------------- 25.9.2003 ----------------------------
+ · AskSerialNumber() gab die Strings der Willkommens-Nachricht nicht wieder frei.
+ 
+ · DrawGObject() erfordert nun die Angabe des RastPorts, auf dem gezeichnet wird - wird
+   fürs asynchrone Drucken benötigt (da dann zwei Grafik-RastPorts gleichzeitig existieren).
+   
+----------------------------- 1.10.2003 ----------------------------
+ · Der Farbname wird nun wieder automatisch bestimmt, wenn man den Namen leer läßt bzw. löscht.
+ 
+ · Farbänderungen von Farben mit festem Namen sind auf Echtfarb-Screens nun wieder direkt
+   sichtbar.
+
+ · Der Gradient-Slider paßt nun auch auf Echtfarb-Screens seinen Farbverlauf an die aktuelle
+   Farbe an.
+
+ · Die englische Farbnamenbestimmung funktioniert nun auch konsequent.
+ 
+ · Bei einer registrierten Version wird nun schon beim Laden im Info-Requester die
+   richtige Seriennummer angezeigt (und nicht mehr "unregistriert").
+   
+ · Übersetzung des Help-Guides nach englisch begonnen.
+ 
+ · Die Lite-Distribution kann nun automatisch erstellt werden (benötigt GNU-make), die
+   Hilfe-Guides werden automatisch erstellt.
+ 
+----------------------------- 9.10.2003 ----------------------------
+ · Suchen/Ersetzen Tastaturkürzel eingeführt (Optionen noch nicht).
+ 
+ · Speicherlecks beim Schließen von WDT_FIND/REPLACE und WDT_OBJECT gefixt (Listen).
+ 
+ · Einige Fensterfunktion umbenannt.
+ 
+ · Ist kein FONT ToolType angegeben, wird nun auch in MOSSYS:Fonts nach Fonts gesucht
+   (falls MOSSYS: existiert).
+ 
+----------------------------- 26.10.2003 ---------------------------
+ · Klaut nun nicht mehr die ganze CPU-Zeit unter MorphOS - unter MorphOS wird tr_time
+   immer gelöscht, unter AmigaOS bei WAIT_UNTIL nicht.
+   
+----------------------------- 13.1.2004 ----------------------------
+ · Bei WDT_CLIPBOARD funktionierte die Tastatursteuerung noch nicht, zusätzlich waren
+   die Knöpfe noch nicht lokalisiert.
+   
+----------------------------- 14.1.2004 ----------------------------
+ · Clips werden nun nicht mehr vorher normalisiert, so daß auch externe Clips (aus dem
+   Clipboard) mit Formeln einwandfrei funktionieren (PasteCells() erkennt nun solche
+   Zellen und erzeugt einen Baum für die ursprüngliche Position, wodurch die Normalisierung
+   erreicht wird).
+
+----------------------------- 21.1.2004 ----------------------------
+ · Wenn die Formel einer Zelle versteckt ist, und versteckte Zellen gezeigt werden,
+   wird	diese Zelle nicht mehr ausgegraut dargestellt (so wie tatsächlich versteckte).
+   
+ · Dokumentenschutz verbessert, aber noch nicht vollständig (ChangeCellSize() und
+   InReCells() respektiert ihn nun).
+ 
+ · Seitenschutz zumindest angefangen, aber deaktiviert (und "versteckt" erstmal ausgeblendet).
+ 
+ · Der erste vordefinierte Rahmen in WDT_BORDER löscht nun immer den vorhandenen Rahmen,
+   unabhängig davon, ob "nur hinzufügen" aktiviert ist oder nicht.
+   
+ · WDT_BORDER war noch nicht dokumentiert...
+ 
+ · Zellen kopieren/ausschneiden/löschen respektiert nun den Zellschutz ein wenig besser,
+   SaveCells() bei Bedarf ebenfalls.
+   
+----------------------------- 29.3.2004 ----------------------------
+ · Druckt nun auch mit CyberGraphX korrekt (welches nämlich bescheuerterweise BMF_MINPLANES
+   bei AllocBitMap() erfordert).
+ 
+----------------------------- 3.11.2004 ----------------------------
+ · Neues IOType-Feld "SUFFIX"; es werden jetzt auch andere Endungen als .igs unterstützt
+   und je nach Einstellungen automatisch an den Dateinamen angehängt.
+
+ · mp_FileType ist jetzt ein direkter Zeiger auf den IOType, und keine ID mehr. io_ID
+   ist nun komplett entfernt.
+
+ · Der IOType einer Datei bleibt nun erhalten, auch wenn IOF_NODEFAULT gesetzt ist.
+
+ · Ist der IOType IOF_NODEFAULT, und eine Datei wird ohne Requester gespeichert, wird,
+   solange MPF_WARNED_IOTYPE noch nicht gesetzt ist, vor einem Abspeichern gewarnt.
+
+ · Die Warnung über den IOType kann zusätzlich über WDT_PREFS_FILE bestimmt werden.
+ 
+ · Speichern und Drucken in der Demo-Version gesperrt.
+ 
+----------------------------- 28.2.2005 ----------------------------
+ · lpNames() ist nun etwas robuster gegenüber korrupten Daten (z.B. durch ältere
+   Preferences-Versionen).
+
+

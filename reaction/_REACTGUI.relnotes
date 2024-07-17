@@ -1,0 +1,55 @@
+2019.02.xx - 2019.05.03 (Javier de las Rivas & Achim Pankalla)
+-Added code to use ReAction on prefs windows: DISPLAY, FILE,
+ NAMES, TABLE, SCREEN and SYSTEM (funcs.h, windefs.h, handleprefs.c,
+ ignition.c, initwindows.c, prefsgadgets.c, support.c and window.c).
+-Created reaction.c and reactionGUI.h to use/open/close ReAction
+ resources.
+-Now uses requester.class on (all?) window requesters.
+-All ReAction code/changes uses "#ifdef _REACTGUI_...#endif" to
+ identify changes and this allows to build a "native" (nonReAction)
+ ignition too.
+
+2019.05.04 (Javier de las Rivas)
+-Added isRAwinobjEmpty() to check opened winobj[], if FALSE then no
+ need to check for RA windows (window.class, 'wsigmask').
+-winobj[] is now winobj[NUM_WDT] (all possible windows) to "expand"
+ ReAction windows to all "possible" windows.
+-Reworked DebugPrintF() to a "#define DBUG()" (funcs.h) for easy
+ enabling/disabling debug ouput (_DEBUGRA_).
+
+2019.05.19 (Javier de las Rivas)
+-Added code to use ReAction on prefs window: PALETTE (windefs.h,
+ handleprefs.c, initwindows.c, and prefsgadgets.c).
+-New string MSG_DARK_COLOR_TINT_NAME2 in ignition.cd used in
+ GetColorName() function (color.c).
+
+2019.08.xx (Javier de las Rivas)
+-Added code to use ReAction on windows: DOCINFO and NOTES (windefs.h,
+ gadgets.c, handlerwindows.c, initwindows.c).
+-Added code to use ReAction on prefs window: KEYS (windefs.h,
+ cmd.c, handleprefs.c, initwindows.c, and prefsgadgets.c).
+-Enabled sizegadget to ReAction windows.
+-Reworked SCREEN prefs window 'Screen' group layout.
+-Fixed some widths not showing all texts/contents: main-prefs and its
+ 'Add' button; chooser 10%..1000%..fit_page (ignition.c).
+-Created PopUpRAList() used in [PREF]KEYS (windows.h, handleprefs.c
+ and popper.c).
+-Reworked AllocListBrowserNode() and GetListBrowserNodeAttrs() to use
+ LBNA_UserData to set/get "native" list items.
+-Added code to use ReAction on prefs window: CONTEXT (windefs.h,
+ handleprefs.c, initwindows.c, prefsgadgets.c and window.c).
+-Updated PopUpRAList() for [PREF]CONTEXT (gadgets.h).
+-Added code to use ReAction on prefs window: MENU (windefs.h,
+ handleprefs.c, initwindows.c, prefsgadgets.c and window.c).
+-Added code to use ReAction on prefs window: ICON (windefs.h,
+ handleprefs.c, initwindows.c, prefsgadgets.c and window.c).
+-Added code to use ReAction on prefs window: FORMAT (windefs.h,
+ handleprefs.c, initwindows.c, prefsgadgets.c and window.c).
+-Updated PopUpRAList() for [PREF]FORMAT (gadgets.h and popper.c).
+-Added code to use ReAction on prefs window: DEFINECMD and PREFCMDS
+ (windefs.h, handleprefs.c, initwindows.c, prefsgadgets.c and window.c).
+-Fixed/Reworked SetToolTypes() __amigaos4__ code (prefsio.c).
+
+2019.11.xx (Javier de las Rivas)
+-"Create" a ReAction "branch" with ReAction .h/.c files to remove/merge
+_REACTGUI_ code to clean sources.

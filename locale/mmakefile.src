@@ -1,0 +1,41 @@
+#
+# meta-makefile for Ignition Catalogs for AROS
+#
+
+include $(TOP)/config/make.cfg
+
+
+CATDIR := $(AROS_CONTRIB)/Office/Ignition/Catalogs
+
+SRCS := ignition_english.ct
+OBJS := $(CATDIR)/english/Ignition.catalog
+DIRS := $(CATDIR)/english/
+
+
+#MM
+contrib-ignition-catalogs : create_dirs $(OBJS) ../ignition_strings.h
+
+$(CATDIR)/english/Ignition.catalog : ignition_english.ct ignition.cd
+	@$(ECHO) "Creating Ignition catalog for language english"
+	@$(FLEXCAT) ignition.cd ignition_english.ct CATALOG=$(CATDIR)/english/Ignition.catalog
+
+../ignition_strings.h : ignition.cd
+	@$(ECHO) "Creating Ignition catalog source file ../ignition_strings.h"
+	@$(FLEXCAT) ignition.cd ../ignition_strings.h=$(TOOLDIR)/C_h_orig.sd
+
+create_dirs:
+	$(IF) $(TEST) ! -d $(CATDIR) ; then $(MKDIR) $(CATDIR) ; else $(NOP) ; fi
+	@$(FOR) dir in $(DIRS) ; do \
+	    $(IF) $(TEST) ! -d $$dir ; then $(MKDIR) $$dir ; else $(NOP) ; fi ; \
+	done
+
+
+contrib-ignition-catalogs-clean : FILES := $(BD_OJS) ../ignition_strings.h
+
+#MM
+contrib-ignition-catalogs-clean ::
+	$(RM) $(FILES)
+
+.PHONY: contrib-ignition-catalogs contrib-ignition-catalogs-clean
+
+%common

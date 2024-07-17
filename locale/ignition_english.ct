@@ -1,0 +1,2587 @@
+## version $VER: ignition.catalog 1.0 (4.11.4)
+## language english
+## codeset 0
+;
+MSG_GL_CONTEXT_ERR
+Could not create GL context.
+;
+MSG_DIAGRAM_PREFS_GAD
+Chart properties...
+;
+MSG_DIAGRAM_TYPE_UNDO
+Change of chart type
+;
+MSG_NO_BLOCK_ERR
+No block selected!
+;
+MSG_CREATE_DIAGRAM_OBJ
+Create Chart
+;
+MSG_EMPTY_FORMAT
+(none)
+;
+MSG_INVALID_NAME_ERR
+Invalid name.
+;
+MSG_NAME_IN_USE_ERR
+Name already in use.
+;
+MSG_NO_MEMORY_FOR_NESTING_ERR
+No memory for this nesting level.
+;
+MSG_WRONG_TYPE_CALCERR
+Wrong type.
+;
+MSG_DIVISION_BY_ZERO_CALCERR
+Division by zero.
+;
+MSG_UNKNOWN_FUNCTION_CALCERR
+Unknown function.
+;
+MSG_WRONG_ARGS_COUNT_CALCERR
+Wrong number of arguments for function.
+;
+MSG_UNDEFINED_NAME_CALCERR
+Undefined name.
+;
+MSG_BAD_SYNTAX_CALCERR
+Bad syntax.
+;
+MSG_LOOP_CALCERR
+Bad reference in %s.
+;
+MSG_UNKNOWN_CALCERR
+Unknown error.
+;
+MSG_ALLOC_CELL_FAILED_ERR
+Could not allocate cell %s.
+;
+MSG_COPY_OBJECT_TO_PAGE_ERR
+The object in the clipboard could not be copied\nto this page because it references another document.
+;
+MSG_COPY_TO_CLIPBOARD_ERR
+Copy to clipboard failed:\n  %s
+;
+MSG_CUT_UNDO
+Cut
+;
+MSG_DELETE_UNDO
+Delete
+;
+MSG_CUT_DELETE_UNDO_ERR
+Cut/Delete
+;
+MSG_GROUP
+Group
+;
+MSG_NO_CELLS_SELECTED_ERR
+No cells selected.
+;
+MSG_NO_OBJECT_SELECTED_ERR
+No object selected.
+;
+MSG_INSERT_OBJECTS_UNDO
+Insert object(s)
+;
+MSG_INSERT_UNDO
+Insert
+;
+MSG_LOAD_FROM_CLIPBOARD_ERR
+Load from clipboard failed:\n  %s
+;
+MSG_NO_PROJECT_CONTEXT_ERR
+%s:\nno project context.
+;
+MSG_COMMAND_IN_SCRIPT_ONLY_ERR
+%s:\nThis command can only be called within a script.
+;
+MSG_UNKNOWN_ERR
+unknown error
+;
+MSG_CANNOT_EXECUTE_COMMAND_ERR
+Could not exectute command:\n  \"%s\"\n\n%s
+;
+MSG_PROTECTED_CELL
+This cell is protected against changes!
+;
+MSG_UNKNOWN_FUNCTION_NAME_ERR
+Did not find function name!
+;
+MSG_CHANGE_CELL_TEXT_UNDO
+Change cell text to \"
+;
+MSG_CELL_TEXT_INPUT_UNDO
+Set cell text to \"
+;
+MSG_DELETE_CELL_TEXT_UNDO
+Delete cell text
+;
+MSG_PASSWORD_GAD
+Password:
+;
+MSG_CANCEL_GAD
+Cancel
+;
+MSG_OK_GAD
+Ok
+;
+MSG_SECURITY_CHECK_TITLE
+Security Check
+;
+MSG_WRONG_PASSWORD_ERR
+The password is not correct!
+;
+MSG_FUNCTABLE_FUNCTION_NOT_FOUND_ERR
+Function table \"%s\":\nCannot find function \"%s\".
+;
+MSG_FUNCTABLE_FUNCTIONS_MISSING_ERR
+Function table \"%s\":\nThe function set is not complete.
+;
+MSG_NO_FUNCTABLE_ERR
+Could not find a function table.
+;
+MSG_FUNCTABLE_ERR
+Could not create function table.
+;
+MSG_COLOR
+Color %ld
+;
+MSG_CHOOSE_PAGE_HELP
+choose current page
+;
+MSG_INPUT_FORMULA_HELP
+input formula
+;
+MSG_FAST_FUNCTION_CHOOSER_HELP
+fast function choice
+;
+MSG_FUNCTION_CHOOSER_HELP
+choose function
+;
+MSG_CHOOSE_FONT_HELP
+choose font
+;
+MSG_SET_FONT_SIZE_HELP
+set font size
+;
+MSG_CHOOSE_FONT_SIZE_HELP
+choose font height
+;
+MSG_SET_ZOOM_HELP
+set zoom level
+;
+MSG_CHOOSE_ZOOM_HELP
+choose zoom level
+;
+MSG_SET_TEXTPEN_HELP
+set text color of current cell(s)
+;
+MSG_SET_BACKPEN_HELP
+set background color of current cell(s)
+;
+MSG_PLAIN_FONT_HELP
+plain font style
+;
+MSG_BOLD_FONT_HELP
+bold font style
+;
+MSG_ITALICS_FONT_HELP
+italics font style
+;
+MSG_UNDERLINED_FONT_HELP
+underline font
+;
+MSG_ALIGN_LEFT_HELP
+align cell contents left
+;
+MSG_ALIGN_CENTER_HELP
+center cell contents
+;
+MSG_ALIGN_RIGHT_HELP
+align cell contents right
+;
+MSG_VALIGN_TOP_HELP
+cell contents on top
+;
+MSG_VALIGN_MIDDLE_HELP
+cell contents in the middle
+;
+MSG_VALIGN_BOTTOM_HELP
+cell contents at the bottom
+;
+MSG_FORMULA_GAD
+Formula:
+;
+MSG_CHOOSE_GAD
+Choose...
+;
+MSG_CREATE_PROJECT_ERR
+Could not create project
+;
+MSG_UNSAVED_PREFERENCES_REQ
+The following preferences were not yet saved:%s
+;
+MSG_PRINT_IN_PROGRESS_REQ
+There is a print process in progress.\nThe application cannot be quit now.
+;
+MSG_OPEN_CLASSES_PROGRESS
+Open classes
+;
+MSG_SEARCH_FONTS_PROGRESS
+Search for fonts
+;
+MSG_OPEN_MOUSE_POINTER_PROGRESS
+Open mouse cursor
+;
+MSG_LOAD_PREFERENCES_PROGRESS
+Load preferences
+;
+MSG_LOAD_SESSION_PROGRESS
+Load session
+;
+MSG_NO_OUTLINE_FONTS_ERR
+Could not find any outline fonts.
+;
+MSG_LOAD_ICONS_PROGRESS
+Load icons
+;
+MSG_AUTOSAVE_REQ
+The document "%s" has been changed during the last\n%ld minute(s), but it has not been saved yet.
+;
+MSG_CELL_TEXT_COLOR_HELP
+Text color of the current cell
+;
+MSG_CELL_BACK_COLOR_HELP
+Background color of the current cell
+;
+MSG_STATUS_MODE_HELP
+Status: %s mode
+;
+MSG_BLOCK_POSITION_HELP
+Position of the current cell or the currently selected block
+;
+MSG_CLOSE_WINDOW_QUIT_REQ
+The application will quit if you close this window.
+;
+MSG_LOAD_PROJECT_ERR
+Could not load project \"%s\".
+;
+MSG_COLOR_CHANGE_UNDO
+Color changed 
+;
+MSG_SET_PATTERN_UNDO
+pattern set
+;
+MSG_REMOVE_PATTERN_UNDO
+pattern removed
+;
+MSG_CHANGE_SECURITY_ATTRIBUTES_REQ
+Changing security attributes is protected with a password.
+;
+MSG_SET_SECURITY_ATTRIBUTES_UNDO
+Set security attributes
+;
+MSG_ALIGNMENT_UNDO
+Alignment 
+;
+MSG_ALIGN_CENTER_UNDO
+center
+;
+MSG_ALIGN_LEFT_UNDO
+left
+;
+MSG_ALIGN_RIGHT_UNDO
+right
+;
+MSG_VALIGN_MIDDLE_UNDO
+middle
+;
+MSG_VALIGN_TOP_UNDO
+top
+;
+MSG_VALIGN_BOTTOM_UNDO
+bottom
+;
+MSG_FONT_UNDO
+Font 
+;
+MSG_FONT_DOUBLE_UNDERLINED_UNDO
+double underlined
+;
+MSG_FONT_STRIKE_THROUGH_UNDO
+strike through
+;
+MSG_FONT_ROTATION_UNDO
+%ld° rotation
+;
+MSG_FONT_SHEAR_UNDO
+%ld° shear
+;
+MSG_SAVE_CHANGED_PROJECT_REQ
+Document "%s" has been changed.\nDo you want to save it?
+;
+MSG_YES_NO_REQ
+Yes|No
+;
+MSG_YES_NO_CANCEL_REQ
+Yes|No|Cancel
+;
+MSG_UNNAMED
+Unnamed
+;
+MSG_PAGE
+Page %ld
+;
+MSG_COPY_CELL_UNDO
+Copy cell
+;
+MSG_MOVE_CELL_UNDO
+Move cell
+;
+MSG_SWAP_CELLS_UNDO
+Swap cells
+;
+MSG_CELL_SIZE_UNDO
+Change cell size
+;
+MSG_NEW_PAGE
+New page
+;
+MSG_MOVE_CELL_HELP
+Move current cell
+;
+MSG_SWAP_CELLS_HELP
+Swap the current cell with another one
+;
+MSG_COPY_CELL_HELP
+Copy the current cell over other cells
+;
+MSG_SINGLE_COPY_CELL_HELP
+Copy the current cell to another one
+;
+MSG_OPEN_LIBRARY_PACKAGE_ERR
+Could not open "%s" (%s).
+;
+MSG_OPEN_LIBRARY_ERR
+Could not open "%s".
+;
+MSG_OPEN_FROM_PACKAGE_ERR
+Could not open library from package "%s".
+;
+MSG_AUTO_VALUE_GAD
+(auto)
+;
+MSG_VERSION_INFO
+Version %s
+;
+MSG_ALL_RIGHTS_RESERVED_INFO
+All Rights Reserved.
+;
+MSG_SCREEN_BORDER
+Screen
+;
+MSG_MONITOR_BORDER
+Monitor
+;
+MSG_BACKGROUND_BORDER
+Background
+;
+MSG_SHEET_BORDER
+Sheet
+;
+MSG_BARS_BORDER
+Bars
+;
+MSG_PROPERTIES_BORDER
+Properties
+;
+MSG_MARKED_BORDER
+Decorations
+;
+MSG_PATHS_BORDER
+Paths
+;
+MSG_SAVE_BORDER
+Save
+;
+MSG_ERROR_MESSAGES_BORDER
+Error Messages
+;
+MSG_DRAGGABLE_CORNER_BORDER
+Draggable Edge
+;
+MSG_MISC_BORDER
+Misc.
+;
+MSG_COLOR_BORDER
+Color
+;
+MSG_PALETTE_BORDER
+Palette
+;
+MSG_COMMANDS_BORDER
+Commands
+;
+MSG_OUTPUT_BORDER
+Output
+;
+MSG_NAME_GAD
+Name:
+;
+MSG_ICON_LABEL
+Icon:
+;
+MSG_POSITION_BORDER
+Position
+;
+MSG_PRESETS_BORDER
+Presets
+;
+MSG_INSERT_EXISTING_NOTE_GAD
+Insert an already existing note:
+;
+MSG_PAGE_FORMAT_BORDER
+Page Format
+;
+MSG_PAGE_MARGINS_BORDER
+Page Margins
+;
+MSG_COMMENTS_LABEL
+Comments:
+;
+MSG_COMMENTS_ULABEL
+Co_mments:
+;
+MSG_SECURITY_BORDER
+Security
+;
+MSG_EVENT_DEFINITION_BORDER
+Event Definition
+;
+MSG_RANGE_BORDER
+Range
+;
+MSG_OPTIONS_BORDER
+Options
+;
+MSG_CURRENT_SHEET_PROGRESS
+Current sheet
+;
+MSG_CURRENT_PAGE_PROGRESS
+Current page
+;
+MSG_FORE_BACKGROUND_COLOR_GAD
+Fore-/Background:
+;
+MSG_PRESS_A_KEY_REQ
+Please press a key.
+;
+MSG_SEARCH_FOR_BORDER
+Search for
+;
+MSG_REPLACE_WITH_BORDER
+Replace with
+;
+MSG_MASK_BORDER
+Mask
+;
+MSG_FIELDS_BORDER
+Fields
+;
+MSG_NO_PROJECT_ERR
+No project opened!
+;
+MSG_NO_DATABASE_ERR
+There is no database defined yet.
+;
+MSG_IGNITION_REQUEST_TITLE
+ignition-Request
+;
+MSG_ADD_GAD
+Add
+;
+MSG_REMOVE_GAD
+Remove
+;
+MSG_INSERT_OBJECT_GAD
+Inser object
+;
+MSG_KEEP_WINDOWS_OPEN_GAD
+Keep windows open
+;
+MSG_NOTE_GAD
+Note
+;
+MSG_DELETE_GAD
+Delete
+;
+MSG_DESCRIPTION_GAD
+Description:
+;
+MSG_CHANGE_DIAGRAM_TITLE
+Change Chart
+;
+MSG_CLIPBOARD_ENV_TITLE
+Clipboard
+;
+MSG_GLOBAL_ENV_TITLE
+global
+;
+MSG_PREFERENCES_ENV_TITLE
+Preferences - 
+;
+MSG_PREFS_PART_EXISTS_REQ
+This preferences modul already exists in the target drawer.\nShould the contens be appended or replaced?
+;
+MSG_APPEND_REPLACE_BACK_GAD
+Append|Replace|Back
+;
+MSG_PREFS_PART_LOST_REQ
+This preferences module already exists in the target drawer.\nThese preferences will get lost!
+;
+MSG_CONTINUE_BACK_GAD
+Continue|Back
+;
+MSG_GLOBAL_PREFS
+Global preferences
+;
+MSG_CLIPBOARD_PREFS
+Trash (Clipboard)
+;
+MSG_COMMANDS_PREFS
+Commands
+;
+MSG_SCREEN_PREFS
+Screen
+;
+MSG_DISPLAY_PREFS
+Display
+;
+MSG_FILE_PREFS
+File
+;
+MSG_FORMATS_PREFS
+Format Templates
+;
+MSG_CONTEXT_MENU_PREFS
+Context Menus
+;
+MSG_MENU_PREFS
+Menu
+;
+MSG_NAMES_PREFS
+Names
+;
+MSG_PALETTE_PREFS
+Palette
+;
+MSG_ICONBAR_PREFS
+Icon Bar
+;
+MSG_SYSTEM_PREFS
+System
+;
+MSG_SHEET_PREFS
+Sheet
+;
+MSG_KEYS_PREFS
+Keyboard
+;
+MSG_TRUE_NAME
+true
+;
+MSG_FALSE_NAME
+false
+;
+MSG_ADD_PREFS_TITLE
+Add preferences to \"%s\"
+;
+MSG_PREFS_TITLE
+Preferences
+;
+MSG_CHANGE_FRAME_UNDO
+Change frame
+;
+MSG_CHANGE_CELL_SIZE_UNDO
+Adapt cell size
+;
+MSG_NO_SEARCH_CRITERIA_ERR
+No search criteria chosen.
+;
+MSG_NO_REPLACE_PROPERTIES_ERR
+No properties to be replaced have been selected.
+;
+MSG_REPLACE_UNDO
+Replace
+;
+MSG_REPLACE_CELL_PROPERTIES_REQ
+Replace cell properties?
+;
+MSG_NO_CELL_FOUND_ERR
+Could not find any cell matching the search criteria.
+;
+MSG_WITH_SEARCH_PATTERN_GAD
+with search pattern
+;
+MSG_IGNORE_CASE_GAD
+ignore case
+;
+MSG_ONLY_WHOLE_WORDS_GAD
+only whole words
+;
+MSG_ACKNOWLEDGE_GAD
+acknowledge
+;
+MSG_SEARCH_RELATION_GAD
+Search relation:
+;
+MSG_START_AT_CELL_UGAD
+_Start at cell
+;
+MSG_WITHIN_BLOCK_UGAD
+_Within block
+;
+MSG_INVALID_PAPER_SIZE_ERR
+Invalid paper size.
+;
+MSG_PASSWORDS_DONT_MATCH_ERR
+Die passwords entered do not match!\nPlease insert them again.
+;
+MSG_PAGE_COLOR
+Page color 
+;
+MSG_ATTACH_NOTE_UNDO
+Attach note 
+;
+MSG_DELETE_NOTE_UNDO
+Delete note
+;
+MSG_SELECT_FILE_NAME_TITLE
+Select file name
+;
+MSG_MOVE_OBJECT_UNDO
+Move object
+;
+MSG_SET_FORMAT_UNDO
+Set format
+;
+MSG_DATABASE_NOT_FOUND_ERR
+Could not find database "%s".
+;
+MSG_CREATE_INDEX_ERR
+Could not create index.
+;
+MSG_CREATE_FILTER_ERR
+Could not create search filter.
+;
+MSG_FIELD_NOT_FOUND_IN_DBASE_ERR
+Could not find field "%s"\nin database "%s".\nPossibly a missing reference.
+;
+MSG_NEW_GAD
+New
+;
+MSG_REFERENCE_DBASE_GAD
+Reference database
+;
+MSG_DATABASE_GAD
+Database
+;
+MSG_REFERENCE_LABEL
+Reference:
+;
+MSG_FROM_BLOCK_GAD
+from block
+;
+MSG_FIELDS_GAD
+Fields
+;
+MSG_TYPE_LABEL
+Type:
+;
+MSG_DATABASE_LABEL
+Database:
+;
+MSG_TO_EXISTING_PAGE_LABEL
+to existing page:
+;
+MSG_AUTO_GENERATE_GAD
+automatic generation
+;
+MSG_FIELD_LABEL
+Field:
+;
+MSG_CELL_LABEL
+Cell:
+;
+MSG_GENERATE_FIELDS_GAD
+generate fields
+;
+MSG_INDEX_LABEL
+Index:
+;
+MSG_NAME_LABEL
+Name:
+;
+MSG_FILTER_LABEL
+Filter:
+;
+MSG_NEW_DBASE_NAME
+\## new dbase
+;
+MSG_NEW_FIELD_NAME
+\## new field
+;
+MSG_MASK_NAME
+-Mask
+;
+MSG_NEW_INDEX_NAME
+\## new index
+;
+MSG_NEW_FILTER_NAME
+\## new filter
+;
+MSG_BAD_FILTER_ERR
+Incorrect filter.
+;
+MSG_OPEN_SCREEN_ERR
+Could not open desired screen. Will try to use the\nstandard public screen (i.e. the Workbench).
+;
+MSG_INTERACTIVE_STATUS
+interactive
+;
+MSG_GLOBAL_PREFS_HAVE_ALL_MODULES_ERR
+The global preferences always contain all modules.
+;
+MSG_REMOVE_GLOBAL_PREFS_REQ
+Do you really want to reset this global module?\n\n(global preferences modules cannot\nbe removed competely)
+;
+MSG_MOVE_PREFS_FOLDER_ERR
+Folders cannot be moved.
+;
+MSG_MOVE_FROM_GLOBAL_PREFS_ERR
+You cannot move modules from the\nglobal preferences, only copy them.
+;
+MSG_MOVE_PREFS_IN_FOLDER_ERR
+You cannot change the order of the modules\nwithin a folder. They are sorted alphabetically.
+;
+MSG_PREFS_ALREADY_EXIST_IN_FOLDER_ERR
+The preferences «%s» already exists\nin the folder %s.
+;
+MSG_INVALID_TIME_ERR
+Invalid time
+;
+MSG_UNNAMED_IN_PARENTHESIS
+(unnamed)
+;
+MSG_INTERNAL_COMMAND_NOT_FOUND_ERR
+Internal command not found.
+;
+MSG_BAD_COMMAND_ARGUMENTS_ERR
+Command arguments not correct.
+;
+MSG_LOAD_AREXX_SCRIPT_TITLE
+Load ARexx-Script
+;
+MSG_LOAD_COMMAND_TITLE
+Load Command
+;
+MSG_LOAD_ICON_TITLE
+Load Icon
+;
+MSG_NEW_NAME
+\## new name
+;
+MSG_COLOR_LABEL
+Color:
+;
+MSG_FILL_COLOR_LABEL
+Fill color:
+;
+MSG_BORDER_COLOR_LABEL
+Border color:
+;
+MSG_WEIGHT_LABEL
+Weight:
+;
+MSG_CONTINUAL_COMMAND_GAD
+execute command continuously
+;
+MSG_DISPLAY_FRAME_GAD
+display border
+;
+MSG_HELP_TEXT_LABEL
+Help text:
+;
+MSG_COMMAND_LABEL
+Command:
+;
+MSG_TEXT_LABEL
+Text:
+;
+MSG_REFERENCE_OBJECT_GAD
+Reference-Object
+;
+MSG_FONT_LABEL
+Font:
+;
+MSG_OK_UGAD
+_Ok
+;
+MSG_FRAME_BLOCK_GAD
+Frame block
+;
+MSG_ADD_ONLY_GAD
+add only
+;
+MSG_ADOPT_CHANGES_GAD
+adopt changes
+;
+MSG_ADOPT_FRAME_FROM_CELL_UGAD
+Adopt _frame from current cell
+;
+MSG_FRAME_WHOLE_BLOCK_UGAD
+frame whole _block
+;
+MSG_ASSIGN_UGAD
+_Assign
+;
+MSG_CANCEL_UGAD
+_Cancel
+;
+MSG_COLORS_BORDER
+Colors
+;
+MSG_PATTERN_BORDER
+Pattern
+;
+MSG_ALIGNMENT_BORDER
+Alignment
+;
+MSG_FONT_BORDER
+Font
+;
+MSG_STYLE_BORDER
+Style
+;
+MSG_DOUBLE_UNDERLINED_GAD
+double underlined
+;
+MSG_SPECIAL_BORDER
+Special
+;
+MSG_TYPOGRAPHY_BORDER
+Typography
+;
+MSG_CELL_SECURITY_BORDER
+Cell Security
+;
+MSG_ADOPT_FONT_STYLE_FROM_CELL_GAD
+Adopt font properties from current cell
+;
+MSG_DEFINED_FORMATS_GAD
+Defined formats
+;
+MSG_DECIMAL_PLACES_LABEL
+Decimal places:
+;
+MSG_ADOPT_FORMAT_FROM_CELL_GAD
+Adopt format from current cell
+;
+MSG_FOREGROUND_LABEL
+Foreground:
+;
+MSG_BACKGROUND_LABEL
+Background:
+;
+MSG_PATTERN_LABEL
+Pattern:
+;
+MSG_HORIZONTAL_LABEL
+Horizontal:
+;
+MSG_VERTICAL_LABEL
+Vertical:
+;
+MSG_ADOPT_ATTRIBUTES_FROM_CELLS_GAD
+Adopt properties from selected cells
+;
+MSG_FONT_SIZE_LABEL
+Size:
+;
+MSG_BOLD_GAD
+bold
+;
+MSG_ITALICS_GAD
+italics
+;
+MSG_UNDERLINED_GAD
+underlined
+;
+MSG_STRIKE_THROUGH_GAD
+strike through
+;
+MSG_ROTATION_LABEL
+Rotation:
+;
+MSG_SHEAR_LABEL
+Shear:
+;
+MSG_WIDTH_LABEL
+Width:
+;
+MSG_FONT_TRACKING_LABEL
+Tracking:
+;
+MSG_KERNING_LABEL
+Kerning:
+;
+MSG_PROPERTIES_LABEL
+Properties:
+;
+MSG_ASSIGN_GAD
+Assign
+;
+MSG_NORMAL_GAD
+normal
+;
+MSG_DIAGRAM_HAS_NO_DISPLAY_OPTIONS_ERR
+This chart type does not have any display options.
+;
+MSG_NO_DIAGRAM_TYPE_SELECTED_ERR
+No chart type selected.
+;
+MSG_ROW_GAD
+Row
+;
+MSG_COLOR_GAD
+Color
+;
+MSG_MARK_GAD
+Mark
+;
+MSG_LABELS_BORDER
+Labels
+;
+MSG_BACKGROUND_COLOR_LABEL
+Background color:
+;
+MSG_RANGE_LABEL
+Range:
+;
+MSG_NEW_DIAGRAM_NAME
+Chart
+;
+MSG_VALUES_LABEL
+Values:
+;
+MSG_HORIZONTAL_GAD
+horizontal
+;
+MSG_PAGE_LABEL
+Page:
+;
+MSG_DIAGRAM_TYPES_GAD
+Chart types
+;
+MSG_MARK_LABEL
+Mark:
+;
+MSG_DISPLAY_LABELS_GAD
+display labels
+;
+MSG_GRID_LABEL
+Grid:
+;
+MSG_TRANSPARENT_GAD
+transparent
+;
+MSG_PREVIEW_GAD
+Preview...
+;
+MSG_MATHEMATICS_GAD
+Mathematics
+;
+MSG_FUNCTION_CATEGORY_GAD
+Range
+;
+MSG_FUNCTIONS_GAD
+Functions
+;
+MSG_DESCRIPTION_LABEL
+Description:
+;
+MSG_PAGE_FORMAT_GAD
+Page format
+;
+MSG_MARKED_GAD
+marked
+;
+MSG_PAGE_SIZE_LABEL
+Size:
+;
+MSG_PAGE_WIDTH_LABEL
+Width:
+;
+MSG_PAGE_HEIGHT_LABEL
+Height:
+;
+MSG_LIMITS_LABEL
+Limits:
+;
+MSG_LEFT_MARGIN_LABEL
+Left margin:
+;
+MSG_BOTTOM_MARGIN_LABEL
+Bottom margin:
+;
+MSG_RIGHT_MARGIN_LABEL
+Right margin:
+;
+MSG_TOP_MARGIN_LABEL
+Top margin:
+;
+MSG_KEYWORDS_ULABEL
+_Keywords:
+;
+MSG_AUTHOR_ULABEL
+_Author:
+;
+MSG_VERSION_ULABEL
+_Version:
+;
+MSG_PROTECT_DOCUMENT_LABEL
+Protect the whole document:
+;
+MSG_SHOW_NOTES_GAD
+display notes
+;
+MSG_INTERACTIVE_MODE_GAD
+interactive mode
+;
+MSG_IMMUTABLE_GAD
+immutable
+;
+MSG_SHOW_HIDDEN_CELLS_GAD
+show hidden cells
+;
+MSG_SAVE_WINDOW_SIZE_GAD
+save window position
+;
+MSG_RETYPE_PASSWORD_LABEL
+Retype password:
+;
+MSG_PROTECT_SECURITY_WITH_PASSWORD_LABEL
+Protect cell security with password:
+;
+MSG_INPUT_ENDED_EVENT
+Input ended
+;
+MSG_INTERVAL_LABEL
+Interval:
+;
+MSG_PROTECTION_PROPERTIES_LABEL
+Protection properties:
+;
+MSG_SCREEN_WIDTH_ULABEL
+Wi_dth:
+;
+MSG_WIDTH_ULABEL
+_Width:
+;
+MSG_HEIGHT_ULABEL
+_Height:
+;
+MSG_ADOPT_SIZE_FROM_CELL_UGAD
+A_dopt size from current cell
+;
+MSG_DELETE_UGAD
+_Delete
+;
+MSG_ZOOM_LABEL
+Zoom:
+;
+MSG_ZOOM_ULABEL
+_Zoom:
+;
+MSG_BEGIN_FROM_LEFT_LABEL
+Begin from left:
+;
+MSG_FROM_LEFT_LABEL
+from Left:
+;
+MSG_FROM_TOP_LABEL
+from top:
+;
+MSG_END_FROM_LEFT_LABEL
+End from left:
+;
+MSG_HEIGHT_LABEL
+Height:
+;
+MSG_AVAILABLE_LOAD_MODULES_GAD
+Available load modules
+;
+MSG_AVAILABLE_SAVE_MODULES_GAD
+Available save modules
+;
+MSG_NOTES_GAD
+Notes
+;
+MSG_PREFERENCES_GAD
+Preferences...
+;
+MSG_OPEN_IN_EDITOR_GAD
+Open in editor
+;
+MSG_FONT_PLAIN_CHAR
+P
+;
+MSG_FONT_BOLD_CHAR
+B
+;
+MSG_FONT_ITALICS_CHAR
+I
+;
+MSG_FONT_UNDERLINED_CHAR
+U
+;
+MSG_VALIGN_TOP_CHAR
+t
+;
+MSG_VALIGN_MIDDLE_CHAR
+m
+;
+MSG_VALIGN_BOTTOM_CHAR
+b
+;
+MSG_LOAD_MOUSE_POINTER_ERR
+Could not load mouse pointer preferences:\n  \"pointer.prefs\"\n%s
+;
+MSG_REFERENCES_FATAL_ERR
+Fatal error during creation of the computation references.\nNo correct results can be computed anymore.\nPlease quit, and free up some memory.
+;
+MSG_EMPTY_LIST_GAD
+(empty)
+;
+MSG_DARK_COLOR_TINT_NAME
+Dark 
+;
+MSG_LOAD_OBJECT_ERR
+Error on loading object.\nName: "%s" (%s)
+;
+MSG_REFERENCE_TO_GROUP_ERR
+References to an object group are not possible.
+;
+MSG_INIT_CLASS_ERR
+Initialization of class "%s" failed.
+;
+MSG_CLASS_NOT_FOUND_ERR
+Could not fount class "%s".
+;
+MSG_NEW_DOCUMENT_NAME
+Unnamed
+;
+MSG_MINUTE_UNIT
+min
+;
+MSG_SECOND_UNIT
+sec
+;
+MSG_UNIQUE_NAME_ERR
+Could not create unique name.
+;
+MSG_INVALID_RESIZING_ERR
+Invalid size change.
+;
+MSG_RESIZE_OBJECT_UNDO
+Change object size
+;
+MSG_EMBEDDED_CLASS_NOT_FOUND_ERR
+Could not found class for reference objects.
+;
+MSG_REFERENCE_SUFFIX_NAME
+-Reference
+;
+MSG_REFERENCE_OBJECT_NAME
+Reference-Object
+;
+MSG_CREATE_REFERENCE_OBJECT_UNDO
+Create reference object
+;
+MSG_UNKNOWN_TAG_TYPE_ERR
+Unknown tag type:\n  0x%lx (%ld)
+;
+MSG_OBJECT_ATTRIBUTES_UNDO
+Change object attributes
+;
+MSG_OBJECT_DEPTH_UNDO
+Change depth object order
+;
+MSG_CREATE_OBJECT_UNDO
+Create object
+;
+MSG_SWITCH_TO_NORMAL_MODE_STATUS
+Switch to normal mode
+;
+MSG_INIT_OBJECT_ERR
+Could not initialize object correctly!
+;
+MSG_MOVE_OBJECTS_UNDO
+Move objects
+;
+MSG_PERFORM_ACTION_UNDO_FAILED_ERR
+Could not perform action.\n  (undo failed)
+;
+MSG_OBJECT_SIZE_UNDO
+Resize object
+;
+MSG_DEFAULT_PRINTER_GAD
+Default printer
+;
+MSG_EMPTY_FIELD_GAD
+Empty field
+;
+MSG_PREFERENCES_VERSION_ERR
+The preferences to be loaded have an unknown (newer) version.
+;
+MSG_WRONG_SCOPUS_IFFERR
+Wrong scope for PROP chunk
+;
+MSG_NO_MEMORY_IFFERR
+Not enough memory
+;
+MSG_READ_IFFERR
+Error during read
+;
+MSG_WRITE_IFFERR
+Error during write
+;
+MSG_SEEK_IFFERR
+Error on seek in file
+;
+MSG_CORRUPTED_IFFERR
+File is corrupted
+;
+MSG_BAD_SYNTAX_IFFERR
+Syntax error in IFF structure
+;
+MSG_NO_IFF_IFFERR
+No IFF file
+;
+MSG_UNKNOWN_IFFERR
+Unknown error
+;
+MSG_LOAD_CLASS_ERR
+Error on loading object from class "%s".
+;
+MSG_REFERENCE_CELL_NOT_FOUND_ERR
+Could not find reference cell to %ld:%ld.
+;
+MSG_FONT_NOT_FOUND_ERR
+Could not find font "%s".
+;
+MSG_UNKNOWN_CELL_TAGS_ERR
+The file contains unknown cell informations.\nThat data will get lost during read.
+;
+MSG_UNKNOWN_CHUNKS_ERR
+File contains unknown chunks (first: %ld).\nNot all data could be read.
+;
+MSG_LOAD_DOCUMENT_ERR
+Loading document failed:\n  %s
+;
+MSG_SAVE_DOCUMENT_ERR
+Could not save document:\n  %s.
+;
+MSG_ADD_ON_NOT_FOUND_ERR
+Could not found add-on "%s" (%s).
+;
+MSG_FILE_EXISTS_ERR
+The file "%s" already exists in the target folder.\nShould it be overwritten?
+;
+MSG_DEFAULT_FILE_FORMAT_NAME
+ignition-standard
+;
+MSG_INIT_SCRIPT_NOTIFICATION_ERR
+Could not initialize node monitoring\nfor script "%s".
+;
+MSG_LOAD_BLOCK_ERR
+Loading of block failed:\n  %s
+;
+MSG_SAVE_BLOCK_ERR
+Saving the block failed:\n  %s
+;
+MSG_LOAD_BLOCK_TITLE
+Load Block
+;
+MSG_SAVE_BLOCK_TITLE
+Save Block
+;
+MSG_INVALID_ALIGNMENT_ERR
+The specified alignment was not recognized.\nThe text will be aligned left.
+;
+MSG_DECIMAL_PLACES_UNDO
+Change decimal places
+;
+MSG_UNSAVED_DOCUMENTS_REQ
+There are some unsaved documents.
+;
+MSG_QUIT_SAVE_CANCEL_REQ
+Quit anyway|Save them separately|Back
+;
+MSG_CELL_WIDTH_UNDO
+set cell width
+;
+MSG_ROW_UNDO
+row 
+;
+MSG_COLUMN_UNDO
+column 
+;
+MSG_CELLS_UNDO
+cells 
+;
+MSG_INSERT_CELLS_UNDO
+inserted
+;
+MSG_REMOVE_CELLS_UNDO
+removed
+;
+MSG_CELL_TEXT_UNDO
+set cell text
+;
+MSG_NEG_VALUES_UNDO
+Negative values in parenthesis
+;
+MSG_NUM_SEPARATOR_UNDO
+Thousands separator
+;
+MSG_SET_FILTER_ERR
+Could not apply filter.
+;
+MSG_NO_NAME_ERR
+No name given.
+;
+MSG_NAME_TYPE_MISSING_ERR
+Unknown name type, type is not set.
+;
+MSG_BAD_ARGUMENTS_ERR
+Bad arguments.
+;
+MSG_NO_SEARCH_PATTERN_YET_ERR
+No search pattern defined yet.
+;
+MSG_LOAD_PICTURE_TITLE
+Load Picture
+;
+MSG_DUPLICATE_OBJECTS_UNDO
+Duplicate object(s)
+;
+MSG_NAMED_OBJECT_NOT_FOUND_ERR
+No objects with name "%s" were found.
+;
+MSG_REFERENCE_CLASS_NOT_FOUND_ERR
+Could not find class for reference objects.
+;
+MSG_LOAD_DOCUMENT_TITLE
+Load Document
+;
+MSG_SAVE_DOCUMENT_TITLE
+Save Document
+;
+MSG_SAVE_PROJECT_ERR
+Could not save document.
+;
+MSG_LOAD_PREFERENCES_TITLE
+Load Preferences
+;
+MSG_SAVE_PREFERENCES_TITLE
+Save Preferences
+;
+MSG_SORT_UNDO
+Sort
+;
+MSG_EMPTY_COMPARE_ROW_COL_ERR
+Compare %s is empty!
+;
+MSG_COMPARE_ROW_ERR
+row
+;
+MSG_COMPARE_COLUMN_ERR
+column
+;
+MSG_INTERNAL_SCRIPT_NOT_FOUND_ERR
+Could not find internal script "%s".
+;
+MSG_CREATE_SCRIPT_ENVIRONMENT_ERR
+Could not create script environment.
+;
+MSG_REXX_PORT_NOT_FOUND_ERR
+Could not find REXX port.
+;
+MSG_DEFAULT_PRINTER_UNIT_NAME
+Unit %ld
+;
+MSG_PAGE_X_OF_Y_PROGRESS
+Page %ld of %ld
+;
+MSG_NO_VALID_RANGE_ERR
+No valid range specified!
+;
+MSG_PRINTING_FAILED_ERR
+Printing has failed.\nError: %ld
+;
+MSG_OPEN_PRINTER_UNIT_ERR
+Could not open "printer.device" unit %ld.
+;
+MSG_PRINT_PROGRESS_TITLE
+Print Status: "%s" (%ld of %ld)
+;
+MSG_CREATE_TASK_ERR
+Could not create task
+;
+MSG_COPY_PROJECT_ERR
+Copying project failed
+;
+MSG_ASYNC_PRINT_FAILED_ERR
+Could not print asynchronously:\n%s
+;
+MSG_INVERT_GAD
+Invert
+;
+MSG_ALL_GAD
+All
+;
+MSG_PREFS_FOR_ALL_SHEETS_GAD
+Settings valid for all sheets
+;
+MSG_PRINT_TO_LABEL
+Print to:
+;
+MSG_NUMBER_OF_COPIES_LABEL
+Number of copies:
+;
+MSG_PAGE_NUMBERS_GAD
+Page numbers
+;
+MSG_FILE_NAME_GAD
+File name
+;
+MSG_PRINT_ASYNC_GAD
+Print asynchronously
+;
+MSG_PRINT_UGAD
+_Print
+;
+MSG_OPTIONS_UGAD
+_Options...
+;
+MSG_INVALID_CELL_RANGE_ERR
+The range entered could not be parsed.\nValid ranges are, for example, "b20:c42".
+;
+MSG_ADD_UGAD
+_Add
+;
+MSG_REMOVE_UGAD
+_Remove
+;
+MSG_ADD_PREFERENCES_GAD
+Add preferences
+;
+MSG_FONT_GAD
+Font
+;
+MSG_ICON_BAR_GAD
+Icon bar
+;
+MSG_GRID_CELL_WIDTH_GAD
+Grid after cell width
+;
+MSG_SHOW_HEADINGS_GAD
+Show headings
+;
+MSG_HELP_BAR_GAD
+Help bar
+;
+MSG_TOOL_BAR_GAD
+Tool bar
+;
+MSG_BAR_BOTTOM_GAD
+bottom
+;
+MSG_FORMULA_BAR_LABEL
+Formula bar:
+;
+MSG_ICON_BAR_LABEL
+Icon bar:
+;
+MSG_TEST_GAD
+Test
+;
+MSG_OPEN_SCREEN_LABEL
+open extra screen:
+;
+MSG_SCREEN_MODE_GAD
+Mode...
+;
+MSG_FONT_ELLIPSIS_GAD
+Font...
+;
+MSG_ON_PUBLIC_LABEL
+on public:
+;
+MSG_SCREEN_MODE_UGAD
+_Mode...
+;
+MSG_FONT_ELLIPSIS_UGAD
+_Font...
+;
+MSG_PATTERN_UGAD
+Pa_ttern
+;
+MSG_PATTERN_GAD
+Pattern
+;
+MSG_MENU_TITLE_GAD
+Title
+;
+MSG_MENU_ITEMS_GAD
+Items
+;
+MSG_MENU_SUBITEMS_GAD
+Sub Items
+;
+MSG_SHORT_CUT_LABEL
+Short cut:
+;
+MSG_CREATE_ICONS_GAD
+Create icons
+;
+MSG_ICONS_LABEL
+Icons:
+;
+MSG_GRAPHICS_LABEL
+Graphics:
+;
+MSG_NO_FILE_NAME_SUFFIX_GAD
+No file name suffix
+;
+MSG_SECURITY_BACKUPS_GAD
+Security backups
+;
+MSG_SESSIONS_GAD
+Sessions
+;
+MSG_AUTO_SAVE_LABEL
+Automatic save:
+;
+MSG_AS_REMEMBER_GAD
+remember
+;
+MSG_SHOW_FORMULAS_GAD
+Display formula instead of values
+;
+MSG_AUTO_COMPLETE_CENTURY_GAD
+Auto complete century
+;
+MSG_OPEN_ERROR_REQUESTER_GAD
+open error requester
+;
+MSG_ZERO_FOR_UNKNOWN_NAMES_GAD
+Undefined names are zero
+;
+MSG_QUALIFIER_LABEL
+Qualifier:
+;
+MSG_FUNCTION_LABEL
+Function:
+;
+MSG_SHOW_DRAGGABLE_CORNER_GAD
+Display draggable edge
+;
+MSG_ONLY_CELL_TEXT_GAD
+Cell text only
+;
+MSG_SHOW_ZEROS_GAD
+Show zero values
+;
+MSG_AUTO_CHANGE_CELL_SIZE_GAD
+Automatic cell size adaption
+;
+MSG_BLOCK_DISPLAY_LABEL
+Block display:
+;
+MSG_RECORD_GAD
+Record
+;
+MSG_SHORT_CUT_GAD
+Short cut
+;
+MSG_COMMANDS_WITH_ICONS_GAD
+Commands with icon
+;
+MSG_COPY_GAD
+Copy
+;
+MSG_NEW_UGAD
+_New
+;
+MSG_COPY_UGAD
+Co_py
+;
+MSG_INTERNAL_COMMAND_GAD
+internal
+;
+MSG_CHOOSE_ICON_UGAD
+Choo_se icon...
+;
+MSG_OUTPUT_LABEL
+Output:
+;
+MSG_OUTPUT_ULABEL
+O_utput:
+;
+MSG_HELP_TEXT_ULABEL
+_Help text:
+;
+MSG_HYPER_TEXT_LABEL
+Hyper text:
+;
+MSG_HYPER_TEXT_ULABEL
+H_yper text:
+;
+MSG_NAME_ULABEL
+Na_me:
+;
+MSG_CONTENTS_LABEL
+Contents:
+;
+MSG_CONTENTS_ULABEL
+Cont_ents:
+;
+MSG_TYPE_ULABEL
+_Type:
+;
+MSG_REFERENCE_ULABEL
+_Reference:
+;
+MSG_PRIORITY_SLIDER_GAD
+Priority: %ld
+;
+MSG_FORMAT_LABEL
+Format:
+;
+MSG_ALIGNMENT_LABEL
+Alignment:
+;
+MSG_NEG_VALUES_LABEL
+Negative values:
+;
+MSG_NEG_VALUES_GAD
+negative values in parenthesis
+;
+MSG_THOUSANDS_SEPARATOR_GAD
+separate thousands
+;
+MSG_HUE_LABEL
+Hue:
+;
+MSG_BRIGHTNESS_LABEL
+Brightness:
+;
+MSG_ICON_ON_WORKBENCH_GAD
+Icon on Workbench
+;
+MSG_USE_SESSIONS_GAD
+Use sessions
+;
+MSG_CHECK_SECURITY_GAD
+Check security
+;
+MSG_CONTEXT_MENUS_GAD
+Context menus
+;
+MSG_WINDOW_REFRESH_GAD
+Window refresh:
+;
+MSG_CLIMB_LIST_GAD
+Climb list
+;
+MSG_CLIPBOARD_UNIT_LABEL
+Clipboard unit:
+;
+MSG_CONTEXT_LABEL
+Context:
+;
+MSG_TITLE_LABEL
+Title:
+;
+MSG_INFO_TITLE
+Program Informations
+;
+MSG_CLIPBOARD_TITLE
+Clipboard
+;
+MSG_FIND_TITLE
+Find
+;
+MSG_SEARCH_REPLACE_TITLE
+Search & Replace
+;
+MSG_PRINT_TITLE
+Print
+;
+MSG_PRINT_STATUS_TITLE
+Print Status
+;
+MSG_FILE_TYPE_TITLE
+Choose File Type
+;
+MSG_EXECUTE_COMMAND_TITLE
+Execute Command
+;
+MSG_PREFS_DISPLAY_TITLE
+Display
+;
+MSG_PREFS_SCREEN_TITLE
+Screen
+;
+MSG_PREFS_PALETTE_TITLE
+Palette
+;
+MSG_PREFS_ICONBAR_TITLE
+Icon Bar
+;
+MSG_PREFS_SHEET_TITLE
+Sheet
+;
+MSG_PREFS_FILE_TITLE
+File
+;
+MSG_PREFS_COMMANDS_TITLE
+Commands
+;
+MSG_PREFS_FORMATS_TITLE
+Format Templates
+;
+MSG_PREFS_DEFINE_COMMAND_TITLE
+Define Command
+;
+MSG_PREFS_RECORD_KEY_TITLE
+Record Key
+;
+MSG_PREFS_MENU_TITLE
+Menu
+;
+MSG_PREFS_KEYBOARD_TITLE
+Keyboard
+;
+MSG_PREFS_SYSTEM_TITLE
+System
+;
+MSG_PREFS_NAMES_TITLE
+Names
+;
+MSG_PREFS_CONTEXT_MENUS_TITLE
+Context Menus
+;
+MSG_PAGE_TITLE
+Sheet Properties
+;
+MSG_DOCUMENT_TITLE
+Document Properties
+;
+MSG_PAGE_SETUP_TITLE
+Page Setup
+;
+MSG_DOCUMENT_INFO_TITLE
+Document Informations
+;
+MSG_ZOOM_TITLE
+Zoom
+;
+MSG_SCRIPTS_TITLE
+Scripts
+;
+MSG_CELL_TITLE_TITLE
+Set Title
+;
+MSG_INSERT_OBJECT_TITLE
+Insert Object
+;
+MSG_OBJECT_TITLE
+Object Properties
+;
+MSG_DIAGRAM_TITLE
+Create Chart
+;
+MSG_DIAGRAM_PREVIEW_TITLE
+Chart - Preview
+;
+MSG_OBJECT_LIST_TITLE
+Object List
+;
+MSG_CELL_TITLE
+Cell Properties
+;
+MSG_FRAME_TITLE
+Frame
+;
+MSG_CELL_SIZE_TITLE
+Cell Size
+;
+MSG_NOTES_TITLE
+Attach Note
+;
+MSG_DBASE_INDEX_TITLE
+Create Index
+;
+MSG_DBASE_TITLE
+Create Database
+;
+MSG_DBASE_MASK_TITLE
+Create Mask
+;
+MSG_DBASE_FILTER_TITLE
+Create Filter
+;
+MSG_FORMULA_TITLE
+Choose Function
+;
+MSG_SET_NAME_TITLE
+Set Name
+;
+MSG_COMMAND_ULABEL
+Co_mmand:
+;
+MSG_NOTE_UGAD
+_n
+;
+MSG_ON_PUBLIC_ULABEL
+on _public:
+;
+MSG_LIKE_WORKBENCH_UGAD
+own, like _Workbench
+;
+MSG_OPEN_SCREEN_ULABEL
+open extra _screen:
+;
+MSG_INTERNAL_COMMAND_UGAD
+_internal
+;
+MSG_AREXX_COMMAND_UGAD
+_ARexx
+;
+MSG_DOS_COMMAND_UGAD
+Ami_gaDOS
+;
+MSG_PRINT_ALL_PAGES_GAD
+print all pages
+;
+MSG_PRINT_VERTICALLY_THROUGH_GAD
+go through vertically
+;
+MSG_PRINT_HORIZONTALLY_THROUGH_GAD
+go through horizontally
+;
+MSG_PRINT_FIRST_PAGE_GAD
+first page
+;
+MSG_PRINT_RANGE_LABEL
+range:
+;
+MSG_DOCUMENTS_LABEL
+Documents:
+;
+MSG_COLOR_SPACE_RGB_GAD
+RGB
+;
+MSG_GRID_OFF_GAD
+off
+;
+MSG_GRID_POINTS_GAD
+points
+;
+MSG_GRID_LINE_GAD
+line
+;
+MSG_BAR_OFF_GAD
+off
+;
+MSG_BAR_TOP_GAD
+top
+;
+MSG_BAR_LEFT_GAD
+left
+;
+MSG_AUTO_SAVE_OFF_GAD
+off
+;
+MSG_AUTO_SAVE_REMEMBER_GAD
+remember
+;
+MSG_AUTO_SAVE_ON_GAD
+on
+;
+MSG_BD_POSITION_ONLY_GAD
+only position
+;
+MSG_BD_WITH_SUM_GAD
+with sum
+;
+MSG_BD_WITH_AVERAGE_GAD
+with average
+;
+MSG_WITHOUT_QUALIFIER_GAD
+without
+;
+MSG_QUAL_SHIFT_GAD
+shift
+;
+MSG_QUAL_ALT_GAD
+alt
+;
+MSG_QUAL_SHIFT_ALT_GAD
+shift + alt
+;
+MSG_QUAL_CONTROL_GAD
+control
+;
+MSG_KEY_ALWAYS_GAD
+always
+;
+MSG_KEY_NOT_WHILE_EDITING_GAD
+not while editing
+;
+MSG_KEY_ONLY_WHILE_EDITING_GAD
+only while editing
+;
+MSG_NAME_TYPE_STANDARD_GAD
+standard
+;
+MSG_NAME_TYPE_REFERENCE_GAD
+reference
+;
+MSG_NAME_TYPE_SEARCH_GAD
+search criteria
+;
+MSG_FORMAT_VALUE_GAD
+Value
+;
+MSG_FORMAT_PERCENT_GAD
+Percent
+;
+MSG_FORMAT_DATE_GAD
+Date
+;
+MSG_FORMAT_TIME_GAD
+Time
+;
+MSG_FORMAT_UNIT_GAD
+Unit
+;
+MSG_ALIGN_LEFT_GAD
+left
+;
+MSG_ALIGN_RIGHT_GAD
+right
+;
+MSG_ALIGN_CENTER_GAD
+center
+;
+MSG_COLOR_PALETTE_GAD
+Palette
+;
+MSG_COLOR_SCREEN_GAD
+Screen Palette
+;
+MSG_COLOR_SPACE_HSB_GAD
+HSB
+;
+MSG_SYSTEM_MISC_BORDER
+Misc.
+;
+MSG_SYSTEM_CLIPBOARD_BORDER
+Clipboard
+;
+MSG_REFRESH_FAST_GAD
+fast
+;
+MSG_REFRESH_SAVE_MEMORY_GAD
+save memory
+;
+MSG_REFRESH_LOW_MEMORY_GAD
+low memory usage
+;
+MSG_CONTEXT_CELLS_GAD
+Cells
+;
+MSG_CONTEXT_HORIZONTAL_TITLE_GAD
+Horizontal title
+;
+MSG_CONTEXT_VERTICAL_TITLE_GAD
+Vertical title
+;
+MSG_CONTEXT_OBJECTS_GAD
+Objects
+;
+MSG_CONTEXT_CELL_SELECTION_GAD
+Cell selection
+;
+MSG_NORMAL_COMMAND_GAD
+normal
+;
+MSG_FRAME_LEFT_GAD
+left
+;
+MSG_FRAME_RIGHT_GAD
+right
+;
+MSG_FRAME_BOTTOM_GAD
+bottom
+;
+MSG_FRAME_TOP_GAD
+top
+;
+MSG_KEEP_GAD
+keep
+;
+MSG_ALIGN_REMOVE_GAD
+remove
+;
+MSG_VALIGN_TOP_GAD
+top
+;
+MSG_VALIGN_MIDDLE_GAD
+middle
+;
+MSG_VALIGN_BOTTOM_GAD
+bottom
+;
+MSG_NO_KERNING_GAD
+none
+;
+MSG_TEXT_KERNING_GAD
+text
+;
+MSG_DESIGN_KERNING_GAD
+design
+;
+MSG_NO_SECURITY_GAD
+no restrictions
+;
+MSG_NOT_EDITABLE_GAD
+not editable
+;
+MSG_HIDE_FORMULA_GAD
+hide formula
+;
+MSG_HIDE_CONTENTS_GAD
+hide contents
+;
+MSG_CELL_FORMAT_BORDER
+Format
+;
+MSG_CELL_COLOR_ALIGNMENT_BORDER
+Color & Alignment
+;
+MSG_CELL_FONT_BORDER
+Font
+;
+MSG_ORDER_VERTICAL_GAD
+vertical
+;
+MSG_ORDER_HORIZONTAL_GAD
+horizontal
+;
+MSG_DIAGRAM_CONTENTS_BORDER
+Contents
+;
+MSG_DIAGRAM_TYPE_BORDER
+Chart Type
+;
+MSG_DIAGRAM_DISPLAY_BORDER
+Display
+;
+MSG_DIAGRAM_VALUES_BORDER
+Values
+;
+MSG_DIAGRAM_AXES_BORDER
+Axes
+;
+MSG_NO_AXES_GRID_GAD
+none
+;
+MSG_POINTS_AXES_GRID_GAD
+points
+;
+MSG_LINE_AXES_GRID
+line
+;
+MSG_NO_PAGE_LIMITS_GAD
+none
+;
+MSG_MARKED_PAGE_LIMITS_GAD
+marked
+;
+MSG_FIXED_PAGE_LIMITS_GAD
+fixed
+;
+MSG_OTHER_PAGE_SIZE_GAD
+other
+;
+MSG_NO_PAGE_PROTECTION_GAD
+none
+;
+MSG_PAGE_IMMUTABLE_GAD
+immutable
+;
+MSG_PAGE_HIDDEN_GAD
+hidden
+;
+MSG_KEEP_CELL_SIZE_GAD
+do not change
+;
+MSG_EXACT_CELL_SIZE_GAD
+exact
+;
+MSG_MINIMAL_CELL_SIZE_GAD
+minimal
+;
+MSG_OPTIMAL_CELL_SIZE_GAD
+optimal
+;
+MSG_CELL_SET_NAME_CONTEXT
+Set name
+;
+MSG_CUT_CONTEXT
+Cut
+;
+MSG_COPY_CONTEXT
+Copy
+;
+MSG_PASTE_CONTEXT
+Paste
+;
+MSG_TITLE_INSERT_COLUMN_CONTEXT
+Insert column
+;
+MSG_TITLE_OPTIMAL_WIDTH_CONTEXT
+Optimal width
+;
+MSG_TITLE_CELL_SIZE_CONTEXT
+Change size...
+;
+MSG_TITLE_SET_CONTEXT
+Set title
+;
+MSG_TITLE_REMOVE_CONTEXT
+Remove title
+;
+MSG_TITLE_INSERT_ROW_CONTEXT
+Insert row
+;
+MSG_TITLE_OPTIMAL_HEIGHT_CONTEXT
+Optimal height
+;
+MSG_FONT_PLAIN_NAME
+plain
+;
+MSG_FONT_BOLD_NAME
+bold
+;
+MSG_FONT_ITALICS_NAME
+italics
+;
+MSG_FONT_UNDERLINED_NAME
+underlined
+;
+MSG_ALIGN_LEFT_NAME
+left aligned
+;
+MSG_ALIGN_CENTER_NAME
+centered
+;
+MSG_ALIGN_RIGHT_NAME
+right aligned
+;
+MSG_VALIGN_TOP_NAME
+top
+;
+MSG_VALIGN_MIDDLE_NAME
+middle
+;
+MSG_VALIGN_BOTTOM_NAME
+bottom
+;
+MSG_CORNER_MODE_NONE_GAD
+none
+;
+MSG_CORNER_MODE_COPY_CELLS_GAD
+copy several cells
+;
+MSG_CORNER_MODE_COPY_GAD
+copy
+;
+MSG_CORNER_MODE_MOVE_GAD
+move
+;
+MSG_CORNER_MODE_SWAP_GAD
+swap
+;
+MSG_TIME_H_FORMAT
+\#h - hours
+;
+MSG_TIME_HH_FORMAT
+\#H - hours with leading zero
+;
+MSG_TIME_M_FORMAT
+\#m - minutes
+;
+MSG_TIME_MM_FORMAT
+\#M - minutes with leading zero
+;
+MSG_TIME_S_FORMAT
+\#s - seconds
+;
+MSG_TIME_SS_FORMAT
+\#S - seconds with leading zero
+;
+MSG_DATE_Y_FORMAT
+\#y - year, 2 digits
+;
+MSG_DATE_YY_FORMAT
+\#Y - year, 4 digits
+;
+MSG_DATE_MNAME_FORMAT
+%m - abbreviated month name
+;
+MSG_DATE_MMNAME_FORMAT
+%M - month name
+;
+MSG_DATE_M_FORMAT
+\#m - month
+;
+MSG_DATE_MM_FORMAT
+\#M - month, 2 digits
+;
+MSG_DATE_W_FORMAT
+%w - abbreviated weekday
+;
+MSG_DATE_WW_FORMAT
+%W - weekday
+;
+MSG_DATE_D_FORMAT
+\#d - day
+;
+MSG_DATE_DD_FORMAT
+\#D - day, 2 digits
+;
+MSG_HAIR_LINE_GAD
+Hair line
+;
+MSG_RECENTLY_USED_FUNCCAT
+Recently used
+;
+MSG_ALL_FUNCCAT
+All
+;
+MSG_MATH_FUNCCAT
+Mathematics
+;
+MSG_ALGEBRA_FUNCCAT
+Algebra
+;
+MSG_FINANCE_FUNCCAT
+Finance
+;
+MSG_LOGIC_FUNCCAT
+Logic
+;
+MSG_MATRICES_FUNCCAT
+Matrices
+;
+MSG_TRIGO_FUNCCAT
+Trigonometry
+;
+MSG_STATISTICS_FUNCCAT
+Statistics
+;
+MSG_DATE_TIME_FUNCCAT
+Date & Time
+;
+MSG_DBASE_FUNCCAT
+Database
+;
+MSG_TEXT_FUNCCAT
+Text
+;
+MSG_LOOK_FUNCCAT
+Look
+;
+MSG_SHEET_FUNCCAT
+Sheet
+;
+MSG_MISC_FUNCCAT
+Misc.
+;
+MSG_IO_STANDARD_FORMAT_1_DESCR
+ignition's standard format.
+;
+MSG_IO_STANDARD_FORMAT_2_DESCR
+All document properties will be preserved.
+;
+MSG_ZOOM_OVERVIEW_GAD
+Overview
+;
+MSG_OPEN_DOCUMENT_EVENT
+Open document
+;
+MSG_CLOSE_DOCUMENT_EVENT
+Close document
+;
+MSG_CELL_SELECTION_EVENT
+Cell selection
+;
+MSG_INPUT_DONE_EVENT
+Input done
+;
+MSG_TIME_EVENT
+Time
+;
+MSG_RECALC_EVENT
+Recalculation
+;
+MSG_LEFT_MOUSE_BUTTON_EVENT
+left mouse button
+;
+MSG_RIGHT_MOUSE_BUTTON_EVENT
+right mouse button
+;
+MSG_SAVE_BACK_REQ
+Save|Back
+;
+MSG_INTERACTIVE_MODE_HELP
+interactive 
+;
+MSG_EDIT_MODE_HELP
+edit
+;
+MSG_QUIT_BACK_REQ
+Quit|Back
+;
+MSG_PICTURE_CLASS_NAME
+Picture
+;
+MSG_OBJECT_PROPERTIES_GAD
+Object properties...
+;
+MSG_ADOPT_SIZE_OF_ORIGINAL_OBJECT_GAD
+Adopt size of original object
+;
+MSG_FILE_NAME_LABEL
+File name:
+;
+MSG_ADOPT_SIZE_IN_PIXEL_GAD
+Adopt original size in pixel
+;
+MSG_KEEP_ASPECT_RATIO_GAD
+Keep aspect ratio
+;
+MSG_CENTER_GAD
+Center
+;
+MSG_COLOR_RED_LABEL
+Red:
+;
+MSG_COLOR_GREEN_LABEL
+Green:
+;
+MSG_COLOR_BLUE_LABEL
+Blue:
+;
+MSG_COLOR_HUE_LABEL
+Hue:
+;
+MSG_COLOR_SATURATION_LABEL
+Saturation:
+;
+MSG_COLOR_BRIGHTNESS_LABEL
+Brightness:
+;
+MSG_DBASE_FIELD_STANDARD_GAD
+Standard
+;
+MSG_DBASE_FIELD_REFERENCE_GAD
+Reference database
+;
+MSG_DBASE_FIELD_ENUM_GAD
+Enumeration
+;
+MSG_DBASE_FIELD_COUNTER_GAD
+Counter
+;
+MSG_TEXT_SEARCH
+Text
+;
+MSG_FOREGROUND_COLOR_SEARCH
+Foreground color
+;
+MSG_BACKGROUND_COLOR_SEARCH
+Background color
+;
+MSG_FORMAT_SEARCH
+Format
+;
+MSG_FONT_SEARCH
+Font
+;
+MSG_FONT_HEIGHT_SEARCH
+Font size
+;
+MSG_FONT_STYLE_SEARCH
+Font style
+;
+MSG_ALIGNMENT_SEARCH
+Horizontal alignment
+;
+MSG_VALIGNMENT_SEARCH
+Vertical alignment
+;
+MSG_NOTE_SEARCH
+Note
+;
+MSG_INTERACTIVE_MODE_IN_NEW_DOCUMENT_REQ
+The document "%s" has not been opened before.\nShould the interactive mode be deactivated?\n\nNote: opening unknown documents in interactive mode is a security risk.
+;
+MSG_RED_COLOR
+Red
+;
+MSG_ORANGE_COLOR
+Orange
+;
+MSG_YELLOW_COLOR
+Yellow
+;
+MSG_GREEN_COLOR
+Green
+;
+MSG_TURQUOISE_COLOR
+Turquoise
+;
+MSG_BLUE_COLOR
+Blue
+;
+MSG_PURPLE_COLOR
+Purple
+;
+MSG_WHITE_COLOR
+White
+;
+MSG_BRIGHT_GRAY_COLOR
+Bright Gray
+;
+MSG_GRAY_COLOR
+Gray
+;
+MSG_DARK_GRAY_COLOR
+Dark Gray
+;
+MSG_BLACK_COLOR
+Black
+;
+MSG_PIGGY_PINK_COLOR
+Piggy pink
+;
+MSG_BROWN_COLOR
+Brown
+;
+MSG_QUIT_SAVE_AND_QUIT_REQ
+Quit|Save & Quit
+;
+MSG_QUIT_SAVE_AND_QUIT_CANCEL_REQ
+Quit|Save & Quit|Cancel
+;
+MSG_TEXT_COLOR_LABEL
+Text color:
+;
+MSG_BRIGHT_EDGES_LABEL
+Bright edges:
+;
+MSG_DARK_EDGES_LABEL
+Dark edges:
+;
+MSG_CHECKED_COLOR_LABEL
+Checked color:
+;
+MSG_CHECKED_GAD
+Checked
+;
+MSG_TEXT_PLACEMENT_LABEL
+Text placement:
+;
+MSG_PLACE_RIGHT_GAD
+right
+;
+MSG_PLACE_LEFT_GAD
+left
+;
+MSG_AREA_OUTLINE_GAD
+Area outline
+;
+MSG_PSEUDO_3D_GAD
+Pseudo-3D
+;
+MSG_FIRST_COLOR_LABEL
+First color:
+;
+MSG_SECOND_COLOR_LABEL
+Second color:
+;
+MSG_DIRECTION_LABEL
+Direction:
+;
+MSG_RECESSED_LABEL
+Recessed:
+;
+MSG_DOUBLE_FRAME_LABEL
+Double frame:
+;
+MSG_SAVE_SERIAL_NUMBER_ERR
+Could not save serial number:\n\t%s
+;
+MSG_SUPER_BUNDLE
+This release is part of the SuperBundle which is part\nof the Pegasos Computer or MorphOS distribution.\nYou have to unlock this application using the serial number\nyou received after registering with the SuperBundle.
+;
+MSG_SERIAL_NUMBER_LABEL
+Serial Number:
+;
+MSG_SERIAL_NUMBER_TITLE
+ignition - Input Serial Number
+;
+MSG_SUPER_BUNDLE_WELCOME
+Welcome to ignition's Lite Edition!
+;
+MSG_INVALID_SERIAL_NUMBER_ERR
+The existing serial number is invalid!
+;
+MSG_INVALID_SERIAL_NUMBER_TRY_AGAIN_ERR
+The entered serial number is invalid!\nPlease try again.
+;
+MSG_INVALID_SERIAL_NUMBER_QUIT_ERR
+The entered serial number is invalid!\n\nSince you canceled the unlocking process,\nthe application will now quit.\n\nIf you cannot find your serial number, or did not\neven receive one, please contact your dealer.
+;
+MSG_UNREGISTERED
+-- unregistered --
+;
+MSG_LITE_EDITION_CELL_LIMIT
+The sheet contains cells beyond the cell size\nlimit of the Lite Edition - these cells have been\nremoved.\nIf you save this version, the cells will be lost!\n\nThe Lite Edition supports sheet sizes up\nto 30x50 cells.
+;
+MSG_INSERT_UGAD
+_Insert
+;
+MSG_IOTYPE_NO_DEFAULT_REQ
+The file type (%s) is not a default type,\nit is not able to preserve all properties.\n\nDo you still want to save the file in this format?
+;
+MSG_WARN_IOTYPE_NO_DEFAULT_GAD
+Warn if limited file type
+;

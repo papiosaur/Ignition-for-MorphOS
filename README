@@ -1,0 +1,119 @@
+ignition Read Me
+
+
+About
+--
+ignition is a powerful spread-sheet application for AmigaOS. It should also
+run fine on MorphOS. It's written in C using SAS/C.
+
+It's licensed under the GNU General Public License, version 3. The exception are
+the files needed to build add-ons for ignition, allowing you to develop add-ons
+that are under a more permissive license, or even closed source.
+
+
+Requirements
+--
+To build ignition, you currently need the following pieces installed:
+ * SAS/C
+ * GNU make
+ * gtdrag.library (including headers)
+ * pTextEdit BOOPSI gadget (including headers)
+ * pScroller BOOPSI gadget (including headers)
+
+The latter three are components I wrote years ago and are all available on
+the Aminet. I plan to add them to the ignition source repository in the future,
+and I would welcome help with this, too. All of them will be released under the
+MIT license.
+
+
+Build
+--
+Just open a shell, switch to the ignition main directory, and execute
+
+ $ make
+
+As long as you have GNU make in your path, and all the above mentioned
+requirements installed, ignition should now be built automatically.
+When the build is done, an executable "ignition" is created in the main
+directory.
+Note that ignition assumes to be built with German being the native locale.
+
+
+Helping with development
+--
+If you are a C or C++ programmer, any help to further improve ignition are
+welcome.
+However, the code has been developed over a curse of more than 10 years, and
+you'll find horrible as well as elegant code in there, with mixing coding
+styles.
+New code should all follow the same coding style, though, that is:
+ * Use only tabs for indenting, default tab size is 4.
+ * Opening curly brackets go to the same line as the statement, except
+   for functions, and "case" in switch statements. This closely matches K&R style.
+ * Global variables should be prefixed with either 'g' or 's' depending on
+   their visibility (static variables will get the 's' prefix).
+
+While ignition is written in C entirely, C++ would be a welcome addition.
+Also, the most urgent task to be done is to convert the sources to use GCC
+instead of SAS/C.
+Until you have commit access to the repository, patches are welcome via the
+bug tracker as well as via the mailing list.
+
+
+Helping with other tasks
+--
+If you are not a programmer, you can still help out ignition: there is a website
+to be maintained, and docs as well as online help to be written.
+Please get in contact with the project if you want to help out.
+
+
+Communication channels
+--
+There are currently only two channels of communication:
+
+ * User mailing list (https://lists.berlios.de/mailman/listinfo/ignition-user)
+ * Developer mailing list (https://lists.berlios.de/mailman/listinfo/ignition-develop)
+
+
+Directory layout
+--
+You'll find the following directories in the repository:
+ * .					- main directory with all source files
+ * add-ons				- the sources for all I/O and graphic add-ons
+ * config				- files that will end up in the config folder in
+						  an ignition installation.
+ * distribution			- make files to create a distribution
+ * docs					- end user and developer docs
+ * help					- context help files (currently German and English)
+ * icons				- the icons that ignition will use
+ * lib					- static libraries needed to build ignition
+ * locale				- locale files to build catalogs, etc.
+ * misc					- miscellaneous files and scripts, as well as Mason
+						  icons
+ * rexx					- example and test REXX scripts
+ * sheets				- example and test sheets
+
+
+Roadmap
+--
+While ignition itself was supposed feature complete for version 1.0, there are lots
+of things one could and eventually should add, some of them have been postponed from
+ignition to be able to complete it in time:
+
+ * Translate the sources to GCC instead of SAS/C.
+ * Improve and complete TurboCalc I/O add-on.
+ * UI for CSV I/O add-on.
+ * Write I/O add-ons for OpenOffice, and Excel.
+ * Real 3D diagrams using OpenGL.
+ * Switch to a real drawing backend like AGG (older versions are BSD licensed, and is
+   already available for AmigaOS), or Cairo.
+ * Modernize UI through ReAction and/or MUI.
+ * Make sure it runs fine on all Amiga-like platforms (AmigaOS, MorphOS).
+ * Port to AROS.
+ * Cleanup the sources, replace some old code with C++ classes.
+ * Complete the end user documentation.
+ * Write developer documentation for the I/O and graphics add-ons.
+ * And many more.
+ * Parts of the documentation are only available in German. Also, many comments in the
+   sources are in German - I didn't find the time to translate them all, sorry.
+

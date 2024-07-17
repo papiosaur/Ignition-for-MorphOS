@@ -1,0 +1,28 @@
+/* ign-Coord/Pos, 7.7.98 */
+
+address ignition.1
+
+c = 1;r = 1
+p = "c3"
+
+
+'coord2pos col='c' row='r' var=T'
+say "("c":"r") -> "t
+
+'pos2coord pos=b4 stem=CD'
+say p" -> ("cd.col":"cd.row")"
+
+'coord2pos CD var=T'
+say "("cd.col":"cd.row") -> "t
+
+'pos2coord pos='p' col=CC row=RR'
+say p" -> ("cc":"rr")"
+
+'getpos col=CC row=RR'
+say "current (getpos): "cc":"rr
+
+'pos2coord col=CC row=RR'
+say "current (pos2coord): "cc":"rr
+
+exit
+

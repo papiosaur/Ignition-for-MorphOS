@@ -1,0 +1,13 @@
+/* context-test */
+
+say "Port: " address()
+
+hello
+
+do i = 1 to 1000
+  say i
+end
+
+bla
+blub
+

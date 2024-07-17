@@ -1,0 +1,11 @@
+/* REQUESTSTRING-Test */
+
+address IGNITION.1
+
+options results
+
+'requeststring "Was ist die Hauptstadt von dem Land, das sich irgendwann mal in der Vorzeit dazu hinreißen ließ, seinen König zu köpfen?"'
+
+address COMMAND
+
+'requestchoice Meldung "Sie gaben ein: 'result'" Ok'

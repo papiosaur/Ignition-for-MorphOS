@@ -1,0 +1,22 @@
+/* ign-Set-/GetCell, 3.8.97 */
+
+address ignition.1
+
+'GETCELL STEM=c'
+say "APen:" c.apen
+say "BPen:" c.bpen
+say "Font:" c.font
+say "FontSize:" c.fontsize
+say "Style:" c.style
+say "Text:" c.text
+say "Visible:" c.visible
+say "Note:" c.note
+say "Alignment:" c.alignment
+say "Format:" c.format
+
+'GetCell apen var=pen'
+say "pen: " pen
+
+
+exit
+
