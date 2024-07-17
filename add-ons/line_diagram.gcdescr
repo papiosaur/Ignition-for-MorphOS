@@ -1,0 +1,5 @@
+NAME=Linien
+NAME:english=Lines
+SUPER=axes
+ICON=icons/diagram_line.icon
+DIAGRAM

@@ -1,0 +1,268 @@
+ignition - Merker, 21.1.2004
+--
+
+ToDo-Liste:
+
+-Diverses--------------------------------------------------------------------------
+ · Text-Truncating (z.B. bei Button/Text Objekt)!
+ · Fensterpositionen werden noch nicht gespeichert
+ · I/O Descriptions werden jetzt nicht mehr bei Programmende gespeichert -> Prefs sollten ausgelagert werden
+ - Versionsdatum bei WDT_INFO ist nicht lokalisiert!
+ - ReleaseAppColors() überprüfen (wo aufgerufen etc...)
+ - manchmal zu kurzer Abstand bei Spaces? (fällt nur bei kleinen Fonts/kleiner Vergrößerung auf)
+ - stürzt ab beim Drucken mit Bildern
+ - CopyPrinterProject() muß evtl. auch mit Diagrammen umgehen können...
+ - Hilfe-Guide fertigstellen und übersetzen
+ - Installations-Skripte anpassen
+ - Drucker-Unit Namen lesen tut nicht mehr - iffparse.library scheint der Böse zu sein - aber warum denn bloß? (offensichtlich nur Amithlon)
+ × DisplayBeep()s entfernen, wo möglich und sinnvoll
+ × wd_Data/ExtData Mist komplett entfernen (langwierige Aufgabe...)
+ × Farbenwahl direkt, nicht nur aus vordefinierter Auswahl (nur bei Echtfarben?)
+ × Edit-Gadget sollte bei Formeln während des Edierens größer sein können als die eigentliche Zelle
+ × Unterstützung für die TTEngine mit Anti-Aliasing Fonts?
+ × Funktionssyntax-Anzeige überarbeiten
+ × eingegebene Fontgrößen merken (zumindest bei WDT_PROJECT/GID_SIZE) ???
+ × (De-)Installationsskript auf OS3.5 anpassen (wenn schon, denn schon)
+ × vielleicht Titel hervorheben bei denen die aktive Zelle ist
+ × Notizen komfortabler und organisiert.
+ × Iconleiste müßte die Bilderchens auch laden und sich automatisch aktualisieren
+ × WDT_CELL - Schrift: fehlende Funktionen implementieren
+ × Beim Einfügen aus der Zwischenablage möglicherweise Größe der Zelle ändern (Höhe des Zeichensatzes)
+ × Timer als eigenen Prozeß (oder auch Timerlänge anpassen...)
+ × Vervollständigung von Funktionsnamen beim Edieren mit Fenster wie bei MS-VS?
+ × Verbessern der Schriftdarstellung durch Dithering (Oversampling)
+ × EPS- oder DR2D-Datatype (vielleicht ist das auch ein wenig zuviel Aufwand)
+ × Zusätzliche Farbansicht ohne Namen, aber mit vielen Farben
+ × Projekt-/Mappenweites Suchen/Ersetzen
+ × vielleicht erkennen, ob schonmal gestartet, Parameterübergabe
+ × lokale und globale PrefsModule-Liste in den Menüs
+ × Netzwerkfähigkeit
+ × asynchrone ASL-Requester
+ × ??? Pixel bei Längenmaßenumrechnungen ???
+ × 24-Bit Unterstützung weiter ausführen
+ × Rahmen bei der Werkzeugleiste abschaltbar ?
+ × DrawTextWithWidth() -> DrawTextInRect() um Clipping zu sparen
+ × Iconleiste als Gadget, Listview-kompatibel mit Icon-Drop Möglichkeit
+ × stärkere Trennung von internen/normalen Überlegen - wegen Sicherheit (überschreiben von internen Funktionen)
+ × Mehr Fenster größenveränderbar (z.B. WDT_PREFICON)
+ + Bei leeren PopUp-Listen Leereintrag zeigen
+ + Zwischenablage mit Drag&Drop
+ + Titel setzen wird von Undo/Redo nicht erfaßt (muß das??)
+ + Farbsystem mit Palette renovieren und erweitern (optimieren ohne Ende)
+ + Befehlssuche optimieren: AppCmds -> binäre Suche
+
+-Rexx------------------------------------------------------------------------------
+ + eingebaute Funktion oder Rexx-Skript: in Liste einfügen
+ + Euro Umrechner?!
+ × vielleicht GETCELL -> GETATTR, erweitern in Richtung Workbench-Rexx-Port
+ × bei Sitzungen vielleicht noch die Dateigröße für PRF_SECURESCRIPTS heranziehen
+ × Mini-Oberflächeneditor für Rexx??
+ × SEARCH/REPLACE vielleicht noch mehr Parameter als Fensterersatz
+
+-BOOPSI----------------------------------------------------------------------------
+ × (Gadget-)Text/Border-Klasse für selbstorganisierte Fenstertexte/-border
+ × editgclass: verschiedene Farben ermöglichen (z.B. Schlüsselwörter)
+ × scrollergclass: Scroller auch im Fensterrahmen (??) (für den Editor)
+ × editgclass: möglichen Fehler mit doppelten Zeilen suchen (bestimmte Breitf??)
+ × indexgclass: OM_NEW absichern, möglicher Fehler bei vielen & langen Labels beseitigen
+ × pictureiclass: wenn Fehler in picture.datatype behoben ist, Verfahren optimieren
+ × Haken von SelectHook in Image ablegen
+ × eigenes Cycle-Gadget (ohne CycleToMenu)
+ × PopUp() als eigenständiges Gadget
+ × eigene Layout-Engine mit Gadgets...
+ × eigenes Farb-Gadget mit PopUp
+ × editgclass: Positionierungs-Fehler bei CursorUp/Down (aktuelle Zeile länger als nächste/vorherige) ???
+ × editgclass: echte Tab-Stellen, Labels
+
+-Datenbank-------------------------------------------------------------------------
+ · Flimmern bei DBNEW, DBNEW am Besten komplett neu
+ · DBNEW muß auch bei PARENT Masken anwählen
+ · Filter-Generierung vereinfachen (beim Suchen), etc.
+ · automatische Maskengenerierung
+ · Indizes und Filter sollten Masken zuweisbar sein
+ × vielleicht auch bereits erstellte Indizes speichern, ...
+ × Datenbankanbindung kapseln, mehrere Möglichkeiten (auch externe) implementieren
+ × DBNEW mit Undo/Redo Anbindung
+ × Neuer Feldtyp FIT_SAME o.ä. (für Formeln) ???
+ × mehrere Masken pro Datenbank, Listen als Masken mit Filter, etc.
+
+-Diagramme-------------------------------------------------------------------------
+ · Area-Diagram übermalt Achse im Pseudo-3D Modus mit Vorzeichenwechsel
+ × Default-Fontgröße bei Achsen etwas kleiner?
+ × WDT_DIAGRAM: Objektattribute etwas platzsparender anordnen (2 in eine Reihe, wenn möglich)
+ × OpenGL/Mesa-Anbindung (StormMesa, AMesaRTL)
+ × Mehrfachauswahl bei der Werte-Listview bei WDT_DIAGRAM
+ × autmatische Legende
+ × Diagramme z.B. als Maxon-Cinema-Objekte speicherbar
+ × weitere Diagrammtypen
+ × Übernahme/Verwaltung der Wertfarben weiter verbessern
+ + bestehende Diagramme verfeinern
+
+-Objekte---------------------------------------------------------------------------
+ · Font-Gadget mit Fett/Kursiv etc. Attributen
+ × Testen, Objekte hinter den Text legen zu können
+ × Text-Objekt (mit Rotation, etc.)
+ × weitere Knopfarten (???)
+ × Picture-Objekt schreibt im ungepufferten Modus direkt in die ScreenBitmap (und übermalt alles)
+ × vielleicht noch einstellbaren MultiSelect-Frame (Auswahl: Ganz/Teil)
+ × Beim Verschieben sollte nicht einfach umrahmt werden -> Methodenaufruf
+ × Slider-/PopUp-Gadgets (Datenbanken, Auswahl,...) in der Tabelle
+ × Objekte gruppieren -> vielleicht auch erst später mal???
+ × Grafik-Ausgabe puffern, optimieren
+ × Gradient-Objekt benötigt 24bit - könnte dithern...
+ × Objekt-Position sollte an Zellen koppelbar sein (Objekt verschiebt sich mit den Zellen)
+ + Bei referenzierten Objekten muß make-/freeClip() schachtelbar sein (nicht-resizable Klassen)!
+ + superClass als Superklasse benutzen, nicht die Angabe aus der .gcdescr
+
+-Clipboard-------------------------------------------------------------------------
+ × Cut/Copy/Paste mit ganzen Seiten
+ × Objekte sollten im Standard-Format auch ins Clipboard gelegt werden
+
+-Fenster---------------------------------------------------------------------------
+ × Tastaturkürzel durchsetzen lassen (incl. Escape)
+ × Drag'n'Drop bei WDT_DEFINECMD
+ × WDT_CELL (und andere) Werte von der aktuellen Zelle vorgeben
+ × CloseAppWindow() könnte jetzt bei cleanUp == FALSE "wd" bestehen lassen
+
+-Preferences-----------------------------------------------------------------------
+ × WDT_PREFDISP: Einstellungen für Zellen?? (Sichtbare Notizen, ...)
+ × WDT_PREFTABLE: ein paar der Punkte unter Diverses an WDT_PREFDISP/Zellen abtreten
+ × Sicherheitsabfragen abschaltbar?
+ × WDT_PREFCOLORS mit Drag&Drop ? (für Reihenfolge??)
+ × PopUp-Hilfe konfigurierbar?? -> normal/popup
+ × Standardfonts setzbar
+ × Mausklicks zum Edieren einer Zelle festlegen (keiner, einfach, doppelt)
+ × Preferences-System weiter überarbeiten (Einstellungsmodule extern erweiterbar)
+ × Font-Manager mit Gruppierung, zuweisbaren Schriftstilen, einstellbaren Berechnungen
+ × Werkzeugleiste-Einstellungen (mit Drag&Drop, ...)
+ × Zeichensatz Einstellungen (alles)
+ × Parameter 'add' von 'prefs' auch bei Formaten, Namen, Keys, ...
+ × WDT_PREFKEYS: add/remove unterstützen??
+ × Wenn mehrere Module aktualisiert werden, könnten Aufrufe zu RefreshProjectWindows() gesammelt werden
+
+-Drucken---------------------------------------------------------------------------
+ · Beim Drucken mit Seitenzahlen, Namen der Datei, Druck-Optionen, ...
+ · Seiten- und Papierränder berücksichtigen
+ · Hack für Images entfernen (wird für Async eh benötigt)
+ · Asynchrones Drucken vorerst deaktiviert; SetGRastPort() ist nicht multitaskingfähig, es wird ein zweiter grp benötigt!
+ × Rahmentyp beim Drucken veränderbar
+ × Postscript-Druck?
+
+-I/O-------------------------------------------------------------------------------
+ · SaveNames() speichert möglicherweise zuwenig Namen (die globalen werden nicht berücksichtigt, mit Referenzen sollte das dann aber einfach sein)
+ · CSV: grafische Einstellungen, Nachfrage nach Trennzeichen
+ · Excel!
+ × guter Import/Export für Excel & TurboCalc, etc.
+ × Vektordatatype
+
+-References------------------------------------------------------------------------
+ · RecalcXXX() auskommentiert: 2*clip.c, edit.c
+ · FT_LOOK-Zeugs & Objekt-Attribute/Terme bei Referenzen auch berücksichtigen
+ × Referenzen auch zum Berechnen verwenden (direkte Zeiger auf Zellen, etc.) -> geht möglicherweise gar nicht...
+
+-Berechnung------------------------------------------------------------------------
+ · Bei CalcTableField()/GetValue()/handleCellWindow() muß mehr als nur die Komma-Anzahl vom Format übernommen werden
+ · Taschenrechner-Handbuch anschauen :-)
+ · Statistik- und Finanz-Funktionen (mit Blick auf StarAmPlan, Excel & Statistik-Skript)
+ · Datumsfunktionen nach letzten Änderungen nochmal überprüfen
+ × API für Formel Add-ons
+ × Schreibe Parser neu...
+ × Regressionen (??)
+ × Format der Formatvorlagen erweitern?! (Farbe, etc. in der Beschreibung) -> könnte noch später transparent hinzugefügt werden...
+ × Pivot-Tabellen wären schön (aber was ist das?)
+ × createTree() -> Fehlermeldungen?
+ × Exponentialschreibweise bei Zahlen unterstützen
+ × Wenn tf_format == NULL, Format "0" benutzen (bei CalcTableField()) ??
+ × Funktionen zur Reihenberechnung nicht vergessen -> Fenster
+ × Strenge, konfigurierbare Typenprüfung ?
+ × Vielleicht irgendwann (wahlweise) Umstellung auf eigenes Zahlensystem (Genauigkeit)
+ × Variablen (mit Zuweisung in der Tabelle), oder Erweiterung der Namen - oder gar nicht???
+ × Einheiten -> Umrechnen (cm,m,dm,",inch,...)
+ × abschaltbaren DWIM-Mechanismus bei Formeln (do what I mean)
+ × Schnittstelle für ARexx- & C-Funktionen
+ × könnte auch Operanden als Seitenzahl beim '#' Operator erkennen
+ + FormatVorlagen "compilieren"
+ + Referenzliste erstellen (für Darstellung & Berechnung)
+ + erkennen und markieren von konstanten Termen
+ + Berechnungen beschleunigen
+
+-Tabelle---------------------------------------------------------------------------
+ · richtige Muster (vor allem für den Drucker)
+ · Seitenränder in Papiergröße mit einrechnen
+ · Ziehecke konfigurierbar ob Format mit kopiert werden soll
+ × Raster nach Zellbreite ausrichten funktioniert nicht richtig (nur bei komplett Neuzeichnung)
+ × Sicherheitsmerkmale implementieren und austesten
+ × initiale Papiergröße vielleicht vom Drucker vorgeben lassen
+ × Undo: Bei Text-Undo mit Änderung der Zellhöhe wird die alte Zellhöhe nicht in einem Schritt wieder hergestellt
+ × Bild oder Farbverlauf in den Hintergrund legen (auch bei einzelnen Zellen)?? (a la Gobe Productive)
+ × bei der Eingabe Blockmarkierung und Cut, Copy & Paste im Textfeld
+ × OutlineHeight() benutzen, Drehbarkeit berücksichtigen (DrawText(),OutlineLength())
+ × Vielleicht Zugriffslevel bei den Paßwörtern (Speichern deaktivieren...)
+ × Angabe der Zellposition beim Undo/Redo-Text eines Zelltextes
+ × ChangeCellSize(): Modus für auto. Zellgröße (nur wenn tf_Text)
+ × Read-Only Möglichkeit bei Dokumenten
+ × konditionierte Formate, Farben, etc.
+ × Mehrzeilige Zellen
+ × mehrere einzelne Zellen anwählbar (nicht nur im Block)
+ × Felder abdunkeln o. ä. (Farbeinstellungen)
+ × Jede Zelle einzeln mit einem Skript verknüpfbar
+ + Funktionen-Hilfe-PopUp verbessern (muß nicht verschwinden beim Tippen, Anzeige der Argumente)
+ + HandleTabGadget() überarbeiten
+ + Zeichenroutinen
+ + Rahmen zeichnen
+ + Zugriff auf Zellposition optimieren (Erweiterung/Änderung von tableSize)
+
+Legende:
+ · -> normaler ToDo-Punkt
+ × -> abgeschoben (wahrscheinlich erst) in nächste(r) Version (oder vielleicht auch gar nicht).
+ + -> Optimierung (am Ende)
+
+--------------------------------------------------------------------------------------------------
+
+Bekannte kleinere Fehler:
+ · zu langsam
+ - Berechnung der Fonthöhe scheint nicht überall konsequent zu sein (unter MorphOS wird nicht die volle Höhe eines Feldes genutzt)??
+ · Farb-Änderungen bei Diagrammen erzeugen keine UndoNode (müssen sie das denn?)
+ · Markierungen werden beim Scrollen nur dann erweitert, wenn die Maus bewegt wird
+ · Mauszeiger ändert sich manchmal nicht ("mousepointer" wird nur lokal gesetzt...)
+ · Raster an Zellbreite ausrichten funktioniert nicht so ganz (momentan deaktiviert)
+ · Stundenplan-Zeugs mit Fehlern beim Speichern & Laden...
+ × Farben für Piktogramme offensichtlich auf die ersten 8 beschränkt.???? (neu überprüfen!)
+ × Requester müssen sofort ausgelesen werden (z.B. Bildschirm-Prefs)
+
+Bekannte erhebliche Fehler:
+ · bei openBracket() möglicher Enforcer-Hit??
+ · Es besteht die Möglichkeit, ungültige Zeichen einzufügen (mit wildem Klicken?) - 8.3.2003
+ · Datenbank.igs, PLZs: Seitenwechsel während der Erstellung (eines Diagrammes) klappt nicht so richtig...??
+ · io.c: Nach dem Laden wird RecalcTableFields() 2mal ausgeführt (sonst stimmen die Ergebnisse nicht...)
+ · Bei Cell/Block-Undo/Redo hängt offensichtlich das Neuberechnen nach (vielleicht ja der gleiche Grund wie beim Laden???), nicht immer bzw. bislang nur einmal....
+ · Formeln: bei 'text(dbanzahl(...;hintergrund(aktuelle())=hintergrund($b$42))+")"' fehlt das Ende
+ · WDT_PROJECT: bei kleiner Größe gibts Probleme mit den Antigads (wenn diese groß sind)
+ · Absturz beim Drucken von Bildern, bei unterschiedlicher Farbtiefe von Druckbild und Bildschirm
+ · Absturz beim Beenden bei Benutzung von Timern ??
+ × Notifications und Bit 31 produzieren tatsächlich einen Absturz??
+
+Darstellungsfehler:
+ · Bild hat beim Scrollen Probleme
+ - Picasso96 Fehler: Mauszeiger nur bis 16 Pixel Breite, darüber Müll
+ × 3d: Nur die Betrachterposition wird bei der Rotation gedreht, nicht das Objekt
+ × 3d: Farbwahl klappt nicht so toll
+ × 3d: starke Verzerrung bei größeren Werten (> 5)...
+ · Balken-Diagramm: beim Pseudo3D-Modus werden negative Werte in den hinteren Reihen nicht richtig dargestellt
+ · Area-Diagramm: " (auch in der vorderen Reihe bei negativen Werten)
+ · Beim Scrollen mit VisualPrefs kommt es zu Grafikfehlern (Standardannahmen über Bevel-Boxen??)
+ · Beim Ändern eines Rahmens können nun Grafikfehler auftreten (Abstand vom Rahmen)
+ · Beim Scrollen während des Veränderns der Zellgröße geht die linke/obere Begrenzung flöten (optisch)
+ · diverse kleine Darstellungsfehler beim TabEdit-Zeugs
+
+Bekannte Probleme mit alternativer Software/Patches (weitere testen...):
+ · truetype-library??
+ · Mit ASL-Ersatz funktioniert die Dateitypenauswahl nicht mehr
+ · Alter Installer kann keine Patterns??
+
+--------------------------------------------------------------------------------------------------
+
+Grobe Ideen für v2:
+ · ignition als (leicht portierbarer) DB-Server mit Tabellen-Aufsatz
+
+

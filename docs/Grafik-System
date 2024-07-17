@@ -1,0 +1,370 @@
+ignition - Spezifikation des Grafik-Systems, 13.8.1998
+--
+
+Grundsätzliches
+---------------------------------------------------------------------
+Die verschiedenen in eine Tabelle einfügbaren Objekte werden auch
+tatsächlich klassenartig implementiert.
+Diese Klassen sind dabei entweder in ignition integriert oder stehen
+extern zur Verfügung. Jedes Objekt meldet sich über eine Funktions-
+bzw. Methodenliste an.
+Dabei werden direkt Funktionszeiger verwandt; die Möglichkeit einer
+Vererbung soll es erstmal nicht geben (ist aber später noch leicht
+implementierbar).
+Die Daten eines Objektes werden bis auf die eigentlichen Koordinaten
+komplett von der Klasse verwaltet; zur Änderung dieser Daten wird eine
+Schnittstelle bereitgestellt anhand derer einfache UIs erstellt werden
+können. Standardbezeichner wie "Farbe", "Strichstärke" usw. werden
+von ignition bereitgestellt, damit eine gewisse Mehrsprachigkeit von
+Grund auf gewährleistet ist, die Klassen können aber auch externe
+Kataloge benutzen.
+Vielleicht sollten mehrere Klassen pro Datei möglich sein, um viele
+kleine Kleckermodule zu vermeiden.
+Diagramm-Module sind ähnlich aufgebaut und benutzen auch die gleichen
+Funktionen; in welchen Punkten sie sich unterscheiden, wird später
+noch genauer festgelegt.
+
+
+Die Methoden einer Klasse (vorläufig)
+---------------------------------------------------------------------
+· gcInit()
+  Erste Initialisierung der Klasse, dort können z.B. Sprachkataloge
+  etc. geöffnet werden. Bestimmte noch festzulegende Libraries sind
+  bereits offen.
+
+· gcExit()
+  Letzte Aktionen vor dem Freigeben der gesamten Klasse, alle Objekte
+  der Klasse wurden vor diesem Aufruf entfernt.
+
+· gcCreate()
+  Ist mit gcChange() die einzige Routine, die mehr oder weniger direkt
+  in eine Tabelle zeichnet; dies tut sie während des benutzergesteuerten
+  Erstellungsvorganges des Objektes. Zu diesem Zeitpunkt existiert das
+  Objekt allerdings noch nicht.
+  Die Routine bekommt immer einen Ausgangs- und einen Zielpunkt. Für
+  gewöhnlich wird aus Geschwindigkeitsgründen im COMPLEMENT-Modus
+  gezeichnet. Sie wird also vermutlich zweimal mit den gleichen Punkten
+  aufgerufen, um das vorläufige Objekt erstmal zu zeichnen und dann
+  wieder zu entfernen. Das wird über zusätzliche zur Laufzeit übermittelte
+  Informationen getan (auch die bisherigen Punkte).
+
+· gcNew()
+  Ein neues Objekt wird erstellt; hier werden alle vorher vom Benutzer
+  bestimmten oder zuvor gespeicherte Punkte übergeben - zurückgegeben 
+  werden muß unter anderem eine Liste all derer Punkte, die zum einen
+  gespeichert werden und die zum anderen der Benutzer ändern kann.
+
+· gcDispose()
+  entfernt ein Objekt. Es müssen nur die bei gcNew() angeforderten Daten
+  freigegeben werden.
+
+· gcChange()
+  wird aufgerufen, wenn der Benutzer die Lage einiger Punkte ändert. Sie
+  bekommt eine Punkteliste und den geänderten Punkt.
+
+· gcSet()
+· gcGet()
+  setzt/erfragt Objektattribute. Sämtliche im Interface definierten Tags
+  müssen unterstützt werden.
+
+· gcDraw()
+  Die eigentlichen Objekte werden mit den Zeichenfunktionen von
+  ignition erstellt. Das so entstandene Objekt wird weitgehend
+  unabhängig von der Klasse verwaltet, damit es auch ohne das
+  Vorhandensein dieser Klasse dargestellt oder ausgedruckt werden
+  kann.
+  Objekte haben die Möglichkeit, in zwei verschiedenen Zuständen
+  gezeichnet zu werden, je nachdem, ob das Objekt im interaktiven
+  Modus angeklickt ist oder nicht.
+
+
+Das Anmelden einer Klasse
+---------------------------------------------------------------------
+ignition benötigt beim Anmelden einer neuen Klasse folgende Daten:
+
+  · Funktionszeiger der öffentlichen Funktionen, d.h. ein
+    functable = {gInit, gExit, ...}
+
+  · Der Name der Klasse für den Benutzer
+
+  · Der Name eines Icons (nicht WB) für die Darstellung in der Auswahl-
+    liste zum Einfügen eines Objektes.
+
+  · Die benötigte Anzahl an Punkten bei einer vom Benutzer
+    durchgeführten Erstellung des Objektes. Dabei kann auch eine
+    unbestimmte Anzahl angefordert werden.
+
+  · Eine Definition der Benutzerschnittstelle durch ungefähr folgende
+    Struktur (keine endgültige Definition):
+
+    struct gInterface
+    {
+      ULONG  gi_Tag;         /* eigener oder vordefinierter Tag für gSet()/gGet() */
+      STRPTR gi_Text;        /* Bezeichner beim Gadget */
+      ULONG  gi_Type;        /* Typ des Gadgets (Checkbox, Cycle, String, ...) */
+      APTR   gi_Special;     /* z.B. Auswahl bei Cycle-Gadgets */
+    };
+
+    struct gInterface interface[] = {{...},{...},{...},{NULL}};
+
+    Wird ein vordefinierter Tag verwendet, so werden alle anderen
+    Inhalte ignoriert und dem Benutzer so eine einheitliche Bedienung
+    ermöglicht.
+
+Eine Klasse kann Fließkommaberechnungen durchführen, andere Libraries
+als die Utility-, die DOS- und die locale-Library stehen erstmal nicht
+zur Verfügung.
+
+
+Zeichnen eines Objektes
+---------------------------------------------------------------------
+Das für ein Objekt verwendete Koordinatensystem ist zunächst einmal
+weitgehend unabhängig von dem in der Tabelle verwendeten.
+Der Nullpunkt liegt in der linken oberen Ecke, für die Darstellung
+der Koordinaten werden Variablen vom Typ "LONG" verwendet, dabei
+entspricht die Zahl 1/1024 mm.
+Ob und wie das Objekt in der Tabelle skaliert oder rotiert wird, wird
+vor der Klasse verborgen; sie bekommt immer ihre normalisierten Werte.
+Intern werden diese natürlich gespeichert und die zur Darstellung
+benötigten und ebenfalls zwischengespeicherten Koordinaten werden aus
+ihnen berechnet.
+Im 2D-Modus werden die Objekte genau in der Reihenfolge gemalt, wie
+sie erstellt werden.
+Im 3D-Modus hingegen spielt die Reihenfolge der Erstellung keine
+Rolle; hier zählt die Position allein.
+Farben werden mit 8 Bit pro Farbanteil (RGB) ausgewählt; wie diese
+Farben dann tatsächlich erscheinen, liegt natürlich am eingestellten
+Bildschirmmodus.
+
+
+Das Interface
+---------------------------------------------------------------------
+Der Klasse werden zwei verschiedene Interfaces zur Verfügung gestellt,
+eines für 2- und eines für 3-dimensionale Objekte bzw. Zeichnungen.
+Die Klasse muß sich auf eines der beiden APIs festlegen; je nach benutzter
+API wird das erstellte Objekt von ignition anders gehandhabt.
+Bei 2D- und 3D-Objekten können Lage, Größe und Rotation unabhängig von
+der eigentlichen Klasse verändert werden - im 3D-Modus geht das in allen
+Dimensionen, zusätzlich stehen da noch z.B. Änderung des Lichteinfall-
+winkels zur Verfügung.
+Gemeinsamkeiten beider Interfaces:
+
+ · Funktion zur Beschaffung der vordefinierten Strings:
+
+     STRPTR gGetString(ULONG id)
+
+
+ · Funktionen zur Gruppierung der Einzel-Objekte:
+
+     long gBeginObjectA(struct TagItem *ti)
+     long gBeginObject(ULONG tag,...)
+
+     void gEndObject(void)
+
+   Der Benutzer kann nachher jeden als Objekt markierten Teil des Ganzen
+   einzeln anwählen und über Tags festgelegte Eigenschaften wie z.B. die
+   Farben ändern.
+   Verwendete Tags:
+
+     (noch zu bestimmen)
+
+
+ · Funktion zum Setzen einer Farbe:
+
+     void gSetColor(UBYTE red,UBYTE green,UBYTE blue)
+
+   Diese Funktion sollte nur dann benutzt werden, wenn ein Einwirken
+   des Benutzers auf die Farbgebung unerwünscht ist.
+
+ · Attributs-Funktionen:
+
+     void gSetAttrs(ULONG tag,...)
+     void gSetAttrsA(struct TagItem *tag)
+
+   Mit diesem Befehl setzt man ein oder mehrere Attribute einer Zeichnung.
+   Für beide Interfaces ist folgendes definiert:
+
+     GA_Color (ULONG)
+     Setzt eine Farbe direkt; die unteren drei Bytes stehen für die Farb-
+     anteile Rot, Grün und Blau mit je 8 Bit.
+
+     GID_Color (ULONG)
+     Setzt einen vorher definierte Farbe (s.u.).
+
+ · IDs werden dazu benutzt, vom Benutzer veränderbare Größen und Ein-
+   stellungen zu ermöglichen. Beiden Interfaces gemeinsam ist dabei
+   der Befehl zu Initialisierung eines Farb-Stiftes; diese Befehle sind
+   aber immer ähnlich aufgebaut:
+
+     void gInitColor(ULONG pen,STRPTR text,UBYTE red,UBYTE green,UBYTE blue)
+
+   Mit folgendem Befehl liest man die zu einer ID gehörenden Attribute:
+
+     long gGetAttr(ULONG tag,ULONG id,ULONG *storage)
+
+
+Die Zeichenbefehle des 2D-Interfaces:
+
+  gMove(long x,long y)
+  bewegt den Grafikcursor an die angegebene Position.
+
+ · Linienbefehle:
+
+  gLine(long x,long y)
+  zieht eine Linie von der aktuellen bis zur angegebenen Position,
+  die danach die aktuelle ist.
+
+  gRect(long w,long h)
+  zeichnet ein Rechteck, die aktuelle Position ändert sich nicht.
+
+  gCircle(long r)
+  zeichnet ein Kreis im angegebenen Radius um die aktuelle Position.
+
+  gEllipse(long rx,long ry)
+  zeichnet eine Ellipse im angegebenen Radius um die aktuelle Position.
+
+  gArc(long rx,long ry,long start,long end)
+  zeichnet einen Kreis-/Ellipsenbogen ab der aktuellen Position; 'start'
+  und 'end' sind in Grad anzugeben.
+
+  gFill(BOOL fill)
+  alle weiteren Linienzüge werden gefüllt dargestellt. Die Angaben für die
+  Strichstärke und die Linienart werden dabei ignoriert.
+
+ · Schrift
+
+  gText(STRPTR text)
+  gString(ULONG id)
+  zeichnet ab der aktuellen Position einen Text.
+
+ · Diverses
+
+  gRotate(long degree)
+  alle nachfolgenden Objekte werden um 'degree' Grad gedreht.
+
+ · Initialisierungen
+
+  gInitWeight(ULONG id,STRPTR text,long weight)
+  gInitStyle(ULONG id,STRPTR text,long style)
+  ID für die Strichstärke und die Linienart.
+
+  gInitString(ULONG id,STRPTR text,STRPTR string)
+  ID für den gString()-Befehl.
+
+  gInitFont(ULONG id,STRPTR text,STRPTR name)
+  ID für einen bestimmten Zeichensatz.
+
+  gInitSize(ULONG id,STRPTR text,long points)
+  ID für die Größe eines Zeichensatzes.
+
+ · Definierte Tags für SetAttrs/GetAttr:
+
+  GA_Weight (long) - GID_Weight
+  Die Strichstärke für Linien in Punkten
+
+  GA_Style (long) - GID_Style
+  Linienart: gestrichelt oder durchgezogen
+
+  GA_Font (STRPTR) - GID_Font
+  Zeichensatz
+
+  GA_Size (long) - GID_Size
+  Höhe der Zeichen
+
+
+Die Strukturen (in Planung)
+---------------------------------------------------------------------
+
+Diese Strukturen werden vor den Klassen verborgen und sind nur im internen
+Gebrauch.
+
+Die Struktur einer Klasse:
+
+struct gClass
+{
+  struct ImageNode gc_Node;   /* Name und Icon (nur für nicht Diagramme) */
+  ULONG  gc_ObjectCount;
+  struct gInterface *gc_Interface;
+  ULONG  (*gc_Init)(...);     /* Parameter noch zu klären */
+  ULONG  (*gc_Exit)(...);
+  ULONG  (*gc_Create)(...);
+  ULONG  (*gc_New)(...);
+  ULONG  (*gc_Dispose)(...);
+  ULONG  (*gc_Change)(...);
+  ULONG  (*gc_Set)(...);
+  ULONG  (*gc_Get)(...);
+  ULONG  (*gc_Draw)(...);
+};
+
+#define GCT_2D 1        /* gc_Node.ln_Type */
+#define GCT_3D 2
+#define GCT_DIAGRAM 4   /* zusätzlich zu obigen */
+
+--
+Diese Struktur kann mehrere Objekte (gObject's) zusammenfassen:
+
+struct gGroup
+{
+  struct MinNode gg_Node;
+  UWORD  gg_Type;
+  LONG   gg_Left,gg_Top,gg_Width,gg_Height;
+  LONG   gg_mmLeft,gg_mmTop,gg_mmWidth,gg_mmHeight;
+  struct MinList gg_Objects;
+};
+
+--
+Das eigentliche Objekt; mit go_Node wird es in die Objektliste
+eingebunden, go_GroupNode ist entweder Teil einer gGroup oder
+eigenständig in der Gruppenliste vertreten:
+
+struct gObject
+{
+  struct Node go_Node;
+  struct MinNode go_GroupNode;
+  UWORD  go_Type;
+  LONG   go_Left,go_Top,go_Width,go_Height;
+  LONG   go_mmLeft,go_mmTop,go_mmWidth,go_mmHeight;
+  struct MinList go_DrawObjects;
+  struct gClass *go_Class;
+  double go_SizeX,go_SizeY,go_Rotation;
+  LONG   *go_Knobs;                     /* Punkte für gcChange() */
+  ULONG  go_NumKnobs;
+  LONG   *go_Points;                    /* alle Punkte des ganzen Objektes */
+  LONG   *go_DrawPoints;                /* zum Malen transformierte Punkte */
+  ULONG  go_NumPoints;
+};
+
+#define GT_GROUP 0   /* go_Type/gg_Type */
+#define GT_OBJECT 1
+
+--
+Die verschiedenen, durch gBeginObject() erstellten Objekte:
+
+struct gDrawObject
+{
+  struct MinNode gd_Node;
+
+};
+
+--
+Beim ID-System fehlt noch einiges; genaue Strukturen für die Objekte und die
+Abhängigkeiten von den IDs ausarbeiten
+
+--
+Merker-Mitschnitt zur Grafik:
+
+ · gObjs vielleicht bei kleinen Vergrößerungen/Objekten in BitMaps packen
+ · Objektvorder-/-hintergrund richtig bestimmen, nicht nur Reihenfolge ändern, Undo/Redo
+ · Knöpfe mit ständiger Befehlsausführung in Intervallen
+ · vielleicht BOOPSI-ähnlich organisieren
+ · go_PointHeight fest einführen
+ · Derzeitige Grafikfunktionen (Linien) mehr oder weniger unbrauchbar
+ · Linienauswahl überarbeiten
+ · Datatype-Objekte, die ihren Inhalt auch aus einer Datenbank ziehen können
+ · erweiterbare Objektschnittstelle?!
+ · weitere Knopfarten (Checkbox, ...)
+ × vielleicht UNT_OBJECTATTRS fertig implementieren
+ ¤ Grafik-Ausgabe puffern, optimieren
+
+--
+Copyright ©1998 pinc Software. Alle Rechte vorbehalten.

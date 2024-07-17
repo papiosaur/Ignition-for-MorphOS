@@ -1,0 +1,43 @@
+.base gcBase
+.libvectors gc_functable
+.bias 6
+.protoheader
+
+/* $VER: gclass_protos.h 0.11 (14.4.2001)
+** Developer Release 0.11
+**
+** ignition prototypes for gClasses
+**
+** Copyright ©2001-2008 pinc Software
+** All Rights Reserved
+*/
+
+#ifndef EXEC_TYPES_H
+#include <exec/types.h>
+#endif
+.func void gAreaMove(d0 LONG x,d1 LONG y);
+.func void gAreaDraw(d0 LONG x,d1 LONG y);
+.func void gAreaEnd(a0 struct RastPort *rp);
+.6 rem
+
+ memory 
+
+.18 rem
+
+ method calling 
+
+.18 tagcall gDoMethod
+.1e tagcall gDoSuperMethod
+.24 rem
+
+ graphics 
+
+.60 rem
+
+ fonts 
+
+.66 tagcall SetFontInfo
+.7e rem
+
+ misc
+

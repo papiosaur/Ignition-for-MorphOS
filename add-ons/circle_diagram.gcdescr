@@ -1,0 +1,5 @@
+NAME=Kreis-/Tortendiagramm
+NAME:english=Circle/Pie Diagram
+SUPER=diagram
+ICON=icons/diagram_line.icon
+DIAGRAM

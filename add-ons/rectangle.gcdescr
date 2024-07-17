@@ -1,0 +1,5 @@
+NAME=Rechteck
+NAME:english=Rectangle
+SUPER=root
+ICON=icons/obj_rect.icon
+OBJECT

@@ -1,0 +1,17 @@
+NAME=ASCII-Text
+NAME:english=ASCII-text
+SHORT=ascii
+SUFFIX=txt
+ASCII
+READABLE
+WRITEABLE
+NODEFAULT
+PRI=-128
+--
+ ASCII-Format für Textdateien.
+ Lediglich der Inhalt wird berücksichtigt, alle anderen Merkmale gehen verloren.
+ Version 1.0 (5.3.2001)
+:english
+ ASCII-format for text files.
+ Preserves only the plain text contents, all other properties are lost.
+ Version 1.0 (5.3.2001)

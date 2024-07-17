@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>ignition - Read Me</title>
+</head>
+
+<body bgcolor=white>
+
+	<h1>ignition</h1>
+	<h6>beta preview release, june 2003</h6>
+	&nbsp;<br>
+	<dl><dt><h3>Notes about this release</h3></dt>
+		<dd>
+		<p>
+		This is a beta release of ignition for MorphOS. For now, its user interface
+		is completely in German, but the localisation is currently underway. Sorry
+		for any inconvenience.
+		</p>
+		<p>
+		Some further remarks:
+		</p>
+		<ul>
+			<li>the TurboCalc import module is not yet finished - it doesn't support multiple pages, for example</li>
+			<li>Excel import/export filters are not included in this release</li>
+			<li>Printing and saving of documents have been disabled for this release</li>
+			<li>The provided documentation is only basic at this point. The next release will include HTML docs
+				in both, English and German.</li>
+		</ul>
+        </dd>
+	</dl>
+	
+	<dl><dt><h3>Notes about the compatibility to MorphOS</h3></dt>
+		<dd><p>
+			ignition was specifically adapted to run better on MorphOS, but there are
+			still some issues left. Notably:
+			</p>
+			<ul>
+				<li>There is a bug in the picture.datatype that prevents ignition to correctly
+					show its icons - they are all rendered using wrong colors. If this won't be
+					fixed for the final MorphOS release, this will be worked around, though.</li>
+				<li>Printing has not been tested</li>
+				<li>You may need very recent version of locale.library, iffparse.library, and
+					ft2.library for ignition to work correctly - if they aren't publicly available yet,
+					it's safe to use the AmigaOS counterparts (bullet.library instead of ft2.library)</li>
+				<li>You should have some vector fonts installed - this beta doesn't include any
+					fonts.</li>
+				<li>AmigaGuide support is still missing in MorphOS, and thus, the context sensitive help
+					won't work at all if you don't have installed the AmigaOS version of it.</li>
+				<li>With very large font sizes and a deep zoom level, it can happen that texts
+					aren't visible anymore. This seems to be an internal limit of the ft2.library -
+					the next release might impose stricter limits on the maximum font size to
+					hide this "feature" from you.</li>
+			</ul>
+		</dd>
+	</dl>
+
+	<p>
+	&nbsp;<br>
+	<font size="-1"><b>ignition</b> is copyright &copy;1996-2003 pinc Software, Axel D&ouml;rfler. All Rights Reserved.</font>
+	</p>
+</body>
+</html>

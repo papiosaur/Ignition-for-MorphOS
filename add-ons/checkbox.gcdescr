@@ -1,0 +1,5 @@
+NAME=Checkbox
+NAME:english=Checkbox
+SUPER=root
+ICON=icons/obj_checkbox.icon
+OBJECT

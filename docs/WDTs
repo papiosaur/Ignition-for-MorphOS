@@ -1,0 +1,210 @@
+ignition, WDT-docs 21.1.2001, axeld.
+
+ist aber nicht unbedingt überall up-to-date.
+
+----------------------------------------------------------------------------
+misc ***********************************************************************
+-----------------+--------------+-------------------------------------------
+WDT_PROJECT      |wd_Data       | Zeiger auf dargestellte Seite
+  (0)            |wd_ExtData[0] | Anzahl der Icons in der Iconleiste
+                 |wd_ExtData[4] | Blockbreite/-höhe bei PWA_TITLE
+                 |wd_ExtData[5] | horizontale oder vertikale PWA_TITLE
+                 |wd_ExtData[6] | gerade auszuführende Aktion (PWA_xxx)
+                 +--------------+-------------------------------------------
+  Projekte
+-----------------+--------------+-------------------------------------------
+WDT_INFO         |wd_Data       | Zeiger auf zugehörige Mappe
+  (1)            |wd_ExtData[0] |
+                 +--------------+-------------------------------------------
+  Info-Requester
+-----------------+--------------+-------------------------------------------
+WDT_CLIP         |              |
+  (2)            |              |
+-----------------+--------------+-------------------------------------------
+WDT_FIND         |wd_Data       | Zeiger auf zugehörige Mappe
+  (3)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_REPLACE      |wd_Data       | Zeiger auf zugehörige Mappe
+  (4)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PRINTER      |wd_Data       | Zeiger auf zugehörige Mappe
+  (5)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_FILETYPE     |wd_Data       | Zeiger auf zugehörige Mappe
+  (6)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_COMMAND      |wd_Data       | Zeiger auf zugehörige Mappe
+  (7)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+preferences ****************************************************************
+-----------------+--------------+-------------------------------------------
+WDT_PREFS        |wd_Data       | Zeiger auf zugehörige Mappe
+  (8)            |wd_ExtData[0] |
+                 +--------------+-------------------------------------------
+  Einstellungen-Auswahl
+-----------------+--------------+-------------------------------------------
+WDT_PREFDISP     |wd_Data       | Zeiger auf zugehörige Mappe
+  (9)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFSCREEN   |wd_Data       | Zeiger auf zugehörige Mappe
+  (4)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFCOLORS   |wd_Data       | Zeiger auf zugehörige Mappe
+  (5)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFICON     |wd_Data       | Kopie der Namen
+  (6)            |wd_ExtData[0] | linke Listview
+                 |wd_ExtData[1] | rechte Listview
+                 |wd_ExtData[2] | bisherige Liste der IconObjs
+                 |wd_ExtData[3] | Leerfeld-Eintrag
+                 |wd_ExtData[6] | Prefs-LockNode
+-----------------+--------------+-------------------------------------------
+WDT_PREFTABLE    |wd_Data       | Zeiger auf zugehörige Mappe
+  (7)            |wd_ExtData[0] | Kopie von struct PrefTable
+                 |wd_ExtData[1] | der aktuelle Name
+                 |wd_ExtData[2] | Namen-Listview
+                 |wd_ExtData[3] | Liste der Ziehecke-Funktionen
+                 |wd_ExtData[4] | aktiver Eintrag vom Qualifier-Cycle
+-----------------+--------------+-------------------------------------------
+WDT_PREFFILE     |wd_Data       | Zeiger auf zugehörige Mappe
+  (8)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFTOOL     |wd_Data       | Zeiger auf zugehörige Mappe
+  (9)            |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PAGE         |wd_Data       | Zeiger auf zugehörige Mappe
+  (10)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFPRINTER  |wd_Data       | Zeiger auf zugehörige Mappe
+  (11)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFCMDS     |wd_Data       | Zeiger auf zugehörige Mappe
+  (12)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFFORMAT   |wd_Data       | Zeiger auf zugehörige Mappe
+  (13)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_DEFINECMD    |wd_Data       | Zeiger auf zugehörige Mappe
+  (14)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PRESSKEY     |wd_Data       | Zeiger auf zugehörige Mappe
+  (15)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFCONTEXT  |wd_Data       | Zeiger auf zugehörige Mappe
+  (16)           |wd_ExtData[0] | Listen für die Kontext-Menüs
+                 |....          |
+                 |wd_ExtData[5] | (CMT_NUM == 5) Ausgewähltes Kontext-Menü
+                 |wd_ExtData[6] | Listview
+                 |wd_ExtData[7] | Nummer der aktuellen Liste
+-----------------+--------------+-------------------------------------------
+WDT_PREFMENU     |wd_Data       | Zeiger auf zugehörige Mappe
+  (16)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_PREFKEYS     |wd_Data       | Zeiger auf zugehörige Mappe
+  (17)           |wd_ExtData[0] | Listview
+                 |wd_ExtData[1] | Aktuelle AppKey
+                 |wd_ExtData[2] | Arbeitskopie der AppKey-Liste
+                 +--------------+-------------------------------------------
+  Einstellungen - Tastatur
+-----------------+--------------+-------------------------------------------
+WDT_FORMEL       |wd_Data       |
+  (18)           |wd_ExtData[0] |
+                 |wd_ExtData[1] | Listview
+                 |wd_ExtData[2] | Formelbereiche-Liste
+                 +--------------+-------------------------------------------
+  Formelauswahl zum Einfügen in eine Zelle
+-----------------+--------------+-------------------------------------------
+WDT_BORDER       |wd_Data       | Aktueller Rahmen (links/rechts/...)
+  (19)           |wd_ExtData[0] | (struct wdtBorder *) links
+                 |wd_ExtData[1] | ""                   rechts
+                 |wd_ExtData[2] | ""                   unten
+                 |wd_ExtData[3] | ""                   oben
+                 |wd_ExtData[4] | (struct Gadget *) "<" oder ">"
+                 |wd_ExtData[5] | Flag für "<"/">"
+                 +--------------+-------------------------------------------
+  Rahmen bestimmen
+-----------------+--------------+-------------------------------------------
+WDT_DIAGRAM      |wd_Data       | Zeiger auf zugehörige Seite (struct Page *)
+  (20)           |wd_ExtData[0] | (struct gDiagram *), falls es schon eins gibt
+                 |wd_ExtData[3] | (struct gDiagram *) -> initiales Objekt
+                 |wd_ExtData[4] | Liste der gGadgets
+                 |wd_ExtData[5] | Das Page-Gadget
+                 +--------------+-------------------------------------------
+  Diagramme erstellen und ändern
+-----------------+--------------+-------------------------------------------
+WDT_CELL         |wd_Data       | Pattern-Nummer
+  (21)           |wd_ExtData[0] | APen-ID
+                 |wd_ExtData[1] | BPen-ID
+                 |wd_ExtData[2] | geänderte Pages (Bit gesetzt)
+                 |wd_ExtData[3] | ausgewähltes Format
+                 |wd_ExtData[4] | ausgewählte Schrift
+                 |wd_ExtData[5] | LockNode
+                 |wd_ExtData[6] | aktuelle Seite
+                 |wd_ExtData[7] | Pattern-Farbe
+                 +--------------+-------------------------------------------
+  Zelleigenschaften ändern (Format, Farbe, Ausrichtung & Schrift)
+-----------------+--------------+-------------------------------------------
+WDT_DOCUMENT     |wd_Data       | Zeiger auf zugehörige Mappe
+  (22)           |wd_ExtData[0] |
+                 |wd_ExtData[3] | Liste der Events
+                 |wd_ExtData[4] | Ereignis-Listview
+-----------------+--------------+-------------------------------------------
+WDT_INDEX        |wd_Data       | Zeiger auf zugehörige Mappe
+  (23)           |wd_ExtData[0] | aktuelle Datenbank
+                 |wd_ExtData[1] | Kopie der Datenbanken
+-----------------+--------------+-------------------------------------------
+WDT_FILTER       |wd_Data       | Zeiger auf zugehörige Mappe
+  (23)           |wd_ExtData[0] | aktuelle Datenbank
+                 |wd_ExtData[1] | Kopie der Datenbanken
+-----------------+--------------+-------------------------------------------
+WDT_CELLSIZE     |wd_Data       | Zeiger auf zugehörige Mappe
+  (26)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_NAMES        |wd_Data       | Zeiger auf zugehörige Mappe
+  (28)           |wd_ExtData[0] |
+                 +--------------+-------------------------------------------
+  Namen definieren
+-----------------+--------------+-------------------------------------------
+WDT_DATABASE     |wd_Data       | Zeiger auf zugehörige Mappe
+  (29)           |wd_ExtData[0] |
+                 +--------------+-------------------------------------------
+  Datenbanken definieren
+-----------------+--------------+-------------------------------------------
+WDT_MASK         |wd_Data       | Zeiger auf zugehörige Mappe
+  (30)           |wd_ExtData[0] | Zeiger auf aktuelle Maske
+                 |wd_ExtData[1] | Liste aller Masken (lokal)
+                 |wd_ExtData[2] | Zeiger auf aktuelles Maskenfeld
+                 +--------------+-------------------------------------------
+  Masken generieren und ändern
+-----------------+--------------+-------------------------------------------
+WDT_ZOOM         |wd_Data       | Zeiger auf zugehörige Mappe
+  (31)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_COLORS       |wd_Data       | Zeiger auf zugehörige Mappe
+  (32)           |wd_ExtData[0] |
+-----------------+--------------+-------------------------------------------
+WDT_NOTES        |wd_Data       | Zeiger auf zugehörige Mappe
+  (33)           |wd_ExtData[0] | Liste aller bisherigen Notizen
+                 |wd_ExtData[1] | Edit-Gadget
+-----------------+--------------+-------------------------------------------
+WDT_GFXOBJS      |wd_Data       | Zeiger auf zugehörige Mappe
+  (34)           |wd_ExtData[0] |
+                 +--------------+-------------------------------------------
+  Objekt einfügen, Auswahl
+-----------------+--------------+-------------------------------------------
+WDT_OBJECT       |wd_Data       | Zeiger auf zugehöriges gObject
+  (35)           |wd_ExtData[0] | Page des Objektes
+                 |wd_ExtData[1] | Liste von Linienstärken (PopUp)
+                 |wd_ExtData[2] | Anzahl Zeilen in der rechten Box
+                 |wd_ExtData[3] | Anfang rechte Box
+                 +--------------+-------------------------------------------
+  Objektinformationen, typenspezifischer Aufbau
+----------------------------------------------------------------------------
+WDT_CHOOSEINDEX  |wd_Data       | Zeiger auf zugehörige Mappe
+  (38)           |wd_ExtData[0] | aktuelle Datenbank
+                 |wd_ExtData[1] | Kopie der db_Index-Zeiger (Array)
+                 |wd_ExtData[2] | Länge des Arrays [2]
+                 +--------------+-------------------------------------------
+  Datenbank indizieren
+-----------------+--------------+-------------------------------------------
+

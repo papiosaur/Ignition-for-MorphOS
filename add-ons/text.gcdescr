@@ -1,0 +1,5 @@
+NAME=Text
+NAME:english=Text
+SUPER=root
+ICON=icons/obj_text.icon
+OBJECT

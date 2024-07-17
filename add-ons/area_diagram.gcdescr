@@ -1,0 +1,5 @@
+NAME=Flächen
+NAME:english=Areas
+SUPER=axes
+ICON=icons/diagram_area.icon
+DIAGRAM

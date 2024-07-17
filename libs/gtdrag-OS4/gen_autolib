@@ -1,0 +1,4 @@
+gcc -I include -c autoinit_gtdrag_base.c -o autoinit_gtdrag_base.o
+gcc -I include -c autoinit_gtdrag_main.c -o autoinit_gtdrag_main.o
+ar rcs libgtdrag_auto.a autoinit_gtdrag_base.o autoinit_gtdrag_main.o
+ranlib libgtdrag_auto.a

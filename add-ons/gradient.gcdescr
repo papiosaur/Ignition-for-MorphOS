@@ -1,0 +1,5 @@
+NAME=Farbverlauf
+NAME:english=Color Gradient
+SUPER=root
+ICON=icons/obj_rect.icon
+OBJECT

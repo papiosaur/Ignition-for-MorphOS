@@ -1,0 +1,15 @@
+NAME=TurboCalc
+NAME:english=TurboCalc
+READABLE
+BYTES=???TURBOCALC
+READOVER=?
+SHORT=tcd
+SUFFIX=tcd
+--
+ TurboCalc-Format, erste Beta
+ bislang nur zu Testzwecken.
+ Version 0.5 (22.01.2022)
+:english
+ TurboCalc file format.
+ For testing purposes only right now.
+ Version 0.5 (22.01.2022)

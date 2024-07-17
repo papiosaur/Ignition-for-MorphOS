@@ -1,0 +1,54 @@
+##base _gcBase
+##bias 6
+##public
+*
+* memory 
+*
+AllocStringLength(string,len)(a0,d0)
+AllocString(string)(a0)
+FreeString(string)(a0)
+*
+* method calling 
+*
+gDoMethodA(go,msg)(a0/a1)
+gDoSuperMethodA(gc,go,msg)(a0/a1/a2)
+*
+* graphics 
+*
+SetHighColor(rp,color)(a0,d0)
+SetColors(rp,apenID,bpenID)(a0,d0/d1)
+FindColorPen(red,green,blue)(d0/d1/d2)
+DrawRect(rp,x,y,w,h)(a0,d0/d1/d2/d3)
+DrawLine(rp,dpi,x1,y1,x2,y2,points,flags)(a0,d0/d1/d2/d3/d4/d5/d6)
+gAreaMove(x,y)(d0/d1)
+gAreaDraw(x,y)(d0/d1)
+gAreaEnd(rp)(a0)
+GetDPI(page)(a0)
+GetOffset(page,horiz)(a0,d0)
+*
+* fonts 
+*
+FreeFontInfo(fi)(a0)
+SetFontInfoA(fi,dpi,ti)(a0,d0,a1)
+CopyFontInfo(fi)(a0)
+NewFontInfoA(fi,dpi,ti)(a0,d0,a1)
+DrawText(rp,fi,t,x,y)(a0/a1/a2,d0/d1)
+*
+* misc
+*
+OutlineLength(fi,text,len)(a0/a1,d0)
+OutlineHeight(fi,text,len)(a0/a1,d0)
+pixel(page,mm,width)(a0,d0/d1)
+mm(page,pixel,width)(a0,d0/d1)
+CreateTerm(page,text)(a0/a1)
+DeleteTerm(term)(a0)
+CopyTerm(term)(a0)
+CalcTerm(page,text,term,format)(a0/a1/a2/a3)
+gInsertRemoveCellsTerm(gcpc,page,term,t)(a0/a1/a2/a3)
+gInsertRemoveCellsTablePos(gcpc,page,term,tp)(a0/a1/a2/a3)
+TintColor(id,tint)(d0/d1)
+gSuperDraw(page,dpi,rp,gc,go,gb)(d0/d1,a0/a1/a2/a3)
+gGetLink(gd,col,row)(a0,d0/d1)
+SetLowColor(rp,color)(a0,d0)
+SetOutlineColor(rp,color)(a0,d0)
+##end

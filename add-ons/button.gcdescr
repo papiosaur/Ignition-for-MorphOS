@@ -1,0 +1,5 @@
+NAME=Knopf
+NAME:english=Button
+SUPER=root
+ICON=icons/obj_button.icon
+OBJECT

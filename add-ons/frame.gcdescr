@@ -1,0 +1,5 @@
+NAME=Rahmen
+NAME:english=Frame
+SUPER=root
+ICON=icons/obj_frame.icon
+OBJECT

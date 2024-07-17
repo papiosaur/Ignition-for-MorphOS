@@ -1,0 +1,5 @@
+NAME=Linie
+NAME:english=Line
+SUPER=root
+ICON=icons/obj_line.icon
+OBJECT

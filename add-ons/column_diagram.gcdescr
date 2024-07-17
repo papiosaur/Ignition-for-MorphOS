@@ -1,0 +1,5 @@
+NAME=Balken
+NAME:english=Boxes/Columns
+SUPER=axes
+ICON=icons/diagram_column.icon
+DIAGRAM

@@ -1,0 +1,384 @@
+@database ignreadme
+
+@node main "ignition - Kurze Einführung"
+
+@{b}ignition - Einführung für Beta-Tester (2.11.2002)@{ub}
+
+Dieses Dokument bietet Ihnen einen kurzen Überblick über die
+folgenden Themen:
+
+  @{"Installation            " link install}
+  @{"Text- und Formeleingabe " link text}
+  @{"interne Skripte         " link script}
+  @{"Datenbanken & Masken    " link dbase}
+  @{"Interaktivität          " link inter}
+  @{"Konfiguration           " link config}
+  @{"History                 " link history.guide/main}
+  @{"Hinweise                " link beta}
+  @{"Kontaktadresse          " link address}
+
+@{b}Auch die Beta-Version von ignition darf ohne Erlaubnis von
+pinc Software nicht an andere Personen weitergegeben werden.
+
+Einige Bereiche der Software sind noch nicht fertig oder
+endgültig implementiert (siehe @{"Hinweise" link beta}).@{ub}
+
+
+Copyright ©1996-2002 pinc Software. Alle Rechte vorbehalten.
+
+
+@endnode
+
+
+@node install "ignition - Installation"
+
+Damit ignition funktioniert, sollten Sie OS3.0 oder höher verwenden
+und in FONTS: einige Outlineschriften installiert haben, da ignition
+die Bullet-Library des Betriebssystems benutzt.
+Programmversionen für verschiedene Prozessortypen oder anderweitig
+optimierte Versionen sind nicht in den Archiven der Beta-Version enthalten.
+Auf spezielle Anfrage können wir Ihnen jedoch gerne eine solche zusenden.
+
+Zur Installation führen sie das beiliegende Skript aus.
+
+@{b}!! Die type1beta-Library arbeitet in ihrer aktuellen Version !!
+!! nicht einwandfrei mit ignition zusammen.                  @{b}!!@{ub}
+
+Am sichersten ist die ausschließliche Benutzung der dem System beiliegenden
+Bullet-Library; die frei erhältlichen sind leider nur mehr oder weniger
+kompatibel.
+
+Weiterhin sollte kein ASL-Requester Ersatz benutzt werden, da es
+auch hier zu Kompatibilitätsproblemen kommen kann und so evtl.
+nicht alle Funktionen zur Verfügung stehen.
+
+@endnode
+
+
+@node text "ignition - Text- und Formeleingabe"
+
+Bei der Eingabe von Daten gibt es einiges zu beachten:
+
+ignition unterscheidet bei der Eingabe bislang grundsätzlich
+zwischen Text (1), Werten (2) und Formeln (3).
+
+@{b}1.@{ub} Es wird alles als Text erkannt, was nicht in die
+   definierten Formatvorlagen paßt.
+   Beginnt die Eingabe mit '#' wird sie immer als Text erkannt,
+   auch wenn hier Zahlenwerte eingeben werden.
+   Beginnt ein als Text erkannter Text mit einer Zahl (nicht
+   mit '#'), hat er bei Berechnungen den Wert dieser Zahl.
+   Z.B. hat der Eintrag "42 Autos" den Wert 42, obwohl keine
+   passende Formatvorlage definiert ist.
+
+@{b}2.@{ub} Bei jeder Eingabe wird getestet, ob sie einer der definierten
+   @{"Formatvorlagen" link format} entspricht. Wichtig ist, daß eine solche Eingabe
+   dann auch über diese Vorlage erkannt wird. So kann die Eingabe "0:42",
+   je nachdem, welche Vorlage benutzt wird, sowohl 42 Minuten als auch 42
+   Sekunden bedeuten. Gültige, von den vorgegebenen Formatvorlagen erkannte,
+   Eingaben wären z.B. 'Montag' oder auch nur '42'.
+
+   Es gibt folgende grundsätzliche Typen:
+     Wert    - die Eingabe wird normal übernommen
+     Prozent - Eingabe in Prozent
+     Datum   - in Tagen
+     Zeit    - in Sekunden
+     Einheit - Werte mit Einheit, z.Zt. nur andeutungsweise
+
+   Diese Typen können beim Berechnen durcheinandergewürfelt werden, die Einheit
+   ist aber immer zu berücksichtigen. Das Ergebnis wird dann wieder in der
+   Formatvorlage dieser Berechnung dargestellt.
+
+@{b}3.@{ub} Beginnt die Eingabe mit einem '=' wird die Eingabe als Formel gelesen.
+   Folgende Operatoren kennt ignition:
+     + - * /  - Grundrechenarten
+     :        - Bereich zwischen Zellen (z.B. a3:a5)
+     !        - Fakultät (wird evtl. aber noch entfernt)
+     > >= < <=
+     = !=     - Vergleichszeichen: gleich und ungleich
+     & | ~    - bitweise Verknüpfungen: und, oder, nicht
+     && ||    - logische Verknüpfungen
+     %        - Modulo
+     ^        - Potenz
+
+   Klein-/Großschreibung wird bei Funktionen, Namen, etc. ignoriert.
+   Angefangene Funktionsnamen, Namen und Datenbanken können über die Tabulator-
+   Taste vervollständigt werden; gibt es mehrere Möglichkeiten, werden diese
+   durch erneutes Drücken dieser Taste durchblättert.
+
+   Neben Operatoren und Zahlen (bislang nicht in der Exponentialschreibweise)
+   können die folgenden Operanden benutzt werden:
+
+   @{b}Texte@{ub}
+   Texte sind grundsätzlich in Anführungszeichen zu setzen, es
+   sind nicht alle Operatoren auf Texte zulässig; Texte und
+   Zahlen dürfen nicht gemischt werden.
+   Beispiel: "Hallo "
+
+   @{b}Bezüge@{ub}
+   Endet eine Zeichenfolge mit einer Ziffer, wird von einem
+   Zellenbezug ausgegangen. Mit '$' kann bei Bezügen absolute
+   Adressierung benutzt werden.
+   Mit ':' gibt man bei Funktionen Bereiche an. Erwartet die
+   Funktion an dieser Stelle keinen Bereich oder verwendet
+   man einen Bereich innerhalb einer normalen Formel, wird
+   die Summe dieses Bereiches gebildet. "=summe(a3:c6)" ent-
+   spricht also "=a3:c6".
+   Mit '#' leitet man einen Bezug auf eine andere Seite der
+   Mappe ein, danach kann entweder der Name der Seite oder oder
+   die Seitenzahl stehen. Vor dem eigentlichen Bezug folgt
+   dann noch ein '#'.
+   Bei der Angabe einer Seitenzahl ist zu beachten, daß sich
+   diese durchaus noch ändern kann, wodurch Verweise ungültig
+   werden können. Bislang wird in diesem Fall noch nicht
+   gewarnt.
+   Beispiel: a2, $b3, $t$42, #Seite 2#a4, #2#b3, #2#a4:#2#b6
+
+   @{b}Funktionen@{ub}
+   Öffnet sich nach einer Zeichenfolge eine Klammer geht ignition
+   von einer Funktion aus.
+   Eine sehr kurze Beschreibung dieser findet sich im Auswahl-
+   requester bei "Wählen..." im Projektfenster.
+   Die Anzahl der implementierten Funktionen ist noch nicht
+   vollständig.
+
+   @{b}Namen & Datenbanken@{ub}
+   Bei Datenbanken kann auf deren Felder mittels '.' zugegriffen
+   werden (z.B. personen.name, oder personen.2 für das 2. Feld).
+   Falls ein Name für einen Bereich steht, ist das damit auch
+   möglich.
+   Bezüge bei Namen sind grundsätzlich absolut, auf ein '$' kann
+   also verzichtet werden.
+
+@endnode
+
+
+@node script "ignition - Interne Skripte"
+
+Interne Skripte sind Rexx-Skripte, die direkt in einem Projekt
+enthalten sind.
+
+In einer Mappe können beliebig viele Skripte definiert werden.
+
+Diese Skripte können bei der Ereignisdefinition benutzt werden,
+oder auch einfach über das Menü o. ä. aufgerufen werden.
+
+Anders als bei anderen gängigen Tabellenkalkulationen, sind
+diese Skripte nicht in den Tabellen selber vorhanden, sondern
+werden in einem eigenen Fenster verwaltet.
+
+@endnode
+
+
+@node dbase "ignition - Datenbanken und Masken"
+
+Datenbanken werden im über @{"DATABASE REQ" link befehle.guide/database} zu erreichendem Fenster
+definiert. Zu beachten ist, daß ignition hier nicht versucht, mit
+fehlerhafter Intelligenz automatisch eine Datenbank zu erkennen,
+sondern, daß diese von Hand eingegeben werden muß.
+Eine Datenbank besteht aus ihren Feldbezeichnern und den dazuge-
+hörigen Daten. Bei der Definition wird jedoch nur der Datenbereich
+angegeben, die Feldbezeichner werden darüber erwartet und @{b}müssen@{ub}
+angegeben werden, wenn alle Datenbankfunktionen benutzt werden
+sollen.
+
+Für eine einfache Eingabe empfiehlt sich die Definition einer Maske,
+die dann allerdings nur im @{"interaktiven Modus" link inter} funktionstüchtig
+ist.
+
+Siehe Beispieltabelle "Datenbank.igs"; darin werden einige
+Funktionen benutzt.
+
+@endnode
+
+
+@node inter "ignition - Interaktiver Modus"
+
+ignition verfügt über zwei grundsätzliche verschiedene Modi:
+
+ · im normalen Ediermodus stehen alle Funktionen zur Verfügung,
+   Masken oder Ereignisse werden jedoch nicht bedient.
+
+ · im interaktiven Modus findet eine vom Benutzer definierte
+   Ereignisauswertung statt, außerdem können Sie Datenbankmasken
+   benutzen.
+   Es können allerdings keine Blöcke oder Objekte markiert werden.
+
+In der rechten Ecke der Hilfeleiste wird der aktuelle Modus durch
+ein "n" bzw. "i" für den normalen bzw. den interaktiven Modus dar-
+gestellt.
+Um den Modus zu wechseln kann entweder direkt der Befehl @{"INTERACTIVE" link befehle.guide/interactive}
+benutzt oder im Dokument-Fenster umgeschaltet werden.
+
+
+@endnode
+
+
+@node config "ignition - Konfiguration"
+
+Hier werden folgende Teile der Konfiguration kurz angerissen:
+
+@{"Befehle        " link commands}
+@{"ToolTypes      " link tooltypes}
+@{"Formatvorlagen " link format}
+
+
+@endnode
+
+
+@node commands "ignition - Konfiguration der Befehle"
+
+Zwischen den über Menü, Tastatur und Piktogrammleiste erreich-
+baren Funktionen und den internen, auch über ARexx zu benutzen-
+den Befehlen, gibt es noch eine Ebene, die in der Konfiguration
+"Befehle" genannt werden.
+Diese Befehle können für interne Befehle und Rexx- sowie DOS-
+Scripte stehen.
+
+Es können nur solche Befehle in der Piktogrammleiste benutzt
+werden, denen ein Symbol zugewiesen wurde. Die Symbole werden
+über die Datatypes geladen.
+
+Dabei gilt es zu beachten, daß die Befehlsnamen 'Redo' und
+'Undo' erkannt werden und deren Hilfetext ein '%s' enthalten,
+wo ignition die jeweilige Aktionsbeschreibung einfügt.
+
+Eine Beschreibung der internen Befehle finden sie in dem
+beiligenden Dokument @{"Befehle.guide" link befehle.guide/main}
+
+
+@endnode
+
+
+@node tooltypes "ignition - ToolTypes"
+Beislang unterstützt ignition die folgenden ToolTypes:
+
+ · WITH bestimmt, welche Konfigurationsdatei benutzt wird
+
+ · FONTS bestimmt, in welchen Verzeichnissen neben FONTS: nach
+   Zeichensätzen gesucht wird. Dieses ToolType kann mehrmals
+   angegeben werden
+
+ · SHEETS wählt das Verzeichnis, in dem Ihre Dokumente normaler-
+   weise abgelegt werden
+
+ · ICONS bestimmt das Standardverzeichnis für Piktogramme
+
+ · GRAPHICS bestimmt das Standardverzeichnis für zusätzliche
+   Bilddateien
+
+ · NOABOUT sorgt dafür, daß das Info-Fenster nach dem Start
+   des Programmes nicht gezeigt wird
+
+ · BEGINNER läßt die Einstellungen für Befehle und Menü aus
+   dem Einstellungen-Fenster verschwinden.
+
+@endnode
+
+
+@node format "ignition - Formatvorlagen"
+
+Eine Formatvorlage ist eine Art Schablone, mit der versucht
+wird, den eingegebenen Text zu entschlüsseln bzw. einen Wert
+auszugeben.
+
+Es gibt verschiedene Formattypen, die unterschiedliche Formatier-
+symbole kennen:
+
+@{b}Werte@{ub}, @{b}Prozente@{ub} und @{b}Einheiten@{ub} kennen nur die "0" als Platzhalter
+für die einzusetzende Zahl, alle anderen Zeichen werden normal
+übernommen. Der Typ Einheit unterscheidet sich z.Zt. nicht vom
+Typ Wert.
+
+Der Typ @{b}Datum@{ub} kennt folgende Symbole:
+  #d - Tage
+  #D - Tage, 2-stellig
+  #m - Monat
+  #M - Monat, 2-stellig
+  #y - Jahr, 2-stellig
+  #Y - Jahr, mehrstellig
+  %m - abgekürzter Monatsname (z.B. Jan)
+  %M - Monatsname (z.B. Januar)
+  %w - abgekürzter Wochentag (z.B. Mo)
+  %W - Wochentag (z.B. Montag)
+Die Einheit des Typs Datum sind Tage.
+
+Der Typ @{b}Zeit@{ub} erkennt die folgenden Symbole:
+  #h - Stunden
+  #H - Stunden, 2-stellig
+  #m - Minuten
+  #M - Minuten, 2-stellig
+  #s - Sekunden
+  #S - Sekunden, 2-stellig
+Die Einheit des Typs Zeit sind Sekunden.
+
+Darüber hinaus gibt es noch für alle Typen:
+  ## oder #! - steht für eine einfache Raute
+  %% oder %! - steht für ein Prozentzeichen
+  ?x         - Zeichen x kann, muß aber nicht existieren
+  ??         - Zeichen wird ignoriert
+  ?!         - steht für ein Fragezeichen
+  ?* oder #? - sämtliche nachfolgenden Zeichen werden ignoriert
+
+Das Format der Formatierungsanweisungen wird sich aber wahrscheinlich
+bis zur endgültigen Version noch ändern.
+
+@endnode
+
+
+@node beta "ignition - Hinweise bzgl. der Beta-Version"
+
+Damit einige fehlende Funktionen und offensichtliche Fehler nicht
+häufiger bemerkt und bemängelt werden müssen, hier eine kleine
+Auswahl der bekannten Einschränkungen oder Fehler:
+
+ · In vielen Fenstern fehlen noch Tastaturkürzel.
+
+ · Beim Drucken werden Seitenränder bislang nicht berücksichtigt.
+
+ · Bei der Formatauswahl werden nicht nur die angegebenen Merkmale
+   übernommen, sondern immer alle.
+
+ · Das derzeitige Dateiformat speichert noch keine Datenbank-Filter (der
+   Aufbau von Datenbanken wird evtl. noch etwas verändert).
+
+ · Absturz beim Versuch von Drucken mit Bild-Objekten, wenn der Bildschirm nicht 256 Farben hat.
+
+ · Die Tabellenüberschriften können, wenn sie sehr groß sind, Probleme bereiten, wenn das
+   Fenster nicht groß genug ist.
+
+ · Das Berechnungs-System ist gerade im Umbruch, daher werden einige Zellen nicht
+   immer neuberechnet, wenn sie es sollten.
+
+ · diese Liste ist nicht ganz vollständig...
+
+Ansonsten interessieren uns auch Kleinigkeiten, an denen Sie sich
+stören. Kein Programm ist perfekt, aber wir wollen es doch nicht
+zu weit davon entfernt halten :-)
+
+
+@endnode
+
+
+@node address "ignition - Kontaktadresse"
+
+Unsere Adressen für Bug-Reports, Ideen und andere Dinge:
+
+@{b}Per Post:@{ub}
+  pinc Software
+  Axel Dörfler
+  Lange Straße 4a
+  49080 Osnabrück
+
+@{b}eMail-Adresse:@{ub}
+  axeld@pinc-software.de (Axel Dörfler)
+
+@{b}WWW:@{ub}
+  http://www.pinc-software.de
+
+Wir haben auch Interesse an umfangreichen Beispieltabellen,
+Piktogrammen, etc.
+
+
+@endnode
+

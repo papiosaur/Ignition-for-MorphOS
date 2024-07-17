@@ -1,0 +1,1535 @@
+@database igncmds
+
+@node main "ignition - Befehlsliste & Erläuterungen"
+
+@{u}@{b}Stand 18.11.1999@{ub}                                                 @{uu}
+
+Die Namen, Argumente und Funktion der Befehle sind bis zur
+Veröffentlichung Gegenstand beständiger Änderung.
+Gravierende Veränderungen werden an entsprechender Stelle mit
+Hinweis und Datum versehen.
+Für grundsätzliche Hinweise siehe @{"Hinweise" link hinweise}.
+
+ a.@{"ABOUT         " link about       } @{"ALIGN         " link align       }
+ b.@{"BLOCK         " link block       } @{"BORDER        " link border      }
+ c.@{"CALC          " link calc        } @{"CELL          " link cell        }
+   @{"CELLCOLUMNS   " link cellcolumns } @{"CELLSIZE      " link cellsize    }
+   @{"CLIP          " link clip        } @{"CLOSE         " link close       }
+   @{"COLOR         " link color       } @{"COPY          " link copy        }
+   @{"COORD2POS     " link coord2pos   } @{"CURRENT       " link current     }
+   @{"CUT           " link cut         }
+ d.@{"DATABASE      " link database    } @{"DBCURRENT     " link dbcurrent   }
+   @{"DBNEW         " link dbnew       } @{"DBSEARCH      " link dbsearch    }
+   @{"DELETE        " link delete      } @{"DELETEPAGE    " link deletepage  }
+   @{"DIAGRAM       " link diagram     } @{"DOCUMENT      " link document    }
+   @{"DUPOBJECT     " link dupobject   }
+ f.@{"FILTER        " link filter      } @{"FORMAT        " link format      }
+   @{"FRACTION      " link fraction    }
+ g.@{"GETBORDER     " link getborder   } @{"GETCELL       " link getcell     }
+   @{"GETPOS        " link getpos      } @{"GROUP         " link group       }
+ h.@{"HELP          " link help        } @{"HIDE          " link hide        }
+ i.@{"IGNOREEVENT   " link ignoreevent } @{"INDEX         " link index       }
+   @{"INSERTFORMULA " link insertformula} @{"INSERTOBJECT  " link insertobject}
+   @{"INTERACTIVE   " link interactive }
+ l.@{"LASTERROR     " link lasterror   } @{"LOAD          " link load        }
+   @{"LOADPICTURE   " link loadpicture } @{"LOCK          " link lock        }
+ m.@{"MASK          " link mask        }
+ n.@{"NAME          " link name        } @{"NEGPARENTHESES" link negparentheses}
+   @{"NEW           " link new         } @{"NEWPAGE       " link newpage     }
+   @{"NEXT          " link next        } @{"NOTES         " link notes       }
+ o.@{"OBJECTINFO    " link objectinfo  }
+ p.@{"PAGE          " link page        } @{"PASTE         " link paste       }
+   @{"POS2COORD     " link pos2coord   } @{"PREFS         " link prefs       }
+   @{"PRINT         " link print       }
+ q.@{"QUIT          " link quit        }
+ r.@{"RECALC        " link recalc      } @{"REDO          " link redo        }
+   @{"REPLACE       " link replace     }
+ s.@{"SAVE          " link save        } @{"SCRIPT        " link script      }
+   @{"SEARCH        " link search      } @{"SELECT        " link select      }
+   @{"SEPARATOR     " link separator   } @{"SORT          " link sort        }
+ t.@{"TEXT          " link text        }
+ u.@{"UNDO          " link undo        } @{"UNGROUP       " link ungroup     }
+   @{"UNLOCK        " link unlock      }
+ z.@{"ZOOM          " link zoom        }
+
+Dieses Dokument ist Copyright ©1999 pinc Software.
+Alle Rechte vorbehalten.
+@endnode
+
+
+@node hinweise "ignition - Hinweise auf die Befehle"
+Bestimmte Argumentenamen haben durchgängig, wenn vorhanden,
+die gleiche oder eine sehr ähnliche Funktion:
+
+  @{b}REQ@{ub}  fordert das Öffnen eines Requesters.
+
+  @{b}POS@{ub}  dem Befehl wird eine Tabellenposition der Form a4,
+       b3:c42 oder der Bezeichner einer Datenbank übergeben. Es gibt
+       Befehle, die explizit einen ganzen Block oder nur eine Zelle
+       benötigen.
+       Wird dieses Argument nicht angegeben, so wird in der Regel
+       der aktuell angewählte Block benutzt.
+
+  @{b}STEM@{ub} eine Rexx-Struktur wird übergeben (Stammsymbol
+       ohne Punkt).
+
+  @{b}VAR@{ub}  eine Rexx-Variable wird übergeben (einfaches Symbol).
+
+Auf die genaue Funktionsweise wird dennoch bei jeder Erläuterung
+eines Befehls eingegangen.
+Die Befehle werden in der Standard-AmigaDOS-Schablone angegeben und
+ausgelesen; zu den jeweiligen Typen von Argumenten siehe der dem
+Betriebssystem beiliegenden Dokumentation für AmigaDOS.
+
+
+@endnode
+
+
+@node asl "ignition - ASL-Requester"
+ASL-Requester sind bestimmte Requester zur Datei-, Zeichensatz- oder
+Bildschirmmodi-Auswahl, die vom Betriebssystem zur Verfügung gestellt
+werden.
+
+@endnode
+
+----------------------------------------------------------------------------------
+
+@node ABOUT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  ABOUT
+
+@{b}FUNKTION@{ub}
+  Öffnet den Info-Requester von ignition.
+  Ist dieser das einzige offene Fenster, kann er nicht direkt
+  geschlossen werden.
+
+
+@endnode
+
+@node ALIGN "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  ALIGN @{"POS" link hinweise},LEFT/S,CENTER/S,RIGHT/S,DELETE/S,TOP/S,MIDDLE/S,BOTTOM/S,REQ/S
+
+@{b}FUNKTION@{ub}
+  Bestimmt die horizontale & vertikale Ausrichtung des Inhaltes
+  der angegebenen Zellen.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}    - bestimmt den zu bearbeitenden Tabellenbereich
+  LEFT   - linksbündig
+  CENTER - zentriert
+  RIGHT  - rechtsbündig
+  DELETE - bisherige Ausrichtung wird aufgehoben und vom Format
+           bestimmt
+  TOP    - hoch
+  MIDDLE - mittig
+  BOTTOM - tief
+  REQ    - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node BLOCK "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  BLOCK @{"POS" link hinweise},NAME,LOAD/S,SAVE/S,REQ/S
+
+@{b}FUNKTION@{ub}
+  Lädt oder speichert, je nach den übergebenen Argumenten,
+  den aktuellen oder durch @{"POS" link hinweise} bestimmten Block bzw. markierten
+  Tabellenbereich.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}  - bestimmt den Tabellenbereich
+  NAME - Dateiname incl. Pfad relativ zum Programmverzeichnis
+  LOAD - Block soll geladen werden
+  SAVE - Block wird gespeichert
+  REQ  - öffnet einen @{"ASL-Requester" link asl} zur Auswahl einer Datei
+
+@{b}HINWEIS@{ub}
+  Dieser Befehl ist noch nicht implementiert.
+
+
+@endnode
+
+
+@node BORDER "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  BORDER @{"POS" link hinweise},LEFT/K,RIGHT/K,BELOW/K,ABOVE/K,BLOCK/S,REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl verändert man die Berahmung von Zellen.
+  Als Parameter gibt man bei LEFT/RIGHT/BELOW/ABOVE den Namen
+  oder ID der Farbe und die Dicke des Rahmens getrennt durch
+  einen Schrägstrich an (Bsp.: LEFT=Schwarz/5pt).
+  Wird dabei die Farbe weggelassen, wird automatisch Schwarz
+  benutzt (Bsp.: RIGHT=/1mm). Bei weggelassener Dicke oder 0 pt
+  wird der Rahmen entfernt.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}   - bestimmt den zu bearbeitenden Bereich
+  LEFT  - Rahmen am linken  Rand
+  RIGHT - "      "  rechten "
+  BELOW - "      "  unteren "
+  ABOVE - "      "  oberen  "
+  BLOCK - Rahmen wird um den ganzen Block gezogen
+  REQ   - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node CALC "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CALC EXP=EXPRESSION,VAR/K
+
+@{b}FUNKTION@{ub}
+  Berechnet den übergebenen Ausdruck wie die Formel einer Zelle.
+  Dabei können sämtliche Funktionen von ignition benutzt werden.
+
+@{b}ARGUMENTE@{ub}
+  EXPRESSION - zu berechnender Ausdruck (z.B. 4.2*2).
+  VAR        - Rexx-Variable für das Ergebnis
+
+
+@endnode
+
+
+@node CELL "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CELL @{"POS" link hinweise},INSERTROW/S,INSERTCOL/S,SHIFTRIGHT/S,SHIFTBELOW/S,REMOVEROW/S,REMOVECOL/S,SHIFTLEFT/S,SHIFTABOVE/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl werden Spalten, Reihen oder auch einzelne
+  Zellen in eine Tabelle zusätzlich eingefügt oder entfernt.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}        - bestimmt die Zellenposition
+  INSERTROW  - fügt eine Zeile in die Tabelle ein
+  INSERTCOL  - fügt eine Spalte in die Tabelle ein
+  SHIFTRIGHT - schiebt angewählte Zellen nach rechts
+  SHIFTBELOW - schiebt angewählte Zellen nach unten
+  REMOVEROW  - entfernt eine Zeile
+  REMOVECOL  - entfernt eine Spalte
+  SHIFTLEFT  - überschreibt angewählte Zellen mit den links davon
+               liegenden
+  SHIFTABOVE - löscht angewählte Zellen und zieht die untenliegenden
+               nach
+
+@{b}HINWEIS@{ub}
+  Die SHIFTxxx-Argumente sind erst seit dem 28.8.97 implementiert.
+
+
+@endnode
+
+
+@node CELLCOLUMNS "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CELLCOLUMNS @{"POS" link hinweise},SET/S,TOGGLE/S,RESET/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl setzen sie die Spaltenanzahl der ersten Spalte
+  des gewählten Blockes auf die Anzahl der Spalten im Block, unab-
+  hängig von der Breite der enthaltenen Texte.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}    - bestimmt den zu bearbeitenden Tabellenbereich
+  SET    - setzt die gewählte Spaltenanzahl
+  TOGGLE - wechselt zwischen gesetzt/normaler Spaltenanzahl
+  RESET  - setzt die normale Spaltenanzahl
+
+
+@endnode
+
+
+@node CELLSIZE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CELLSIZE @{"POS" link hinweise},WIDTH/K,HEIGHT/K,REQ/S
+
+@{b}FUNKTION@{ub}
+  Damit können Breite und/oder Höhe der angebenen Zellen in
+  verschiedenen Einheiten gesetzt werden.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}    - bestimmt den zu bearbeitenden Tabellenbereich
+  WIDTH  - Breite der Zellen (mit Einheit, z.B.: 2,4 cm)
+  HEIGHT - Höhe der Zellen
+  REQ    - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node CLIP "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CLIP REQ/S,UNIT/N/K
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie die Zwischenablage aufrufen.
+  Darüberhinaus können Sie die Unit des Clipboards bestimmen,
+  die dann für alle folgenden CUT, COPY & PASTE Aufrufe gilt,
+  wenn dort nicht anders angegeben.
+
+@{b}ARGUMENTE@{ub}
+  REQ  - öffnet die Zwischenablage
+  UNIT - bestimmt die zu benutzende Unit (0 ist voreingestellt).
+
+@{b}SIEHE AUCH@{ub}
+  @{"CUT" link cut}, @{"COPY" link copy}, @{"PASTE" link paste}, @{"DELETE" link delete}
+
+
+@endnode
+
+
+@node CLOSE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CLOSE NAME,QUIET/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl schließen Sie das angegebene oder aktuelle
+  Projekt.
+
+@{b}ARGUMENTE@{ub}
+  NAME  - bestimmt das zu schließende Projekt
+  QUIET - unterdrückt Abfrage bei ungespeicherten Daten.
+
+
+@endnode
+
+
+@node COLOR "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  COLOR @{"POS" link hinweise},APEN/K,BPEN/K,REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie die verwendeten Farben der
+  angegebenen Zellen setzen.
+  Bei den Farben können Sie den Namen oder die Kennung (Rot,
+  Grün, Blau) als Hexadezimal- ((0x|#)RRGGBB) oder Dezimalzahl
+  angeben.
+  Z.B. "Blau", "0xffffff", "#00aaee" oder 0 (für Schwarz)
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}  - bestimmt den zu bearbeitenden Tabellenbereich
+  APEN - Name oder ID der Vordergrundfarbe
+  BPEN - "    "    "  "   Hintergrundfarbe
+  REQ  - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node COPY "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  COPY @{"POS" link hinweise},UNIT/N/K
+
+@{b}FUNKTION@{ub}
+  Kopiert den aktuellen oder durch @{"POS" link hinweise} bestimmten Tabellen-
+  bereich in die Zwischenablage.
+  Mit dem Argument UNIT kann eine andere Zwischenablage als die in den
+  Einstellungen gewählte verwendet werden.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}      - bestimmt den zu kopierenden Tabellenbereich
+  UNIT     - Clipboard-Unit (Zwischenablage)
+
+@{b}SIEHE AUCH@{ub}
+  @{"CUT" link cut}, @{"PASTE" link paste}, @{"DELETE" link delete}, @{"CLIP" link clip}
+
+
+@endnode
+
+
+@node COORD2POS "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  COORD2POS COORD,COL/N,ROW/N,VAR/K
+
+@{b}FUNKTION@{ub}
+  Diese Routine wandelt die übergebenen Spalten- & Zeilen-
+  nummern in Positionsangaben.
+  Entweder muß COORD oder COL/ROW gesetzt werden, damit dieser
+  Befehl richtig arbeitet.
+
+@{b}ARGUMENTE@{ub}
+  COORD - ist ein STEM, der die Position angibt (C -> C.COL/C.ROW)
+  COL   - die Nummer der Spalten
+  ROW   - die Nummer der Reihe
+  VAR   - die Variable für das Ergebnis
+
+@{b}SIEHE AUCH@{ub}
+  @{"POS2COORD" link pos2coord}, @{"GETPOS" link getpos}
+
+
+@endnode
+
+
+@node CURRENT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CURRENT MAP=WINDOW/K,PAGE,NEXT/S,PREV/S,SHOW/S,NUM/N/K
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl bestimmt die aktuelle Mappe und deren Seite
+  für die aufrufende Umgebung (ignition/Skript).
+
+@{b}ARGUMENTE@{ub}
+  MAP=WINDOW - Name der Mappe
+  PAGE - Name der ausgewählten Seite
+  NEXT - nächste Seite
+  PREV - vorhergehende Seite
+  SHOW - Seite anzeigen
+  NUM  - Nummer des Projektes (in der Projektliste)
+
+
+@endnode
+
+
+@node CUT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  CUT @{"POS" link hinweise},TEXTONLY/S,UNIT/N/K
+
+@{b}FUNKTION@{ub}
+  Schneidet den aktuellen oder durch @{"POS" link hinweise} bestimmten Tabellen-
+  bereich aus und legt ihn in der Zwischenablage ab.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}      - bestimmt den auszuschneidenden Tabellenbereich
+  TEXTONLY - es sollen nur die Texte ausgeschnitten werden
+  UNIT     - Clipboard-Unit (Zwischenablage)
+
+@{b}SIEHE AUCH@{ub}
+  @{"COPY" link copy}, @{"PASTE" link paste}, @{"DETELE" link delete}, @{"CLIP" link clip}
+
+
+@endnode
+
+
+@node DATABASE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DATABASE REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie Datenbanken definieren.
+
+@{b}ARGUMENTE@{ub}
+  REQ    - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node DBCURRENT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DBCURRENT NAME,NEXT/S,PREV/S,FIRST/S,LAST/S,PARENT,NUM/N/K
+
+@{b}FUNKTION@{ub}
+  Setzt den aktuellen Eintrag der angegebenen Datenbank, auch
+  in Abhängigkeit von evtl. Referenzen einer PARENT-Datenbank.
+
+@{b}ARGUMENTE@{ub}
+  NAME   - Bezeichner einer Datenbank
+  NEXT   - nächster Eintrag
+  PREV   - vorheriger Eintrag
+  FIRST  - erster Eintrag
+  LAST   - letzter Eintrag
+  PARENT - zu berücksichtigende Referenzen
+  NUM    - Nummer des anzuzeigenden Eintrages
+
+
+@endnode
+
+
+@node DBNEW "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DBNEW NAME,PARENT,NOREFS/S
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl fügt der angewählten Datenbank einen Eintrag an,
+  unter Berücksichtigung von Zählern und Farben.
+  Wird das Argument NAME nicht gesetzt, so wird, falls die aktuelle
+  Zelle innerhalb einer Datenbank liegt oder nur eine Maske auf der
+  aktuell dargestellten Seite ist, diese gewählt.
+  Besitzen Felder eine Referenz auf eine andere Datenbank, so werden
+  diesen automatisch neue Einträge hinzugefügt, wenn NOREFS nicht
+  gesetzt ist.
+  Einer evtl. angegebenen PARENT-Datenbank wird im entsprechenden
+  Feld des aktuellen Eintrages eine zusätzliche Referenz zu diesem
+  neuen Eintrag gesetzt.
+
+@{b}ARGUMENTE@{ub}
+  NAME   - Bezeichner einer Datenbank
+  PARENT - Eine zu aktualisierende Datenbank (mit Referenz auf NAME)
+  NOREFS - Referenzen werden ignoriert
+
+
+@endnode
+
+
+@node DBSEARCH "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DBSEARCH NAME,FILTER/K,INPUT/S,START/S,STOP/S,TOGGLE/S
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl setzt die gewählte Maske einer Datenbank in den Such-
+  modus.
+  Wird das Argument NAME nicht gesetzt, so wird, falls die aktuelle
+  Zelle innerhalb einer Maske liegt oder nur eine Maske auf der aktiven
+  Seite existiert, diese gewählt.
+  Wenn FILTER angegeben ist, wird direkt dieser Filter für die
+  gewählte Datenbank benutzt, ansonsten bestimmen die übrigen
+  Argumente den Status der Suche.
+
+@{b}ARGUMENTE@{ub}
+  NAME   - der Name der Datenbank/Maske
+  FILTER - direkter Filter (z.B. 'muster("#?meyer";name)')
+  INPUT  - Die Eingabe des Suchfilters wird begonnen
+  START  - Die Datenbank wird anhand der eingegebenen Daten gefiltert
+  STOP   - Der Suchfilter wird wieder aufgehoben
+  TOGGLE - wechselt automatisch zwischen INPUT, START und STOP
+
+
+@endnode
+
+
+@node DELETE
+@{b}SYNTAX@{ub}
+
+  DELETE @{"POS" link hinweise},TEXTONLY/S
+
+@{b}FUNKTION@{ub}
+  Löscht sämtliche Zellen im aktuellen oder durch @{"POS" link hinweise} bestimmten
+  Bereich.
+  TEXTONLY sorgt dafür, daß lediglich die Inhalte der Zellen,
+  nicht aber Rahmen, Farben, etc., verlorengehen.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}      - bestimmt den zu löschenden Tabellenbereich
+  TEXTONLY - es sollen nur Texte gelöscht werden
+
+@{b}SIEHE AUCH@{ub}
+  @{"CUT" link cut}, @{"COPY" link copy}, @{"PASTE" link paste}, @{"CLIP" link clip}
+
+
+@endnode
+
+
+@node DELETEPAGE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DELETEPAGE NAME
+
+@{b}FUNKTION@{ub}
+  Löscht die angebene Seite der aktuellen Mappe.
+
+@{b}ARGUMENTE@{ub}
+  NAME - bestimmt, wenn angegeben, die zu entfernende Seite
+
+
+@endnode
+
+
+@node DIAGRAM "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DIAGRAM NAME,REQ/S
+
+@{b}FUNKTION@{ub}
+  Zum Erstellen von Diagrammen.
+  In der aktuellen Version noch nicht verfügbar!
+
+@{b}ARGUMENTE@{ub}
+  NAME - bestimmt den Namen des Diagramms
+  REQ  - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node DOCUMENT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DOCUMENT REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit dem durch diesen Befehl erscheinenden Requester können Sie
+  verschiedene Parameter und Eigenschaften der aktuellen Mappe
+  einstellen.
+  In diesem Fenster befindet sich auch die Ereignisdefinition.
+
+@{b}ARGUMENTE@{ub}
+  REQ    - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node DUPOBJECT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  DUPOBJECT NAME
+
+@{b}FUNKTION@{ub}
+  Dupliziert alle selektierten oder durch NAME bezeichneten
+  Objekte. Es kann nur ein Name angegeben werden.
+
+@{b}ARGUMENTE@{ub}
+  NAME - wählt ein Objekt durch Angabe des Namens aus
+
+
+@endnode
+
+
+@node FILTER "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  FILTER REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie ein Fenster öffnen, in dem Sie
+  für eine definierte Datenbank in der aktuellen Mappe einen
+  Filter setzen können.
+
+@{b}ARGUMENTE@{ub}
+  REQ      - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node FORMAT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  FORMAT @{"POS" link hinweise},SET/K,TYPE/N,FRACTION/N,ALIGN/K,PRI/N,NEGPEN/K,NEGPARENTHESES/S,REQ/S,GLOBAL/S
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl setzt die Formatvorlage der angegebenen Zellen.
+  Mit dem Argument TYPE können Sie zur Not auch neue Formate
+  definieren; der Einfachheit und Vollständigkeit wegen sollte
+  aber der Requester benutzt werden.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}      - bestimmt den zu bearbeitenden Tabellenbereich
+  SET      - Formatangabe (z.B. #h:#M:#S)
+  TYPE     - Typ der Formatangabe, wenn diese noch nicht definiert
+             ist: 0 - Wert, 1 - Prozent, 2 - Datum, 3 - Zeit,
+             4 - Einheit
+  FRACTION - bestimmt Nachkommastellenanteil; -1 bedeutet soviele
+             Stellen wie nötig.
+  ALIGN    - bestimmt Ausrichtung (left, center, right)
+  PRI      - Priorität der Formatvorlage
+  NEGPEN   - Spezielle Farbe bei negativen Zahlen (siehe @{"COLOR" link COLOR}
+  NEGPARENTHESES - Klammern bei negativen Zahlen anstelle des Minus-Zeichens
+  REQ      - öffnet einen entsprechenden Requester
+  GLOBAL   - die Definition eines Formates bezieht sich auf die globalen
+             Einstellungen.
+
+@{b}SIEHE AUCH@{ub}
+  @{"PREFS FORMAT" link PREFS}
+
+
+@endnode
+
+
+@node FRACTION "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  FRACTION @{"POS" link hinweise},NUM/N,INC/S,DEC/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl setzen sie die Anzahl der Nachkommastellen auf
+  einen bestimmten Wert oder vermindern bzw. erhöhen sie.
+  Diese Funktionalität finden Sie auch im über @{"FORMAT REQ" link FORMAT} zu
+  erreichendem Fenster.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}      - bestimmt den zu bearbeitenden Tabellenbereich
+  NUM - bestimmt Nachkommastellenanteil; -1 bedeutet soviele
+        Stellen wie nötig.
+  INC - erhöht die Anzahl der Nachkommastellen
+  DEC - vermindert die Anzahl der Nachkommastellen
+
+@{b}SIEHE AUCH@{ub}
+  @{"FORMAT" link FORMAT}
+
+
+@endnode
+
+
+@node HELP "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  HELP GUIDE,ACTIVEWINDOW/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl wird die kontext-sensitive Online-Hilfe
+  aufgerufen.
+  Mit GUIDE können Sie eine Hypertext-Datei angeben, die dann
+  angezeigt wird (mit Nodenamen, z.B. test.guide/main).
+  Mit ACTIVEWINDOW wird die Hilfe immer zum aktuellen Fenster
+  und nicht dem unter dem Mauszeiger aufgerufen.
+
+@{b}ARGUMENTE@{ub}
+  GUIDE        - bestimmt die anzuzeigende Hypertext-Datei
+  ACTIVEWINDOW - Hilfe zum aktuellen Fenster, Mausposition egal
+
+
+@endnode
+
+
+@node HIDE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  HIDE
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl wird das Fenster des aktuellen Projektes
+  im Hintergrund versteckt.
+  War sonst kein Fenster offen, öffnet sich der Info-Requester.
+
+@{b}SIEHE AUCH@{ub}
+  @{"CURRENT" link current}
+
+
+@endnode
+
+
+@node GETBORDER "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  GETBORDER @{"POS" link hinweise},LEFT/K,RIGHT/K,BELOW/K,ABOVE/K,STEM/K
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie den Rahmen einer Zelle auslesen.
+  Entweder geben Sie nur die Rahmenseiten an, deren Werte Sie
+  erfahren wollen, oder Sie geben einen STEM an, in den dann alle
+  Werte kopiert werden.
+  Der Stem besitzt die Einträge LEFT, RIGHT, BELOW und ABOVE.
+  Die Werte sind analog zu denen von @{"BORDER" link border}, d.h sie können
+  dort direkt verwendet werden.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}   - bestimmt die zu bearbeitende Zelle
+  LEFT  - Variable für den linken  Rahmen
+  RIGHT - "        "   "   rechten "
+  BELOW - "        "   "   unteren "
+  ABOVE - "        "   "   oberen  "
+  STEM  - das Ergebnis wird in diese Struktur kopiert
+
+@{b}SIEHE AUCH@{ub}
+  @{"BORDER" link border}
+
+
+@endnode
+
+
+@node GETCELL "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  GETCELL @{"POS" link hinweise},APEN/S,BPEN/S,FONT/S,FONTSIZE/S,STYLE/S,TEXT/S,FORMAT/S,VISIBLE/S,ALIGNMENT/S,NOTE/S,VAR/K,STEM/K
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl dient dazu, Zellenmerkmale in Erfahrung zu bringen.
+  Mit den Argumenten können Sie bestimmen, welche Merkmale Sie
+  benötigen.
+  Möchten Sie mehr als ein Argument erfragen, müssen Sie STEM
+  angeben; sonst langt VAR. Geben Sie kein Merkmal-Argument an,
+  werden alle Merkmale abgefragt.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}  - bestimmt die zu bearbeitende Zelle
+  [Merkmale] - gefragte Attribute, kein Attribut bedeutet alle Attribute
+  VAR  - Ergebnisvariable
+  STEM - das Ergebnis wird in diese Struktur kopiert
+
+
+@endnode
+
+
+@node GETPOS "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  GETPOS COL/K,ROW/K,STEM/K
+
+@{b}FUNKTION@{ub}
+  Weist den übergebenen Variablen die aktuelle Position zu.
+
+@{b}ARGUMENTE@{ub}
+  COL  - Ergebnisvariable für die Spaltenposition
+  ROW  - "                "   "   Zeilenposition
+  STEM - Ergebnis-Struktur (C -> C.COL/C.ROW)
+
+@{b}SIEHE AUCH@{ub}
+  @{"POS2COORD" link pos2coord}, @{"COORD2POS" link coord2pos}
+
+
+@endnode
+
+
+@node GROUP "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  GROUP NAME
+
+@{b}FUNKTION@{ub}
+  Stellt eine Gruppierung aus den momentan selektierten Objekten
+  her.
+  Wird das Argument NAME nicht angegeben, wird automatisch ein
+  Name vergeben.
+
+@{b}ARGUMENTE@{ub}
+  NAME - Name der Gruppierung
+
+@{b}SIEHE AUCH@{ub}
+  @{"UNGROUP" link ungroup}
+
+
+@endnode
+
+
+@node IGNOREEVENT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  IGNOREEVENT
+
+@{b}FUNKTION@{ub}
+  Innerhalb eines Ereigniss-Skriptes können Sie damit die weitere
+  Abarbeitung durch ignition unterbinden, der Befehl kann an be-
+  liebiger Stelle stehen.
+  Das ist nicht mit jedem Ereignis möglich.
+
+
+@endnode
+
+
+@node INDEX "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  INDEX REQ/S
+
+@{b}FUNKTION@{ub}
+  Damit können Sie ein Fenster öffnen, in dem Sie einen Index
+  zu den definierten Datenbanken erstellen und auswählen können.
+
+@{b}ARGUMENTE@{ub}
+  REQ  - öffnet den "Index erstellen"-Requester
+
+
+@endnode
+
+
+@node INSERTFORMULA "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  INSERTFORMULA @{"POS" link hinweise},NAME,TYPE/N/K,REQ/S
+
+@{b}FUNKTION@{ub}
+  Fügt eine Formel an der aktuellen oder durch @{"POS" link hinweise} bestimmten
+  Postition ein.
+  Die Formel wird über ihren Namen bestimmt oder in REQ
+  ausgewählt, in zweitem Fall werden alle andere Parameter
+  bis auf TYPE ignoriert.
+  Bei der Verwendung von NAME wird nicht geprüft, ob eine
+  Formel dieses Namens tatsächlich existiert.
+  Mit TYPE geben Sie an, welche Liste in der Schnellauswahl
+  angezeigt werden soll.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}  - Position, an der eingefügt werden soll
+  NAME - Name der Formel
+  TYPE - Typ für die Schnellauswahl
+  REQ  - öffnet einen Requester zur Auswahl einer Formel
+
+
+@endnode
+
+
+@node INSERTOBJECT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  INSERTOBJECT TYPE,REQ/S
+
+@{b}FUNKTION@{ub}
+  Fügt ein Objekt eines bestimmten Typs in die aktuelle Seite ein.
+
+@{b}ARGUMENTE@{ub}
+  TYPE - bestimmt den einzufügenden Typen (noch nicht implementiert)
+  REQ  - öffnet einen Requester zur Auswahl eines Typs
+
+
+@endnode
+
+
+@node INTERACTIVE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  INTERACTIVE SET/S,TOGGLE/S,NONE/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl setzt/löscht/wechselt man in den interaktiven
+  bzw. den normalen Modus.
+
+@{b}ARGUMENTE@{ub}
+  SET    - setzt den interaktiven Modus
+  TOGGLE - wechselt zwischen normalem und interaktiven Modus
+  NONE   - setzt den normalen Ediermodus
+
+
+@endnode
+
+
+@node LASTERROR "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  LASTERROR VAR
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl kann man den Fehlertext des letzten Fehlers
+  in eine Variable speichern.
+  Wird VAR weggelassen und 'OPTIONS RESULT' benutzt, wird der
+  Fehlertext direkt zurückgegeben.
+
+@{b}ARGUMENTE@{ub}
+  VAR - Variable für den Fehlertext
+
+@{b}SIEHE AUCH@{ub}
+  @{"QUIET" link quiet}
+
+
+@endnode
+
+
+@node LOAD "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  LOAD NAME,REQ/S,NEW/S,TYPE/K,TYPEREQ/S,OLDPATH/S
+
+@{b}FUNKTION@{ub}
+  Lädt ein Projekt und öffnet gegebenenfalls ein Fenster für es.
+  Wird versucht, eine Nicht-ignition-Datei zu laden, wird diese
+  als ASCII-Datei eingelesen.
+  Diese Handhabung ist vorübergehend und in der endgültigen
+  Version höchstwahrscheinlich nicht mehr zu finden.
+
+@{b}ARGUMENTE@{ub}
+  NAME    - bestimmt den Namen der ladenden Datei
+  REQ     - öffnet einen @{"ASL-Requester" link asl} zur Auswahl einer Datei
+  NEW     - öffnet ein neues Fenster für das Projekt, sonst wird das
+            aktuelle benutzt.
+  TYPE    - bestimmt einen Dateityp
+  TYPEREQ - öffnet zum @{"ASL" link asl} noch einen Dateityp-Auswahlrequester
+  OLDPATH - benutzt den Pfad aus dem bisher aktuellen Projekt
+
+@{b}SIEHE AUCH@{ub}
+  @{"SAVE" link save}
+
+
+@endnode
+
+
+@node LOADPICTURE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  LOADPICTURE NAME,REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl fügen Sie einen Bild-Rahmen in die aktuelle
+  Seite ein. Zum Laden der Bilddatei werden die Datatypes genutzt.
+  Z.Zt. ist dieser Befehl nur ansatzweise implementiert!
+
+@{b}ARGUMENTE@{ub}
+  NAME - Name des zu ladenden Bildes
+  REQ  - öffnet einen @{"ASL-Requester" link asl} zur Auswahl eines Bildes
+
+
+@endnode
+
+
+@node LOCK "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  LOCK
+
+@{b}FUNKTION@{ub}
+  Wenn ein ARexx-Skript größere Änderungen auf einer Seite vornimmt
+  kann man damit die Bildschirmausgabe während dieser Änderungen
+  aussetzen.
+  Wird die Seite mit @{"UNLOCK" link unlock} wieder freigegeben, wird sie komplett
+  neu aufgebaut.
+
+@{b}SIEHE AUCH@{ub}
+  @{"UNLOCK" link unlock}
+
+
+@endnode
+
+
+@node MASK "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  MASK REQ/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie Masken zu Datenbanken erstellen.
+
+@{b}ARGUMENTE@{ub}
+  REQ    - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node NAME "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  NAME NAME,SET/K,TYPE,DELETE/S,REQ/S,GLOBAL/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie die Namen bzw. Variablen einer
+  Mappe festlegen und löschen.
+  In der aktuellen Version wird noch nicht auf Typen getestet.
+
+@{b}ARGUMENTE@{ub}
+  NAME   - bestimmt den Namen
+  SET    - Inhalt
+  TYPE   - Typ des Namens: n[one] (keiner), c[ell] (Zellenname),
+           s[earch] (Suchkriterium)
+  DELETE - Löscht den angegebenen Namen
+  REQ    - öffnet einen entsprechenden Requester
+  GLOBAL - Änderungen beziehen sich auf die globalen Einstellungen
+
+@{b}SIEHE AUCH@{ub}
+  @{"PREFS NAMES" link PREFS}
+
+
+@endnode
+
+
+@node NEGPARENTHESES "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  NEGPARENTHESES @{"POS" link hinweise},SET/S,TOGGLE/S,NONE/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl setzt/löscht/wechselt man die Klammerung
+  bei negativen Zahlen in den Zellen (-42 <-> (42)).
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}    - bestimmt den zu bearbeitenden Tabellenbereich
+  SET    - setzt die Klammerung
+  TOGGLE - wechselt zwischen Klammern und normaler Anzeige
+  NONE   - löscht die Klammerung
+
+@endnode
+
+
+@node NEW "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  NEW
+
+@{b}FUNKTION@{ub}
+  Erstellt eine neue noch leere Mappe in einem neuen Fenster.
+
+
+@endnode
+
+
+@node NEWPAGE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  NEWPAGE NAME,QUIET/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl fügen Sie der aktuellen Mappe eine Seite
+  hinzu.
+
+@{b}ARGUMENTE@{ub}
+  NAME  - bestimmt den Namen der neuen Seite
+  QUIET - die Seite wird nicht angezeigt
+
+
+@endnode
+
+
+@node NEXT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  NEXT
+
+@{b}FUNKTION@{ub}
+  Führt die letzte Suche bzw. den letzten Suchen/Ersetzen-Vorgang
+  fort, wenn bereits eine(r) ausgeführt wurde.
+
+@{b}SIEHE AUCH@{ub}
+  @{"SEARCH" link search}, @{"REPLACE" link replace}
+
+
+@endnode
+
+
+@node NOTES "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  NOTES REQ/S
+
+@{b}FUNKTION@{ub}
+  Hängt Notizen an die angewählten Zellen. Z.Zt. ist dies nur
+  über den Requester möglich.
+
+@{b}ARGUMENTE@{ub}
+  REQ - öffnet den entsprechenden Requester
+
+
+@endnode
+
+
+@node OBJECTINFO "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  OBJECTINFO NAME
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl öffnet ein Informationsfenster für alle momentan
+  ausgewählten Objekte oder für das durch NAME bestimmte.
+
+@{b}ARGUMENTE@{ub}
+  NAME - wählt ein bestimmtes Objekt aus
+
+
+@endnode
+
+
+@node PAGE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  PAGE NAME,UP/S,DOWN/S,FIRST/S,LAST/S,REQ/S
+
+@{b}FUNKTION@{ub}
+  Setzt diverse Eigenschaften der aktuellen Seite.
+
+@{b}ARGUMENTE@{ub}
+  NAME  - bestimmt den Namen der Seite
+  UP    - die aktuelle Seite liegt in der Mappe eine Seite weiter oben
+  DOWN  - s.o., unten
+  FIRST - erste Seite der Mappe
+  LAST  - letzte Seite der Mappe
+  REQ   - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node PASTE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  PASTE @{"POS" link hinweise},TEXTONLY/S,UNIT/N/K,INTERN/S
+
+@{b}FUNKTION@{ub}
+  Fügt den zuletzt ausgeschnittenen Tabellenbereich an der
+  aktuellen oder der durch @{"POS" link hinweise} bestimmten Position ein.
+  Bei der Angabe von TEXTONLY werden nur die Texte der
+  Zellen überschrieben.
+  Mit dem Argument UNIT kann eine andere Zwischenablage als die in den
+  Einstellungen gewählte verwendet werden.
+  Wird INTERN angegeben, so wird immer aus der programminternen
+  Zwischenablage eingefügt und der Inhalt der globalen ignoriert.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}      - bestimmt die Position zum Einfügen
+  TEXTONLY - es sollen nur die Texte eingefügt werden
+  UNIT     - Clipboard-Unit (Zwischenablage)
+  INTERN   - nur die interne Zwischenablage verwenden
+
+@{b}SIEHE AUCH@{ub}
+  @{"CUT" link cut}, @{"COPY" link copy}, @{"DELETE" link delete}, @{"CLIP" link clip}
+
+
+@endnode
+
+
+@node POS2COORD "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  POS2COORD @{"POS" link hinweise},STEM/K,COL/K,ROW/K
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl wandelt Positionsangaben in Koordinaten um, mit
+  denen Skripte besser rechnen können.
+  Läßt man das Argument POS weg, wird die aktuelle Tabellenposition
+  benutzt (wie @{"GETPOS" link getpos}).
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}  - Positionsangabe (z.B. a4)
+  STEM - Ergebnis-Struktur (C -> C.COL/C.ROW)
+  COL  - Variable für die Spalte
+  ROW  - " für die Reihe
+
+@{b}SIEHE AUCH@{ub}
+  @{"COORD2POS" link coord2pos}, @{"GETPOS" link getpos}
+
+
+@endnode
+
+
+@node PREFS "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  PREFS DISPLAY/S,FILE/S,SCREEN/S,KEYS/S,FORMAT/S,PRINTER/S,COLORS/S,
+        TABLE/S,ICON/S,CMDS/S,MENU/S,SYSTEM/S,NAMES/S,REQ/S,
+        LOAD/S,SAVE/S,NAME,ADD/S,KEEPOLD/S,GLOBAL/S
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl lädt, speichert oder öffnet einen Requester der
+  gewünschten Einstellungen.
+  REQ allein bewirkt das Öffnen der jeweiligen Einstellung (nur
+  einer, auch wenn mehrere angegeben werden), oder einen Überblick,
+  wenn keine bestimmte Einstellung gewünscht ist.
+  In Verbindung mit LOAD/SAVE werden diese Einstellungen unter
+  NAME geladen bzw. gespeichert.
+  Wird NAME nicht angegeben, werden die Standardeinstellungen
+  unter "ignition.prefs" benutzt.
+
+  Die Option ADD wirkt sich nur auf bestimmte Einstellungen beim
+  Laden aus und bewirkt, daß diese hinzugefügt werden - sonst
+  werden die alten Einträge komplett entfernt.
+  KEEPOLD ist ein Zusatz zu ADD und sorgt dafür, daß bei namens-
+  gleichen Einträgen der alte Eintrag bevorzugt wird.
+
+  ADD wirkt sich z.Zt. auf die folgenden Einstellungen aus:
+   - Befehle
+
+@{b}ARGUMENTE@{ub}
+  DISPLAY - selektiert die Einstellungen "Darstellung"
+  FILE    - s.o. für "Datei"
+  SCREEN  - s.o. für "Bildschirm"
+  KEYS    - s.o. für "Tastatur"
+  FORMAT  - s.o. für "Formate"
+  NAMES   - s.o. für "Namen"
+  PRINTER - s.o. für "Drucker" (z.Zt. nicht implementiert)
+  COLORS  - s.o. für "Farben/Palette"
+  TABLE   - s.o. für "Tabelle"
+  ICON    - s.o. für "Piktogrammleiste"
+  CMDS    - s.o. für "Befehle"
+  MENU    - s.o. für "Menü"
+  SYSTEM  - s.o. für "System"
+  REQ     - öffnet je nach Argumenten einen entsprechenden Requester
+  LOAD    - lädt die jeweiligen Einstellungen
+  SAVE    - speichert die jeweiligen Einstellungen
+  NAME    - Name der Einstellungsdatei (Standard: ignition.prefs).
+  ADD     - lädt Einstellungen hinzu ohne alte zu löschen
+  KEEPOLD - bei doppelten Vorkommen alte bevorzugen
+  GLOBAL  - globale, nicht direkt projektbezogene Einstellungen
+
+@{b}HINWEIS@{ub}
+  Z.Zt. sind noch nicht alle Requester aufrufbar. Einige
+  Einstellungen werden noch nicht gespeichert.
+
+
+@endnode
+
+
+@node PRINT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  PRINT REQ/S
+
+@{b}FUNKTION@{ub}
+  Gibt das aktuelle Projekt ganz oder in Teilen auf dem Drucker
+  aus.
+  Diese Funktion ist bisher nur ansatzweise implementiert.
+
+@{b}ARGUMENTE@{ub}
+  REQ    - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+@node QUIT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  QUIT
+
+@{b}FUNKTION@{ub}
+  Beendet ignition.
+
+
+@endnode
+
+
+@node RECALC "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  RECALC
+
+@{b}FUNKTION@{ub}
+  Berechnet die aktuelle Mappe nochmals neu.
+  Eigentlich geschieht das aber sowieso automatisch, aber
+  so kann man ganz sicher gehen.
+
+
+@endnode
+
+
+@node REDO "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  REDO
+
+@{b}FUNKTION@{ub}
+  Wiederholt die zuletzt zurückgenommene Aktion.
+
+@{b}SIEHE AUCH@{ub}
+  @{"UNDO" link undo}
+
+
+@endnode
+
+
+@node REPLACE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  REPLACE REQ/S,NEXT/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie den "Suchen & Ersetzen"-Requester
+  öffnen oder mit den letzten Einstellungen fortführen.
+
+@{b}ARGUMENTE@{ub}
+  REQ  - öffnet einen entsprechenden Requester
+  NEXT - führt den letzten Ersetzen-Vorgang fort
+
+@{b}SIEHE AUCH@{ub}
+  @{"SEARCH" link search}, @{"NEXT" link next}
+
+
+@endnode
+
+
+@node SAVE "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  SAVE NAME,REQ/S,TYPEREQ/S
+
+@{b}FUNKTION@{ub}
+  Speichert das aktuelle Projekt.
+
+@{b}ARGUMENTE@{ub}
+  NAME    - Name und Pfad der Datei
+  REQ     - öffnet einen @{"ASL-Requester" link asl} zur Auswahl einer Datei
+  TYPEREQ - öffnet den Dateitype-Auswahlrequester bei REQ
+
+@{b}SIEHE AUCH@{ub}
+  @{"LOAD" link load}
+
+
+@endnode
+
+
+@node SCRIPT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  SCRIPT NAME
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl führt das angegebene interne, d.h. in einer Mappe
+  enthaltene, Skript aus, wenn vorhanden.
+
+@{b}ARGUMENTE@{ub}
+  NAME - Name des internen Skriptes
+
+
+@endnode
+
+
+@node SEARCH "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  SEARCH REQ/S,NEXT/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl können Sie den Suchen-Requester öffnen oder
+  die letzte Suche fortführen.
+
+@{b}ARGUMENTE@{ub}
+  REQ  - öffnet einen entsprechenden Requester
+  NEXT - führt die letzte Suche fort
+
+@{b}SIEHE AUCH@{ub}
+  @{"REPLACE" link replace}, @{"NEXT" link next}
+
+
+@endnode
+
+
+@node SELECT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  SELECT @{"POS" link hinweise},LEFT/S,RIGHT/S,ABOVE/S,BELOW/S,BLOCK/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl selektieren sie eine Zelle der aktuellen
+  Tabelle in Abhängigkeit zur vorher Selektierten oder auch
+  zu einem markierten Block.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}   - setzt die Tabellenposition
+  LEFT  - selektiert die Zelle links neben der Aktuellen
+  RIGHT - "          "   "     rechts neben der Aktuellen
+  ABOVE - "          "   "     über der Aktuellen
+  BELOW - "          "   "     unter der Aktuellen
+  BLOCK - vergrößert/verkleinert in Verbindung mit den anderen
+          Argumenten den markierten Block
+
+
+@endnode
+
+
+@node SEPARATOR "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  SEPARATOR @{"POS" link hinweise},SET/S,TOGGLE/S,NONE/S
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl setzt/löscht/wechselt man die Tausender-
+  trennzeichen in den Zellen (1234 DM <-> 1.234 DM).
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}    - bestimmt den zu bearbeitenden Tabellenbereich
+  SET    - setzt die Tausendertrennzeichen
+  TOGGLE - wechselt zwischen Ttz. und normaler Anzeige
+  NONE   - löscht Tausendertrennzeichen
+
+
+@endnode
+
+
+@node SORT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  SORT @{"POS" link hinweise},REVERSE/S,HORIZ/S,CMP=COMPARE/K
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl sortiert den angegebenen Bereich der aktuellen
+  Seite vertikal oder horizontal, aufsteigend oder absteigend.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}     - bestimmt den zu sortierenden Tabellenbereich
+  REVERSE - der Bereich wird absteigend sortiert
+  HORIZ   - der Bereich wird horizontal sortiert
+  COMPARE - bestimmt die Vergleichsspalte/-reihe (z.B. b2)
+
+
+@endnode
+
+
+@node TEXT "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  TEXT @{"POS" link hinweise},SET,DELETE/S
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl setzt oder löscht Texte der angegebenen Zellen.
+
+@{b}ARGUMENTE@{ub}
+  @{"POS" link hinweise}    - bestimmt den zu bearbeitenden Tabellenbereich
+  SET    - setzt einen Zelltext
+  DELETE - löscht den Text der Zellen
+
+
+@endnode
+
+
+@node UNDO "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  UNDO
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl macht die letzte Tabellenaktion rückgängig.
+
+@{b}SIEHE AUCH@{ub}
+  @{"REDO" link redo}
+
+
+@endnode
+
+
+@node UNGROUP "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  UNGROUP NAME
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl heben Sie eine durch GROUP hergestellte
+  Gruppierung wieder auf.
+  Wird keine bestimmte Gruppe ausgewählt, werden die aktuell
+  selektierten Gruppen aufgelöst.
+
+@{b}ARGUMENTE@{ub}
+  NAME - bestimmt die aufzulösende Gruppe
+
+@{b}SIEHE AUCH@{ub}
+  @{"GROUP" link group}
+
+
+@endnode
+
+
+@node UNLOCK "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  UNLOCK
+
+@{b}FUNKTION@{ub}
+  Mit diesem Befehl wird eine vorher mit @{"LOCK" link lock} gestoppte
+  Bildschirmausgabe wieder aktiviert.
+  Außerdem wird die ganze Seite nochmal neu aufgebaut; das
+  LOCK/UNLOCK-Paar lohnt sich also eher bei größeren Änderungen.
+
+@{b}SIEHE AUCH@{ub}
+  @{"LOCK" link lock}
+
+
+@endnode
+
+
+@node ZOOM "ignition - Befehlsliste & Erläuterungen"
+@{b}SYNTAX@{ub}
+
+  ZOOM PERCENT/N,PAGE/S,REQ/S
+
+@{b}FUNKTION@{ub}
+  Dieser Befehl stellt die aktuelle Seite in der gewünschten
+  Vergrößerung dar bzw. öffnet einen Requester, in dem dieses
+  möglich ist.
+  Akzeptiert werden Vergrößerungsstufen zwischen 25 und 1000%.
+
+@{b}ARGUMENTE@{ub}
+  PERCENT - 25%-1000% Vergrößerung
+  PAGE    - bewirkt, daß die Seite ganz dargestellt wird
+  REQ     - öffnet einen entsprechenden Requester
+
+
+@endnode
+
+
+

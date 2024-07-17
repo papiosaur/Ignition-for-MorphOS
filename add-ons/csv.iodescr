@@ -1,0 +1,20 @@
+NAME=CSV
+NAME:english=CSV
+SHORT=csv
+SUFFIX=csv
+READABLE
+WRITEABLE
+NODEFAULT
+ASCII
+HASPREFSGUI
+PRI=1
+PREFS=GUESS&sep=;
+--
+ Einfaches Austauschformat zwischen verschiedenen Datenbanken oder Tabellenkalkulationen.
+ Es bleibt ausschlieﬂlich der reine Text und die Zellenaufteilung erhalten.
+ Version 1.03 (03.03.2019)
+:english
+ Comma Separated Values.
+ The standard exchange format for databases and spreadsheet applications.
+ Preserves only the plain text part and the cell order.
+ Version 1.03 (03.03.2019)
