@@ -213,7 +213,7 @@ ifeq ($(OS), mos)
   LDFLAGS += -noixemul
   LDLIBS  += -ldebug
 
-  OBJS = stubs-morphos.o
+  #OBJS = stubs-morphos.o  /line deactivated because file not present, author contacted to ask why :-) 
 
 else
 ifeq ($(OS), aros-i386)
