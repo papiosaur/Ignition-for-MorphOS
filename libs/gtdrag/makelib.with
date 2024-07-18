@@ -1,0 +1,40 @@
+.base GTDragBase
+.table LibVectors
+.protoheader
+/*
+**  $VER: gtdrag_protos.h 3.6 (28.6.99)
+**  Includes Release 3.4
+**
+**  C prototypes. For use with 32 bit integers only.
+**
+**  Copyright ©1999 pinc Software.
+**  All Rights Reserved.
+*/
+
+#ifndef  EXEC_TYPES_H
+#include <exec/types.h>
+#endif
+#ifndef  LIBRARIES_GTDRAG_H
+#include <libraries/gtdrag.h>
+#endif
+.1e rem
+--- functions in v1 or higher ---
+
+ Message functions 
+
+.36 private GTDprivate1
+.3c private GTDprivate2
+.42 rem
+
+ Handling functions 
+
+.42 tagcall GTD_AddApp
+.4e tagcall GTD_AddWindow
+.5a tagcall GTD_AddGadget
+.66 rem
+--- functions in v3 or higher ---
+.6c tagcall GTD_SetAttrs
+.9c rem
+
+ Tree functions 
+

@@ -1,0 +1,51 @@
+##base _GTDragBase
+##bias 30
+##public
+*--- functions in v1 or higher ---
+*
+* Message functions
+*
+GTD_GetIMsg(iport)(a0)
+GTD_ReplyIMsg(msg)(a0)
+GTD_FilterIMsg(msg)(a0)
+GTD_PostFilterIMsg(msg)(a0)
+##private
+GTDprivate1()()
+GTDprivate2()()
+##public
+*
+* Handling functions
+*
+GTD_AddAppA(name,tagList)(a0/a1)
+GTD_RemoveApp()()
+GTD_AddWindowA(win,tagList)(a0/a1)
+GTD_RemoveWindow(win)(a0)
+GTD_AddGadgetA(type,gad,win,tagList)(d0,a0/a1/a2)
+GTD_RemoveGadget(gad)(a0)
+*--- functions in v3 or higher ---
+GTD_RemoveGadgets(gad)(a0)
+GTD_SetAttrsA(gad,tags)(a0/a1)
+GTD_GetAttr(gad,tag,storage)(a0,d0,a1)
+GTD_GetHook(num)(d0)
+GTD_GetString(od,buf,len)(a0/a1,d0)
+GTD_PrepareDrag(gad,gpi)(a0/a1)
+GTD_BeginDrag(gad,gpi)(a0/a1)
+GTD_HandleInput(gad,gpi)(a0/a1)
+GTD_StopDrag(gad)(a0)
+*
+* Tree functions
+*
+FreeTreeList(pool,treelist)(a0/a1)
+InitTreeList(treelist)(a0)
+FreeTreeNodes(pool,list)(a0/a1)
+AddTreeNode(pool,tree,name,image,flags)(a0/a1/a2/a3,d0)
+CloseTreeNode(main,treenode)(a0/a1)
+OpenTreeNode(main,treenode)(a0/a1)
+ToggleTreeNode(main,treenode)(a0/a1)
+GetTreeContainer(treenode)(a0)
+GetTreePath(treenode,buffer,len)(a0/a1,d0)
+FindTreePath(tree,path)(a0/a1)
+FindTreeSpecial(tree,special)(a0/a1)
+FindListSpecial(list,special)(a0/a1)
+ToggleTree(gad,treenode,msg)(a0/a1/a2)
+##end

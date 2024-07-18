@@ -1,0 +1,76 @@
+## gtdrag-Makefile
+##
+## Copyright ©1999-2008 pinc Software. All Rights Reserved.
+## Licensed under the terms of the MIT License.
+
+.c.o:
+  @echo "compiling $*.c"
+  @sc $(OPTIMIZE) $(CFLAGS) $(DEBUG) define=CPU_$(CPU) cpu=$(CPU) objname=$*.o $*.c
+
+.c.oo:
+  @echo "compiling $*.c"
+  @sc $(OPTIMIZE) $(CFLAGS) $(DEBUG) define=CPU_$(CPU) cpu=any objname=$*.oo $*.c
+
+.c.ooo:
+  @echo "compiling $*.c"
+  @sc $(CFLAGS) $(DEBUG) define=CPU_$(CPU) cpu=$(CPU) objname=$*.ooo $*.c
+
+.asm.o:
+  @echo "assembling $*.asm"
+  @asm -D -DCPU_$(CPU) -u $*.asm
+
+#CFLAGS         = streq strmerge nostkchk ign=147 idlen=65 cnest nover memsize=huge utillib
+CFLAGS          = streq strmerge nostkchk ign=147 idlen=65 cnest nover memsize=huge
+#LFLAGS         = sc sd noicons
+LFLAGS          = sc sd nd noicons
+
+OPTIMIZE        = optimize nooptinlocal opttime
+#OPTIMIZE       = noopt
+CPU             = 68020
+#CPU            = ANY
+#DEBUG          = debug=line
+LIBS            = lib:amiga.lib lib:sc.lib lib:debug.lib
+
+all:              includes LIBS:gtdrag.library
+
+LIBS:gtdrag.library: gtdrag.library
+                  copy gtdrag.library to LIBS: QUIET
+
+start:            all
+                  flush >nil:
+
+clean:
+                  @delete *.o *.oo
+
+OBJS            = gtdrag_romtag.o gtdrag_lib.oo gtdrag.o \
+                  GTD_DragObj.o GTD_Drag.o GTD_DropMsgs.o GTD_IMsgs.o \
+                  GTD_Windows.o GTD_Gadgets.o GTD_Boopsi.o GTD_Highlight.o \
+                  GTD_Apps.o GTD_Hook.o GTD_ImageHook.o GTD_IFFHook.o \
+                  GTD_TreeHook.o GTD_Tree.o
+
+gtdrag.library:   $(OBJS)
+                  @slink with t:gtdrag.with <<!(t:gtdrag.with)
+                    from $(OBJS)
+                    to $@
+                    lib $(LIBS)
+                    $(LFLAGS)
+                    <
+
+gtdrag_romtag.o:  gtdrag_romtag.asm gtdrag_rev.i
+
+##
+## Copy includes
+##
+
+include:libraries/gtdrag.h: include/libraries/gtdrag.h
+                  copy include/libraries/gtdrag.h include:libraries/ quiet
+
+include:clib/gtdrag_protos.h: include/clib/gtdrag_protos.h
+                  copy include/clib/gtdrag_protos.h include:clib/ quiet
+
+include:pragmas/gtdrag_pragmas.h: include/pragmas/gtdrag_pragmas.h
+                  copy include/pragmas/gtdrag_pragmas.h include:pragmas/ quiet
+
+includes:         include:libraries/gtdrag.h \
+                  include:clib/gtdrag_protos.h \
+                  include:pragmas/gtdrag_pragmas.h

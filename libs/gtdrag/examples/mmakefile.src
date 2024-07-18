@@ -1,0 +1,14 @@
+# $Id: mmakefile.src 53 2010-11-20 14:29:20Z marust $
+
+include $(TOP)/config/make.cfg
+
+#MM contrib-ignition-gtdrag-test : includes linklibs contrib-ignition-gtdrag
+
+FILES := boopsi dragtest treetest
+TARGETDIR := $(AROSDIR)/Tests/Ignition
+USER_INCLUDES := -I../../include
+
+%build_progs mmake=contrib-ignition-gtdrag-test files=$(FILES) \
+    targetdir=$(TARGETDIR) uselibs="amiga arosc gtdrag"
+
+%common

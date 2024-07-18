@@ -1,0 +1,269 @@
+TABLE OF CONTENTS
+
+gtdrag.lib/--background--
+gtdrag.lib/GTD_AddGadget
+gtdrag.lib/GTD_AddWindow
+gtdrag.lib/GTD_Free
+gtdrag.lib/GTD_GetDragMsg
+gtdrag.lib/GTD_GetIMsg
+gtdrag.lib/GTD_Init
+gtdrag.lib/GTD_RemoveGadget
+gtdrag.lib/GTD_RemoveWindow
+gtdrag.lib/GTD_ReplyDragMsg
+gtdrag.lib/GTD_ReplyIMsg
+gtdrag.lib/--background--
+
+    PURPOSE
+        The gtdrag.lib linker library provides the possibility of the
+        drag&drop-feature for gadtools-applications.
+		(c) Copyright 1996-2003 Axel Dörfler
+
+gtdrag.lib/GTD_AddGadget
+
+    NAME
+        GTD_AddGadget -- adds a drag&drop gadget to the internal list
+
+    SYNOPSIS
+        GTD_AddGadget(type,gad,win,firsttag,...);
+
+        void GTD_AddGadget(int,struct Gadget *,struct Window *,Tag,...);
+
+    FUNCTION
+        This function adds the chosen gadget to the internal list.
+        You must call this function, if you want a gadget to have
+        the drag&drop-feature.
+
+    TAGS
+        GTDA_Images (BOOL) - if specified, only the image of an ImageNode
+          will be dragged. GTDA_Width & GTDA_Height MUST be set. Defaults
+          to FALSE.
+
+        GTDA_NoDrag (BOOL) - if specified, you cannot drag an item of this
+          gadget; you are only able to drop them over it. Defaults to FALSE.
+
+        GTDA_ItemHeight (short) - specifies the height of a listview entry.
+          Defaults to the screen's font height.
+
+        GTDA_RenderHook (struct Hook *) - if provided, the dragged image
+          will be drawn with this listview-callback hook. Otherwise there
+          is only a ClipBlit() proceeded, which will not work in combination
+          with simple refresh windows. You can set a special size with
+          GTDA_Width & GTDA_Height. Defaults to NULL.
+
+        GTDA_Object (struct *ImageNode) - for non-listview gadgets: the
+          node that will be dragged. If a render hook is provided, the
+          object must be of a type accepted by the render hook.
+
+        GTDA_Width, GTDA_Height (short) - set the size of the image to
+          be dragged.
+
+    INPUTS
+        type - type of the gadget (e.g. LISTVIEW_KIND)
+        gad - pointer to the gadget (from CreateGadget()).
+        win - pointer to the window of the gadget
+
+    NOTE
+        If the gadget type is not LISTVIEW_KIND, GTDA_Object and
+        GTDA_Images or GTDA_RenderHook must be set, or DGF_NODRAG will
+        be set.
+        The function should only be used with GTDA_NoDrag when using
+        other gadget types than LISTVIEW_KIND and BUTTON_KIND.
+        Otherwise it could make problems (check it out).
+        You MUST set the GadgetID field of your gadgets!
+
+    SEE ALSO
+        GTD_RemoveGadget(), GTD_Free()
+
+gtdrag.lib/GTD_AddWindow
+
+    NAME
+        GTD_AddWindow -- adds drag&drop notify to a window
+
+    SYNOPSIS
+        GTD_AddWindow(win,firsttag,...);
+
+        void GTD_AddWindow(struct Window *,Tag,...);
+
+    FUNCTION
+        This function adds the chosen window to the internal list.
+        You must call this function, if you want to receive drag&
+        drop messages from a window.
+
+    TAGS
+        Currently, none are defined.
+
+    INPUTS
+        win - pointer to the window
+
+    NOTE
+        You only receive a DMT_WINDOW message from GTD_GetDragMsg() if
+        the object wasn't dropped over a gadget which supports drag&drop.
+
+    SEE ALSO
+        GTD_RemoveWindow(), GTD_Free()
+
+gtdrag.lib/GTD_Free
+
+    NAME
+        GTD_Free -- frees the dragging context data
+
+    SYNOPSIS
+        GTD_Free();
+
+        void GTD_Free(void);
+
+    FUNCTION
+        Frees all the memory allocated by GTD_Init(),GTD_AddGadget() and
+        GTD_AddWindow().
+        You should not call it without the GTD_Init() call before.
+
+    SEE ALSO
+        GTD_Init(), GTD_AddGadget(), GTD_AddWindow()
+
+gtdrag.lib/GTD_GetDragMsg
+
+    NAME
+        GTD_GetDragMsg -- get a DragMsg if possible
+
+    SYNOPSIS
+        dm = GTD_GetDragMsg();
+
+        struct DrawMsg *GTD_GetDragMsg(void);
+
+    FUNCTION
+        if there are drag messages in the queue, this function returns
+        the first.
+
+    RESULT
+        dm - a pointer to the message (NULL for none)
+
+    SEE ALSO
+        GTD_ReplyDragMsg()
+
+gtdrag.lib/GTD_GetIMsg
+
+    NAME
+        GTD_GetIMsg -- get an IntuiMessage, with all necessary processing
+
+    SYNOPSIS
+        msg = GTD_GetIMsg(port);
+
+        struct IntuiMessage *GTD_GetIMsg(iport);
+
+    FUNCTION
+        Gets an IntuiMessage and does all the drag processing including
+        a call to the aquivalent gadtools functions.
+
+    INPUT
+        port - a pointer to the msg port
+
+    RESULT
+        msg - pointer to the IntuiMessage
+
+    NOTE
+        You can get all messages if set in GTD_Init()
+
+    SEE ALSO
+        GTD_ReplyIMsg(), GTD_Init()
+
+gtdrag.lib/GTD_Init
+
+    NAME
+        GTD_Init -- inits all dragging context data
+
+    SYNOPSIS
+        GTD_Init(firsttag,...);
+
+        void GTD_Init(Tag,...);
+
+    FUNCTION
+        This function allocates and sets all needed data.
+        You must call it before any other action with this
+        lib.
+
+    TAGS
+        GTDA_GTMsgsOnly (BOOL) - you get all IntuiMessages when
+          calling GTD_GetIMsg(), not only the one of gadtools.
+
+    SEE ALSO
+        GTD_Free(), GTD_GetIMsg()
+
+gtdrag.lib/GTD_RemoveGadget
+
+    NAME
+        GTD_RemoveGadget -- removes a drag&drop gadget (V1.2)
+
+    SYNOPSIS
+        GTD_RemoveGadget(gad);
+
+        void GTD_AddGadget(struct Gadget *);
+
+    FUNCTION
+        This function removes the drag&drop feature from a gadget
+        which was added to it with GTD_AddGadget().
+
+    INPUTS
+        gad - pointer to the gadget (from CreateGadget()).
+
+    SEE ALSO
+        GTD_AddGadget(), GTD_Free()
+
+gtdrag.lib/GTD_RemoveWindow
+
+    NAME
+        GTD_RemoveWindow -- removes drag&drop notify from a window (V1.2)
+
+    SYNOPSIS
+        GTD_RemoveWindow(win);
+
+        void GTD_RemoveWindow(struct Window *);
+
+    FUNCTION
+        Removes drag&drop notfiy from a window which was added with
+        GTD_AddWindow() before.
+
+    INPUTS
+        win - pointer to the window
+
+    SEE ALSO
+        GTD_AddWindow(), GTD_Free()
+
+gtdrag.lib/GTD_ReplyDragMsg
+
+    NAME
+        GTD_ReplyDragMsg -- replies a DragMsg
+
+    SYNOPSIS
+        GTD_ReplyDragMsg(dm);
+
+        void GTD_ReplyDragMsg(struct DragMsg *);
+
+    FUNCTION
+        Replies a drag msg got from GTD_GetDragMsg().
+
+    INPUT
+        dm - a pointer to the drag msg
+
+    SEE ALSO
+        GTD_GetDragMsg()
+
+gtdrag.lib/GTD_ReplyIMsg
+
+    NAME
+        GTD_ReplyIMsg -- replies an IntuiMessage
+
+    SYNOPSIS
+        GTD_ReplyIMsg(msg);
+
+        void GTD_ReplyIMsg(struct IntuiMessage *);
+
+    FUNCTION
+        Replies the msg got from GTD_GetIMsg(). It works like
+        GT_ReplyIMsg() - but you must call GTD_GetIMsg() before!
+
+    INPUT
+        msg - a pointer to the msg to be replied, maybe NULL.
+
+    SEE ALSO
+        GTD_GetIMsg()
+

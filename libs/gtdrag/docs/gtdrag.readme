@@ -1,0 +1,33 @@
+Short:    Enhances gadtools with Drag&Drop
+Author:   axeld@pinc-software.de (Axel Dörfler)
+Uploader: axeld@pinc-software.de (Axel Dörfler)
+Type:     dev/gui
+
+The gtdrag.library provides the possibility of the
+drag&drop-feature for gadtools-applications.
+Further enhancements are planned, if requested.
+Licensed under the terms of the MIT License.
+
+(c) Copyright 1996-2003 Axel Dörfler
+
+========================= Archive contents ==========================
+
+Original  Packed Ratio    Date     Time    Name
+-------- ------- ----- --------- --------  -------------
+   15285    4556 70.1% 06-Nov-96 19:06:52  gtdrag/gtdrag.guide
+     468     225 51.9% 06-Nov-96 19:02:44  gtdrag/gtdrag.guide.info
+    6916    4126 40.3% 06-Nov-96 18:03:28  gtdrag/libs/gtdrag.library
+     624     242 61.2% 06-Nov-96 19:02:44  gtdrag/test.info
+    4800    2764 42.4% 06-Nov-96 18:35:52  gtdrag/test/dragtest
+     486     269 44.6% 06-Nov-96 19:02:40  gtdrag/test/dragtest.c.info
+     450     174 61.3% 06-Nov-96 19:02:40  gtdrag/test/dragtest.info
+    1264     509 59.7% 06-Nov-96 18:55:10  gtdrag/include/clib/gtdrag_protos.h
+    3154    1284 59.2% 06-Nov-96 18:55:28  gtdrag/include/libraries/gtdrag.h
+     845     242 71.3% 01-Nov-96 18:07:24  gtdrag/include/pragmas/gtdrag_pragmas.h
+     180     125 30.5% 20-Oct-96 16:30:16  gtdrag/include/proto/gtdrag.h
+    9644    2611 72.9% 06-Nov-96 18:36:32  gtdrag/test/dragtest.c
+     624     244 60.8% 06-Nov-96 19:02:44  gtdrag.info
+     323     168 47.9% 01-Nov-96 17:12:00  gtdrag/fd/gtdrag_lib.fd
+-------- ------- ----- --------- --------
+   45063   17539 61.0% 06-Nov-96 19:09:14   14 files
+
