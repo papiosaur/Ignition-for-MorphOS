@@ -42,7 +42,7 @@ CC := gg:bin/gcc
 
 INCPATH := -I.
 
-CFLAGS := $(INCPATH) -gstabs -D__USE_OLD_TIMEVAL__ -D__USE_INLINE__  -O3 -Ilibs/gtdrag-OS4/include -gstabs
+CFLAGS := $(INCPATH) -gstabs -D__USE_OLD_TIMEVAL__ -D__USE_INLINE__  -O3 -Ilibs/gtdrag/include -gstabs
 
 
 ###################################################################
