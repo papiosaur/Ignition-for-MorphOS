@@ -1,0 +1,25 @@
+Short:    Polygon/line clipping routines (68020+)
+Uploader: pak@star.sr.bham.ac.uk (Peter Knight)
+Author:   pak@star.sr.bham.ac.uk (Peter Knight)
+Type:     gfx/misc
+Version:  1.0
+
+Description
+-----------
+An easy to use suite of routines that provides an interface to the system 
+rendering functions, but with the added bonus that all drawing operations are 
+clipped against a specified rectangular region. MUCH better at clipping 
+filled polygons than the system routines (the size of the polygon can be up to 
+2^31 pixels). 
+
+Includes full source and object files for both SAS/C and GCC.
+
+Requires
+--------
+o WB 2.0 (or better).
+o 68020 (or better).
+
+
+
+
+

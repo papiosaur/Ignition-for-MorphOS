@@ -1,0 +1,19 @@
+# Target: demo
+
+# Flags
+CC = sc
+CFLAGS = OPT CPU=68020
+
+# Objects
+OBJ = demo.o safeclip.o clip.o
+
+.s.o: 
+	asm -m2 $*.s
+
+demo: $(OBJ)
+	slink LIB:c.o+$(OBJ) TO demo LIB LIB:sc.lib LIB:amiga.lib
+
+
+
+
+

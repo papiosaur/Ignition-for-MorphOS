@@ -1,0 +1,502 @@
+@database robodoc.guide
+@author J.v.Weert and F.N.C.Slothouber
+@(c)
+@node Main safeclip.doc
+@{b}TABLE OF CONTENTS@{ub}
+@{"Autodoc/safeclip.c" Link "safeclip.c"}
+@{"safeclip.c/SafeAreaEnd" Link "SafeAreaEnd"}
+@{"safeclip.c/SafeClose" Link "SafeClose"}
+@{"safeclip.c/SafeDraw" Link "SafeDraw"}
+@{"safeclip.c/SafeInit" Link "SafeInit"}
+@{"safeclip.c/SafeRectFill" Link "SafeRectFill"}
+@{"safeclip.h/SafeAreaDraw" Link "SafeAreaDraw"}
+@{"safeclip.h/SafeBltBitMapRastPort" Link "SafeBltBitMapRastPort"}
+@{"safeclip.h/SafeBltMaskBitMapRastPort" Link "SafeBltMaskBitMapRastPort"}
+@{"safeclip.h/SafeMove" Link "SafeMove"}
+@{"safeclip.h/SafeSetLimits" Link "SafeSetLimits"}
+@{"safeclip.h/SafeSetRast" Link "SafeSetRast"}
+@{"safeclip.h/SafeWritePixel" Link "SafeWritePixel"}
+@endnode
+@endnode
+@Node "safeclip.c" "Autodoc/safeclip.c"
+@{fg shine}Autodoc/safeclip.c@{fg text}
+
+NAME
+@{fg shine}    safeclip.c
+@{fg text}
+FUNCTION
+    Interface to system rendering routines, but with clipping.
+
+AUTHOR
+@{i}@{fg shine}    Peter Knight: All programming.
+    <pak@star.sr.bham.ac.uk>
+@{fg text}@{ui}
+CREATION DATE
+@{fg shine}    24-Mar-96
+@{fg text}
+COPYRIGHT
+@{i}@{fg shine}    No restriction (Public Domain).
+    Use these routines as you wish in your programs (a 
+    mention in the credits would be nice, but it's up to
+    you).
+@{fg text}@{ui}
+@endnode
+@Node "SafeAreaEnd" "safeclip.c/SafeAreaEnd"
+@{fg shine}safeclip.c/SafeAreaEnd@{fg text}
+
+NAME
+@{fg shine}   @{"SafeAreaEnd" Link "safeclip.c.doc/SafeAreaEnd"}
+@{fg text}
+SYNOPSIS
+        @{"SafeAreaEnd" Link "safeclip.c.doc/SafeAreaEnd"} (rp)
+   VOID @{"SafeAreaEnd" Link "safeclip.c.doc/SafeAreaEnd"} (struct RastPort *)
+
+FUNCTION
+   Process buffer AreaDraw() instructions
+
+INPUTS
+   rp - Pointer to RastPort on which to draw.
+
+RESULTS
+
+SEE ALSO
+   SafeAreaDraw
+
+
+ (struct RastPort *rp)
+
+  if (CLP_nvert)
+    {
+      WORD i;
+      SafeAreaDraw (CLP_vert[0][0], CLP_vert[0][1]);  /* ensure shape is closed */
+      CLP_nvert = Clip2d (CLP_nvert);
+      AreaMove (rp, CLP_vert[0][0], CLP_vert[0][1]);
+      for (i = 1; i < CLP_nvert; i++)
+        AreaDraw (rp, CLP_vert[i][0], CLP_vert[i][1]);
+      AreaEnd (rp);
+      CLP_nvert = 0;
+    }
+
+
+@endnode
+@Node "SafeClose" "safeclip.c/SafeClose"
+@{fg shine}safeclip.c/SafeClose@{fg text}
+
+NAME
+@{fg shine}   @{"SafeClose" Link "safeclip.c.doc/SafeClose"}
+@{fg text}
+SYNOPSIS
+        @{"SafeClose" Link "safeclip.c.doc/SafeClose"} ()
+   VOID @{"SafeClose" Link "safeclip.c.doc/SafeClose"} (VOID)
+
+FUNCTION
+   Free memory allocated by @{"SafeInit" Link "safeclip.c.doc/SafeInit"}()
+
+INPUTS
+
+RESULTS
+
+SEE ALSO
+   @{"SafeInit" Link "safeclip.c.doc/SafeInit"}
+
+
+ (VOID)
+
+  if (CLP_wrk)
+    {
+      FreeVec (CLP_wrk);
+      CLP_wrk = 0;
+    }
+  if (CLP_vert)
+    {
+      FreeVec (CLP_vert);
+      CLP_vert = 0;
+    }
+
+
+
+@endnode
+@Node "SafeDraw" "safeclip.c/SafeDraw"
+@{fg shine}safeclip.c/SafeDraw@{fg text}
+
+NAME
+@{fg shine}   @{"SafeDraw" Link "safeclip.c.doc/SafeDraw"}
+@{fg text}
+SYNOPSIS
+        @{"SafeDraw" Link "safeclip.c.doc/SafeDraw"} (rp, x, y)
+   VOID @{"SafeDraw" Link "safeclip.c.doc/SafeDraw"} (struct RastPort *, LONG, LONG)
+
+FUNCTION
+   Move from previous point to new point and draw line.
+
+INPUTS
+   rp - Pointer to RastPort on which to draw.
+   (x,y) - Coordinates of point to draw to
+
+RESULTS
+
+SEE ALSO
+   SafeMove
+
+
+ (struct RastPort *rp, LONG x, LONG y)
+
+  CLP_vert[0][0] = CLP_lastx;
+  CLP_vert[0][1] = CLP_lasty;
+  CLP_vert[1][0] = x;
+  CLP_vert[1][1] = y;
+  if (@{"ClipLine" Link "safeclip.c.doc/ClipLine"} ())
+    {
+      Move (rp, CLP_vert[0][0], CLP_vert[0][1]);
+      Draw (rp, CLP_vert[1][0], CLP_vert[1][1]);
+    }
+  CLP_lastx = x;
+  CLP_lasty = y;
+
+
+@endnode
+@Node "SafeInit" "safeclip.c/SafeInit"
+@{fg shine}safeclip.c/SafeInit@{fg text}
+
+NAME
+@{fg shine}   @{"SafeInit" Link "safeclip.c.doc/SafeInit"}
+@{fg text}
+SYNOPSIS
+   res = @{"SafeInit" Link "safeclip.c.doc/SafeInit"} (nvertmax)
+   ULONG @{"SafeInit" Link "safeclip.c.doc/SafeInit"} (ULONG)
+
+FUNCTION
+   Initialise clipping routines
+
+INPUTS
+   nvertmax - Maximum number of vertices per polygon that you will use
+
+RESULTS
+   res - FALSE if everything was OK, otherwise TRUE
+
+SEE ALSO
+   @{"SafeClose" Link "safeclip.c.doc/SafeClose"}
+
+
+ (ULONG nvertmax)
+
+  CLP_nvertmax = nvertmax;
+  if (!(CLP_vert = (LONG (*)[2]) AllocVec (8 * CLP_nvertmax, MEMF_PUBLIC)))
+    return 1;
+  if (!(CLP_wrk = (LONG (*)[2]) AllocVec (8 * CLP_nvertmax, MEMF_PUBLIC)))
+    {
+      FreeVec (CLP_vert);
+      CLP_vert = 0;
+      return 2;
+    }
+  return 0;
+
+
+@endnode
+@Node "SafeRectFill" "safeclip.c/SafeRectFill"
+@{fg shine}safeclip.c/SafeRectFill@{fg text}
+
+NAME
+@{fg shine}   @{"SafeRectFill" Link "safeclip.c.doc/SafeRectFill"}
+@{fg text}
+SYNOPSIS
+        @{"SafeRectFill" Link "safeclip.c.doc/SafeRectFill"} (rp, x1, y1, x2, y2)
+   VOID @{"SafeRectFill" Link "safeclip.c.doc/SafeRectFill"} (struct RastPort *, LONG, LONG, LONG, LONG)
+
+FUNCTION
+   Draw a filled rectangle
+
+INPUTS
+   rp - Pointer to RastPort on which to draw.
+   (x1,y1) - Coordinates of upper left corner
+   (x2,y2) - Coordinates of lower right corner
+
+RESULTS
+
+SEE ALSO
+
+
+ (struct RastPort *rp, LONG x1, LONG y1, LONG x2, LONG y2)
+
+  SafeAreaDraw (x1, y1);
+  SafeAreaDraw (x2, y1);
+  SafeAreaDraw (x2, y2);
+  SafeAreaDraw (x1, y2);
+  @{"SafeAreaEnd" Link "safeclip.c.doc/SafeAreaEnd"} (rp);
+
+
+@endnode
+
+@Node "SafeAreaDraw" "safeclip.h/SafeAreaDraw"
+@{fg shine}safeclip.h/SafeAreaDraw@{fg text}
+
+NAME
+@{fg shine}   @{"SafeAreaDraw" Link "safeclip.h.doc/SafeAreaDraw"}
+@{fg text}
+SYNOPSIS
+        @{"SafeAreaDraw" Link "safeclip.h.doc/SafeAreaDraw"} (x, y)
+   VOID @{"SafeAreaDraw" Link "safeclip.h.doc/SafeAreaDraw"} (LONG, LONG)
+
+FUNCTION
+   Add a vertex to polygon vertex list.
+
+INPUTS
+   (x,y) - Coordinates of new vertex
+
+RESULTS
+
+SEE ALSO
+   safeclip.c/SafeAreaEnd 
+
+ __inline VOID
+ (LONG x, LONG y)
+
+  extern LONG CLP_nvert, CLP_nvertmax, (*CLP_vert)[2];
+  if (CLP_nvert < CLP_nvertmax)
+    {
+      CLP_vert[CLP_nvert][0] = x;
+      CLP_vert[CLP_nvert][1] = y;
+      CLP_nvert++;
+    }
+
+
+@endnode
+@Node "SafeBltBitMapRastPort" "safeclip.h/SafeBltBitMapRastPort"
+@{fg shine}safeclip.h/SafeBltBitMapRastPort@{fg text}
+
+NAME
+@{fg shine}   @{"SafeBltBitMapRastPort" Link "safeclip.h.doc/SafeBltBitMapRastPort"}
+@{fg text}
+SYNOPSIS
+        @{"SafeBltBitMapRastPort" Link "safeclip.h.doc/SafeBltBitMapRastPort"} (srcbm, srcx, srcy,
+                               destrp, destx, desty.
+                               sizex, sizey, minterm)
+   VOID @{"SafeBltBitMapRastPort" Link "safeclip.h.doc/SafeBltBitMapRastPort"} (struct BitMap *, LONG, LONG,
+                               struct RastPort *, LONG, LONG,
+                               LONG, LONG, UBYTE)
+
+FUNCTION
+   Blit a rectangle region from a BitMap to a RastPort.
+
+INPUTS
+   srcbm - Pointer to source BitMap
+   (srcx,srcy) - Coordinates of upper left of source rectangle.
+   destrp - Pointer to destination RastPort
+   (destx,desty) - Coordinates of upper left of destination rectangle.
+   sizex, sizey - Size of source rectangle
+   minterm - Minterm for blitter to use during copy
+
+RESULTS
+
+SEE ALSO
+   @{"SafeBltMaskBitMapRastPort" Link "safeclip.h.doc/SafeBltMaskBitMapRastPort"}
+
+ __inline VOID
+ (struct BitMap *srcbm, LONG srcx, LONG srcy,
+                       struct RastPort *destrp, LONG destx, LONG desty,
+                       LONG sizex, LONG sizey, UBYTE minterm)
+
+  extern LONG CLP_xmin, CLP_xmax, CLP_ymin, CLP_ymax;
+  LONG xlo = destx, xhi = destx + sizex - 1;
+  LONG ylo = desty, yhi = desty + sizey - 1;
+  if (xlo < CLP_xmin) xlo = CLP_xmin;
+  if (ylo < CLP_ymin) ylo = CLP_ymin;
+  if (xhi > CLP_xmax) xhi = CLP_xmax;
+  if (yhi > CLP_ymax) yhi = CLP_ymax;
+  if (xlo <= xhi && ylo <= yhi && 
+      xlo >= CLP_xmin && xhi <= CLP_xmax && 
+      ylo >= CLP_ymin && yhi <= CLP_ymax)
+    {
+      BltBitMapRastPort (srcbm, srcx + (xlo - destx), srcy + (ylo - desty),
+                         destrp, xlo, ylo,
+                         (xhi - xlo) + 1, (yhi - ylo) + 1,
+                         minterm);
+    }
+
+
+
+@endnode
+@Node "SafeBltMaskBitMapRastPort" "safeclip.h/SafeBltMaskBitMapRastPort"
+@{fg shine}safeclip.h/SafeBltMaskBitMapRastPort@{fg text}
+
+NAME
+@{fg shine}   @{"SafeBltMaskBitMapRastPort" Link "safeclip.h.doc/SafeBltMaskBitMapRastPort"}
+@{fg text}
+SYNOPSIS
+        @{"SafeBltMaskBitMapRastPort" Link "safeclip.h.doc/SafeBltMaskBitMapRastPort"} (srcbm, srcx, srcy,
+                               destrp, destx, desty.
+                               sizex, sizey, minterm, bltmask)
+   VOID @{"SafeBltMaskBitMapRastPort" Link "safeclip.h.doc/SafeBltMaskBitMapRastPort"} (struct BitMap *, LONG, LONG,
+                               struct RastPort *, LONG, LONG,
+                               LONG, LONG, UBYTE, PLANEPTR)
+
+FUNCTION
+   Blit a rectangle region from a BitMap to a RastPort through
+   a single plane mask.
+
+INPUTS
+   srcbm - Pointer to source BitMap
+   (srcx,srcy) - Coordinates of upper left of source rectangle.
+   destrp - Pointer to destination RastPort
+   (destx,desty) - Coordinates of upper left of destination rectangle.
+   sizex, sizey - Size of source rectangle
+   minterm - Minterm for blitter to use during copy
+   bltmask - Pointer to single plane mask
+
+RESULTS
+
+SEE ALSO
+   @{"SafeBltBitMapRastPort" Link "safeclip.h.doc/SafeBltBitMapRastPort"}
+
+ __inline VOID
+ (struct BitMap *srcbm, LONG srcx, LONG srcy,
+                           struct RastPort *destrp, LONG destx, LONG desty,
+                           LONG sizex, LONG sizey, UBYTE minterm, PLANEPTR bltmask)
+
+  extern LONG CLP_xmin, CLP_xmax, CLP_ymin, CLP_ymax;
+  LONG xlo = destx, xhi = destx + sizex - 1, ylo = desty, yhi = desty + sizey - 1;
+  if (xlo < CLP_xmin) xlo = CLP_xmin;
+  if (ylo < CLP_ymin) ylo = CLP_ymin;
+  if (xhi > CLP_xmax) xhi = CLP_xmax;
+  if (yhi > CLP_ymax) yhi = CLP_ymax;
+  if (xlo <= xhi && ylo <= yhi && 
+      xlo >= CLP_xmin && xhi <= CLP_xmax && 
+      ylo >= CLP_ymin && yhi <= CLP_ymax)
+    {
+      BltMaskBitMapRastPort (srcbm, srcx + (xlo - destx), srcy + (ylo - desty),
+                             destrp, xlo, ylo,
+                             (xhi - xlo) + 1, (yhi - ylo) + 1,
+                             minterm, bltmask);
+    }
+
+
+
+@endnode
+@Node "SafeMove" "safeclip.h/SafeMove"
+@{fg shine}safeclip.h/SafeMove@{fg text}
+
+NAME
+@{fg shine}   @{"SafeMove" Link "safeclip.h.doc/SafeMove"}
+@{fg text}
+SYNOPSIS
+        @{"SafeMove" Link "safeclip.h.doc/SafeMove"} (x, y)
+   VOID @{"SafeMove" Link "safeclip.h.doc/SafeMove"} (LONG, LONG)
+
+FUNCTION
+   Move drawing pen to new position.
+
+INPUTS
+   (x,y) - Coordinates of new point.
+
+RESULTS
+
+SEE ALSO
+   safeclip.c/SafeDraw
+
+ __inline VOID
+ (LONG x, LONG y)
+
+  extern LONG CLP_lastx, CLP_lasty;
+  CLP_lastx = x;
+  CLP_lasty = y;
+
+
+
+@endnode
+@Node "SafeSetLimits" "safeclip.h/SafeSetLimits"
+@{fg shine}safeclip.h/SafeSetLimits@{fg text}
+
+NAME
+@{fg shine}   @{"SafeSetLimits" Link "safeclip.h.doc/SafeSetLimits"}
+@{fg text}
+SYNOPSIS
+        @{"SafeSetLimits" Link "safeclip.h.doc/SafeSetLimits"} (x1, y1, x2, y2)
+   VOID @{"SafeSetLimits" Link "safeclip.h.doc/SafeSetLimits"} (LONG, LONG, LONG, LONG)
+
+FUNCTION
+   Set limits of clipping rectangle
+
+INPUTS
+   (x1,y1) - Coordinates of upper left of clipping rectangle
+   (x2,y2) - Coordinates of lower right of clipping rectangle
+
+RESULTS
+
+SEE ALSO
+
+ __inline VOID
+ (LONG x1, LONG y1, LONG x2, LONG y2)
+
+  extern LONG CLP_xmin, CLP_ymin, CLP_xmax, CLP_ymax;
+  CLP_xmin = x1;
+  CLP_ymin = y1;
+  CLP_xmax = x2;
+  CLP_ymax = y2;
+
+
+
+@endnode
+@Node "SafeSetRast" "safeclip.h/SafeSetRast"
+@{fg shine}safeclip.h/SafeSetRast@{fg text}
+
+NAME
+@{fg shine}   @{"SafeSetRast" Link "safeclip.h.doc/SafeSetRast"}
+@{fg text}
+SYNOPSIS
+        @{"SafeSetRast" Link "safeclip.h.doc/SafeSetRast"} (rp, pen)
+   VOID @{"SafeSetRast" Link "safeclip.h.doc/SafeSetRast"} (struct RastPort *, UBYTE)
+
+FUNCTION
+   Set the entire clipping region to a certain colour.
+
+INPUTS
+   rp - Pointer to RastPort
+   pen - Pen number to fill region with.
+
+RESULTS
+
+SEE ALSO
+
+ __inline VOID
+ (struct RastPort *rp, UBYTE pen)
+
+  extern LONG CLP_xmin, CLP_ymin, CLP_xmax, CLP_ymax;
+  UBYTE oldPen = rp->FgPen;   /* should use GetAPen() if v39+ */
+  SetAPen (rp, pen);
+  RectFill (rp, CLP_xmin, CLP_ymin, CLP_xmax, CLP_ymax);
+  SetAPen (rp, oldPen);
+
+
+@endnode
+@Node "SafeWritePixel" "safeclip.h/SafeWritePixel"
+@{fg shine}safeclip.h/SafeWritePixel@{fg text}
+
+NAME
+@{fg shine}   @{"SafeWritePixel" Link "safeclip.h.doc/SafeWritePixel"}
+@{fg text}
+SYNOPSIS
+        @{"SafeWritePixel" Link "safeclip.h.doc/SafeWritePixel"} (rp, x, y)
+   VOID @{"SafeWritePixel" Link "safeclip.h.doc/SafeWritePixel"} (struct RastPort *, LONG, LONG)
+
+FUNCTION
+   Set the colour of an individual pixel.
+
+INPUTS
+   rp - Pointer to RastPort
+   (x,y) - Coordinates of pixel
+
+RESULTS
+
+SEE ALSO
+
+ __inline VOID
+ (struct RastPort *rp, LONG x, LONG y)
+
+  extern LONG CLP_xmin, CLP_xmax, CLP_ymin, CLP_ymax;
+  if (x >= CLP_xmin && x <= CLP_xmax && y >= CLP_ymin && y <= CLP_ymax)
+    WritePixel (rp, x, y);
+
+
+
+@endnode
+
