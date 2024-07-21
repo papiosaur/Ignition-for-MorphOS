@@ -6,6 +6,17 @@
 #ifndef IGN_FUNCS_H
 #define IGN_FUNCS_H
 
+#if defined(__MORPHOS__)
+//#include <stdbool.h>
+//#include "SDI_compiler.h"
+typedef BYTE int8;
+typedef UBYTE uint8;
+typedef WORD int16;
+typedef UWORD uint16;
+typedef LONG int32;
+typedef ULONG uint32;
+#endif
+
 // boopsi.c
 extern void EraseFatRect(struct RastPort *rp, WORD x1, WORD y1, WORD x2, WORD y2);
 extern void DrawFatRect(struct RastPort *rp, WORD x1, WORD y1, WORD x2, WORD y2);

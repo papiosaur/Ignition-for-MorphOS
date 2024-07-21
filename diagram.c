@@ -1400,7 +1400,7 @@ gAxesDraw(REG(d0, struct Page *page), REG(d1, ULONG dpi), REG(a0, struct RastPor
 
 	if (ga->ga_FontInfo)
 	{
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 		double y = (ga->ga_Min > 0.0 ? 0.0 : ga->ga_Min), div = ga->ga_Divisor;  //So nun auch eine Y Beschriftung bei Werten unter 0
 		long w, i, h = (ga->ga_Max - ga->ga_Min) /div, old, lastfont;
 #else

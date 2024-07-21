@@ -15,6 +15,7 @@
 
 #if !defined(__SASC)
 
+#if !defined(__MORPHOS__)
 void swmem(char *dest, char *src, int s)
 {
 	int i;
@@ -26,7 +27,7 @@ void swmem(char *dest, char *src, int s)
 		src[i] = c;
 	}
 }
-
+#endif
 
 void strins(char *to, const char *from)
 {

@@ -38,11 +38,12 @@ ignition_OBJ := \
 ##
 ###################################################################
 
-CC := gg:bin/gcc
+CC := ppc-morphos-gcc-11
 
-INCPATH := -I.
+INCPATH := -I. -Ilibs/textedit/include/ -Ilibs/gtdrag/include \
+	-Ilibs/scroller/include  -Iinclude
 
-CFLAGS := $(INCPATH) -gstabs -D__USE_OLD_TIMEVAL__ -D__USE_INLINE__  -O3 -Ilibs/gtdrag/include -gstabs
+CFLAGS := $(INCPATH) -noixemul -gstabs -D__USE_OLD_TIMEVAL__ -D__USE_INLINE__  -O3  -gstabs
 
 
 ###################################################################
@@ -78,7 +79,7 @@ realclean:
 
 ignition: $(ignition_OBJ)
 	@echo "Linking ignition.debug"
-	@gcc:bin/gcc -o ignition.debug $(ignition_OBJ) -lauto -lamiga -l gtdrag_auto
+	ppc-morphos-gcc-11 -noixemul -o ignition.debug $(ignition_OBJ) -lm -lauto libs/libgtdrag.a -noixemul
 	@echo "Creating non-debug target: ignition"
 	@strip -s ignition.debug -o ignition
 

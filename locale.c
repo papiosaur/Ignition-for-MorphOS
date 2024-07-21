@@ -6,6 +6,7 @@
 #define CATCOMP_ARRAY
 #include "ignition_strings.h"
 
+/*
 #ifndef __amigaos4__
 	CONST_STRPTR ASM GetString(REG(a0, struct LocaleInfo *li), REG(d0, LONG stringNum))
 	{
@@ -18,3 +19,5 @@
 		return 0;
 	}
 #endif
+*/
+

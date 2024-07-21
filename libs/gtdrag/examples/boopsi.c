@@ -24,8 +24,6 @@ quit
 
 #define INTUI_V36_NAMES_ONLY
 
-#include "SDI_compiler.h"
-
 #include <exec/memory.h>
 #include <devices/input.h>
 #include <devices/inputevent.h>
@@ -35,19 +33,14 @@ quit
 #include <intuition/gadgetclass.h>
 #include <intuition/imageclass.h>
 #include <intuition/sghooks.h>
-#include <intuition/cghooks.h>
 #include <graphics/gfx.h>
 #include <libraries/gadtools.h>
 #include <libraries/gtdrag.h>
 
-#if defined(__SASC)
-#	include <pragmas/console_pragmas.h>
-#	include <pragmas/gtdrag_pragmas.h>
-#endif
-
-#include <clib/alib_protos.h>
-#include <proto/console.h>
-#include <proto/gtdrag.h>
+#include <clib/console_protos.h>
+#include <pragmas/console_pragmas.h>
+#include <clib/gtdrag_protos.h>
+#include <pragmas/gtdrag_pragmas.h>
 #include <proto/exec.h>
 #include <proto/gadtools.h>
 #include <proto/intuition.h>
@@ -57,10 +50,9 @@ quit
 #include <strings.h>
 #include <math.h>
 
-#if !defined(__SASC)
+#define reg(x) register __ ## x
+#define PUBLIC __saveds __asm
 #define bug kprintf
-#endif
-
 #define foreach(l,v) for(v = (APTR)((struct List *)l)->lh_Head;((struct Node *)v)->ln_Succ;v = (APTR)((struct Node *)v)->ln_Succ)
 #define IsBoopsiGadget(gad) ((gad->GadgetType & GTYP_GTYPEMASK) == GTYP_CUSTOMGADGET)
 
@@ -111,10 +103,10 @@ void DrawSimpleGadget(struct RastPort *rp,struct Gadget *gad,struct GadgetInfo *
   {
     struct Image *im;
 
-    if ((im = NewObject(NULL,"frameiclass",IA_Width,     gad->Width,
+    if (im = NewObject(NULL,"frameiclass",IA_Width,     gad->Width,
                                           IA_Height,    gad->Height,
                                           IA_FrameType, FRAME_BUTTON,
-                                          TAG_END)) != 0)
+                                          TAG_END))
     {
       DrawImage(rp,im,gad->LeftEdge,gad->TopEdge);
       DisposeObject(im);
@@ -175,7 +167,7 @@ void DrawSimpleGadget(struct RastPort *rp,struct Gadget *gad,struct GadgetInfo *
 BOOL DispatchSimpleNew(struct opSet *ops,Object *o,struct SimpleGData *sd)
 {
   SetAttrs(o,GA_Immediate,TRUE,TAG_END);
-  sd->sd_List = (APTR)GetTagData(SDA_List,0,ops->ops_AttrList);
+  sd->sd_List = (APTR)GetTagData(SDA_List,NULL,ops->ops_AttrList);
   sd->sd_Items = GetTagData(SDA_Items,1,ops->ops_AttrList);
   sd->sd_Direction = GetTagData(SDA_Direction,SDD_VERTICAL,ops->ops_AttrList);
   sd->sd_Hook = GTD_GetHook(GTDH_IMAGE);
@@ -194,7 +186,7 @@ BOOL DispatchSimpleNew(struct opSet *ops,Object *o,struct SimpleGData *sd)
  *  from the other and, furthermore, they are commented.
  */
 
-ULONG PUBLIC DispatchSimpleGadget(REG(a0, Class *cl),REG(a2, Object *o),REG(a1, Msg msg))
+ULONG PUBLIC DispatchSimpleGadget(reg (a0) Class *cl,reg (a2) Object *o,reg (a1) Msg msg)
 {
   struct SimpleGData *sd;
   ULONG  retval = 0;
@@ -204,14 +196,14 @@ ULONG PUBLIC DispatchSimpleGadget(REG(a0, Class *cl),REG(a2, Object *o),REG(a1, 
   switch(msg->MethodID)
   {
     case OM_NEW:
-      if ((retval = DoSuperMethodA(cl,o,msg)) != 0)
+      if (retval = DoSuperMethodA(cl,o,msg))
       {
         sd = INST_DATA(cl,retval);
 
         if (!DispatchSimpleNew((struct opSet *)msg,(Object *)retval,sd))
         {
           DoSuperMethod(cl,(Object *)retval,OM_DISPOSE);
-          retval = 0;
+          retval = NULL;
         }
       }
       break;
@@ -226,7 +218,7 @@ ULONG PUBLIC DispatchSimpleGadget(REG(a0, Class *cl),REG(a2, Object *o),REG(a1, 
         struct TagItem *tstate,*ti;
 
         tstate = ((struct opSet *)msg)->ops_AttrList;
-        while((ti = NextTagItem(&tstate)) != 0)
+        while(ti = NextTagItem(&tstate))
         {
           switch(ti->ti_Tag)
           {
@@ -423,7 +415,7 @@ void processMsg(void)
   while(!ende)                /* simple gtdrag message loop */
   {
     imsg = (struct IntuiMessage *)WaitPort(win->UserPort);
-    while ((imsg = (struct IntuiMessage *)GTD_GetIMsg(win->UserPort)) != 0)
+    while (imsg = (struct IntuiMessage *)GTD_GetIMsg(win->UserPort))
     {
       class = imsg->Class;
       code = imsg->Code;
@@ -445,7 +437,7 @@ void clean(void)
 {
   struct Node *ln;
 
-  while((ln = RemHead(&list)) != 0)
+  while(ln = RemHead(&list))
     FreeMem(ln,sizeof(struct ImageNode));
 }
 
@@ -462,7 +454,7 @@ void init(void)
 
   for(i = 0;text[i];i++)
   {
-    if ((in = AllocMem(sizeof(struct ImageNode),MEMF_CLEAR)) != 0)
+    if (in = AllocMem(sizeof(struct ImageNode),MEMF_CLEAR))
     {
       in->in_Name = text[i];
       AddTail(&list,(APTR)in);
@@ -472,7 +464,7 @@ void init(void)
 
 /** initializes all stuff is needed */
 
-int main(void)
+void main(void)
 {
   struct Screen *scr;
   struct DrawInfo *dri;
@@ -480,38 +472,33 @@ int main(void)
   struct Gadget *hgad,*vgad;
 
   if (!(simplegclass = MakeClass(NULL,"gadgetclass",NULL,sizeof(struct SimpleGData),0)))
-    return 0;
+    return;
 
-#if defined(__AROS__)
-  simplegclass->cl_Dispatcher.h_Entry = HookEntry;
-  simplegclass->cl_Dispatcher.h_SubEntry = (HOOKFUNC)DispatchSimpleGadget;
-#else
-  simplegclass->cl_Dispatcher.h_Entry = (HOOKFUNC)DispatchSimpleGadget;
-#endif
+  simplegclass->cl_Dispatcher.h_Entry = (ULONG (*)())DispatchSimpleGadget;
 
-  if ((GTDragBase = OpenLibrary("gtdrag.library",3)) != 0)
+  if (GTDragBase = OpenLibrary("gtdrag.library",3))
   {
     if (GTD_AddApp("boopsitest",GTDA_NewStyle,TRUE,TAG_END))
     {
-      if ((scr = LockPubScreen(NULL)) != 0)
+      if (scr = LockPubScreen(NULL))
       {
         fontheight = scr->Font->ta_YSize;
         dri = GetScreenDrawInfo(scr);
         init();
-        if ((vi = GetVisualInfo(scr,TAG_END)) != 0)
+        if (vi = GetVisualInfo(scr,TAG_END))
         {
-          if ((hgad = NewObject(simplegclass,NULL,GA_Left,       scr->WBorLeft,
+          if (hgad = NewObject(simplegclass,NULL,GA_Left,       scr->WBorLeft,
                                                  GA_Top,        fontheight+scr->WBorTop+1,
                                                  GA_Width,      300-scr->WBorRight-scr->WBorLeft,
                                                  GA_Height,     fontheight+9,
                                                  SDA_List,      &list,
                                                  SDA_Items,     5,
                                                  SDA_Direction, SDD_HORIZONTAL,
-                                                 TAG_END)) != 0)
+                                                 TAG_END))
           {
             int y;     /* fill the stack with some useless stuff */
 
-            if ((vgad = NewObject(simplegclass,NULL,GA_Left,       scr->WBorLeft,
+            if (vgad = NewObject(simplegclass,NULL,GA_Left,       scr->WBorLeft,
                                                    GA_Top,        y = 2*fontheight+scr->WBorTop+10,
                                                    GA_Width,      40,
                                                    GA_Height,     200-scr->WBorBottom-y,
@@ -519,16 +506,16 @@ int main(void)
                                                    SDA_List,      &list,
                                                    SDA_Items,     5,
                                                    SDA_Direction, SDD_VERTICAL,
-                                                   TAG_END)) != 0)
+                                                   TAG_END))
             {
-              if ((win = OpenWindowTags(NULL,WA_Title,     "gtdrag - Boopsi-Example",
+              if (win = OpenWindowTags(NULL,WA_Title,     "gtdrag - Boopsi-Example",
                                             WA_Width,     300,
                                             WA_Height,    200,
                                             WA_Flags,     WFLG_CLOSEGADGET | WFLG_DRAGBAR | WFLG_DEPTHGADGET | WFLG_ACTIVATE,
                                             WA_IDCMP,     IDCMP_CLOSEWINDOW | IDCMP_GADGETUP | IDCMP_IDCMPUPDATE | DRAGIDCMP,
                                             WA_Gadgets,   hgad,
                                             WA_PubScreen, scr,
-                                            TAG_END)) != 0)
+                                            TAG_END))
               {
                 processMsg();
                 RemoveGList(win,hgad,-1);
@@ -549,7 +536,6 @@ int main(void)
     CloseLibrary(GTDragBase);
   }
   FreeClass(simplegclass);
-  return 0;
 }
 
 

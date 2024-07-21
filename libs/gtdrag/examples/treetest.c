@@ -46,13 +46,9 @@ quit
 #include <dos/exall.h>
 #include <dos/dostags.h>
 
-#if defined(__SASC)
-#	include <clib/alib_stdio_protos.h>
-#	include <pragmas/gtdrag_pragmas.h>
-#endif
-
 #include <clib/alib_protos.h>
-#include <proto/gtdrag.h>
+#include <clib/alib_stdio_protos.h>
+#include <clib/gtdrag_protos.h>
 #include <proto/exec.h>
 #include <proto/gadtools.h>
 #include <proto/intuition.h>
@@ -60,6 +56,7 @@ quit
 #include <proto/layers.h>
 #include <proto/utility.h>
 #include <proto/dos.h>
+#include <pragmas/gtdrag_pragmas.h>
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -142,7 +139,7 @@ STRPTR AllocString(STRPTR t)  // these will be freed at the end of the programme
   if (!t || !*t)
     return(NULL);
 
-  if ((s = AllocPooled(pool,strlen(t)+1)) != 0)
+  if (s = AllocPooled(pool,strlen(t)+1))
     strcpy(s,t);
   return(s);
 }
@@ -179,7 +176,7 @@ void processMsg(void)
   while(!ende)
   {
     WaitPort(win->UserPort);
-    while((msg = GTD_GetIMsg(win->UserPort)) != 0)
+    while(msg = GTD_GetIMsg(win->UserPort))
     {
       imsg = *msg;
 
@@ -211,7 +208,7 @@ void processMsg(void)
 
                 strcat(t,tn->tn_Node.in_Name);
                 strcat(t,"\"");
-                if ((input = Open(OUTPUT,MODE_OLDFILE)) != 0)
+                if (input = Open(OUTPUT,MODE_OLDFILE))
                 {
                   if (SystemTags(t,SYS_Input,     input,
                                    SYS_Output,    NULL,
@@ -345,14 +342,14 @@ struct Window *initWindow(void)
   ng.ng_GadgetID++;
   button[1] = CreateGadget(BUTTON_KIND,button[0],&ng,TAG_END);
 
-  if ((win = OpenWindowTags(NULL,WA_Title,   "gtdrag - TreeView",
+  if (win = OpenWindowTags(NULL,WA_Title,   "gtdrag - TreeView",
                                 WA_Flags,   WFLG_CLOSEGADGET | WFLG_DRAGBAR | WFLG_DEPTHGADGET | WFLG_ACTIVATE,
                                 WA_IDCMP,   IDCMP_CLOSEWINDOW | DRAGIDCMP | IDCMP_MENUPICK,
                                 WA_Width,   200,
                                 WA_NewLookMenus,TRUE,
                                 WA_Height,  itemheight*14+3*fontheight+10,
                                 WA_Gadgets, glist,
-                                TAG_END)) != 0)
+                                TAG_END))
   {
     SetMenuStrip(win,menu);
     GT_RefreshWindow(win,NULL);
@@ -380,15 +377,15 @@ void GetDirectoryTree(struct MinList *tree,STRPTR name,int depth)
   if (!depth)
     return;
 
-  if ((edbuffer = AllocPooled(pool,PUDDLESIZE)) != 0)
+  if (edbuffer = AllocPooled(pool,PUDDLESIZE))
   {
-    if ((lock = Lock(name,ACCESS_READ)) != 0)
+    if (lock = Lock(name,ACCESS_READ))
     {
       struct ExAllControl *eac;
       struct ExAllData *ed;
       long   more;
 
-      if ((eac = AllocDosObject(DOS_EXALLCONTROL,NULL)) != 0)
+      if (eac = AllocDosObject(DOS_EXALLCONTROL,NULL))
       {
         struct TreeNode *tn;
 
@@ -438,27 +435,27 @@ void init(void)
 }
 
 
-int main(int argc, char **argv)
+void main(int argc, char **argv)
 {
-  if ((GTDragBase = OpenLibrary("gtdrag.library",3)))
+  if (GTDragBase = OpenLibrary("gtdrag.library",3))
   {
     if (GTD_AddApp("treetest",GTDA_NewStyle,TRUE,TAG_END))
     {
-      if ((pool = CreatePool(MEMF_PUBLIC | MEMF_CLEAR,PUDDLESIZE,PUDDLESIZE)) != 0)
+      if (pool = CreatePool(MEMF_PUBLIC | MEMF_CLEAR,PUDDLESIZE,PUDDLESIZE))
       {
-        if ((scr = LockPubScreen(NULL)) != 0)
+        if (scr = LockPubScreen(NULL))
         {
           vi = GetVisualInfo(scr,TAG_END);
           fontheight = scr->Font->ta_YSize;
           itemheight = fontheight+2;
           init();
 
-          if ((menu = CreateMenus(NMenu,TAG_END)) != 0)
+          if (menu = CreateMenus(NMenu,TAG_END))
           {
             if (LayoutMenus(menu,vi,GTMN_NewLookMenus, TRUE,
                                     TAG_END))
             {
-              if ((win = initWindow()) != 0)
+              if (win = initWindow())
               {
                 processMsg();
                 CloseWindow(win);
@@ -478,5 +475,4 @@ int main(int argc, char **argv)
   }
   else
     ErrorRequest("Could not open the gtdrag.library v3 or higher.");
-  return 0;
 }

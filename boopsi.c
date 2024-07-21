@@ -7,11 +7,15 @@
 
 #include "types.h"
 #include "funcs.h"
+#ifdef __MORPHOS__
+#include <cybergraphx/cybergraphics.h>
+#else
 #include "cybergraphics.h"
+#endif
 #include <graphics/rpattr.h>
 #include <intuition/gadgetclass.h>
 //#include <datatypes/pictureclass.h>
-#ifdef __amigaos4__
+#if defined  __amigaos4__ || defined __MORPHOS__
 	#include <proto/gtdrag.h>
 	#include <proto/cybergraphics.h>
 #endif

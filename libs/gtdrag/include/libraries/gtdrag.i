@@ -1,12 +1,12 @@
         IFND LIBRARIES_GTDRAG_I
 LIBRARIES_GTDRAG_I    SET     1
 **
-**  $VER: gtdrag.i 3.10 (12.8.2003)
-**  Includes Release 3.6
+**  $VER: gtdrag.i 3.9 (1.7.99)
+**  Includes Release 3.4
 **
 **  Drag&Drop with GadTools
 **
-**  Copyright ©1996-2003 pinc Software.
+**  Copyright ©1999 pinc Software.
 **  All rights Reserved.
 **
 
@@ -296,12 +296,10 @@ TNF_HIGHLIGHTED EQU 512    ; highlight name
 * #define TREENODE(ln) ((struct TreeNode *)((UBYTE *)ln - sizeof(struct ImageNode)))
 
 ** size of the knobs **
-TREEKNOBSIZE_X  EQU  12     ; tree open/close
-TREEKNOBSIZE_Y  EQU  8
-TREEKNOBSIZE  EQU  6        ; tree add/replace
+TREEKNOBSIZE  EQU  6
 
 ** is the mouse pointer over the tree-knob? **
-* #define MouseOverTreeKnob(tn, h, msg) ...
+* #define MouseOverTreeKnob(tn,h,msg) ((tn)->tn_X != -1 && (msg)->MouseX >= (tn)->tn_X && (msg)->MouseY >= (tn)->tn_Y+h && (msg)->MouseX <= (tn)->tn_X+TREEKNOBSIZE && (msg)->MouseY <= (tn)->tn_Y+TREEKNOBSIZE+h)
 
 
 ENDC  ; LIBRARIES_GTDRAG_I

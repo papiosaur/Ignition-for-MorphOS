@@ -12,7 +12,7 @@
 #include "images.h"
 #include "classes.h"
 #include <stdarg.h>
-#ifdef __amigaos4__
+#if defined  __amigaos4__ || defined __MORPHOS__
 	#include <proto/gtdrag.h>
 	#include <gadgets/button.h>
 

@@ -7,7 +7,7 @@
 
 #include "types.h"
 #include "funcs.h"
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 	#include <proto/gtdrag.h>
 	#include "libs/textedit/TextEdit_private.h"
 	#include <stdarg.h>
@@ -21,14 +21,17 @@
 	#define ELT_NEWLINE 3
 	#define ELT_END 4
 #endif
-#ifndef __amigaos4__
-	#include "libs/textedit/include/gadgets/TextEdit.h"
-	#include "libs/textedit/TextEdit_private.h"
-#endif
+
+
+//#ifndef __amigaos4__
+//	#include "libs/textedit/include/gadgets/TextEdit.h"
+//	#include "libs/textedit/TextEdit_private.h"
+//#endif
+
 
 extern struct Window *popwin;
 
-#ifdef __amigaos4__
+#if defined  __amigaos4__ //|| defined __MORPHOS__
 long PopUpListA(struct Window *win, struct Gadget *refgad, struct MinList *l, struct TagItem *tags)
 {
 	struct Window *popWindow;
@@ -569,7 +572,7 @@ PopUpList(struct Window *win, struct Gadget *refgad, struct MinList *l, ULONG ta
 #define PHEIGHT (fontheight+6)
 
 
-#ifdef __amigaos4__
+#if defined __amigaos4__ //|| defined __MORPHOS__
 long PopUpTableA(struct Window *win, struct Gadget *refgad, UWORD cols, UWORD rows, APTR func, struct TagItem *tags)
 {
 	struct RastPort *rp = &scr->RastPort;
@@ -894,7 +897,7 @@ PopColors(struct Window *win, struct Gadget *gad)
 }
 
 
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 VOID FreeEditList(REG(a0, struct EditGData * ed))
 {
   struct MinNode *mln;

@@ -12,6 +12,22 @@
 #include "funcs.h"
 
 #ifdef __amigaos4__ 
+	char IgnTitle[100];		//ScreenTitle for ignition, must be unique for PubScreen handling
+	#include <gadgets/colorwheel.h>
+	#include <gadgets/gradientslider.h>
+	#include <gadgets/scroller.h>
+	#include <gadgets/texteditor.h>
+	#include <proto/colorwheel.h>
+	#include <proto/elf.h>
+	#include <proto/gtdrag.h>
+	#include <proto/scroller.h>
+	#include <proto/texteditor.h>
+	#include <proto/timer.h>
+	#include <stdarg.h>
+	uint32 *unicode_map;	//Pointer for Unicodes
+#endif
+
+#ifdef __MORPHOS__
 	#include <stdarg.h>
 
 	#include <proto/gtdrag.h>
@@ -23,11 +39,10 @@
 	#include <proto/colorwheel.h>
 	#include <gadgets/colorwheel.h>
 	#include <gadgets/gradientslider.h>
-	#include <proto/elf.h>
+	//#include <proto/elf.h>
 	uint32 *unicode_map;	//Pointer for Unicodes
 	char IgnTitle[100];		//ScreenTitle for ignition, must be unique for PubScreen handling
 #endif
-
  
 #define GHELP_OBJECT 7   /* delay until the help text is shown */
 #define GHELP_GADGET 2   /* (in IntuiTicks) */
@@ -2463,7 +2478,12 @@ HandleApp(void)
                 ClosePopUpText();
             if (imsg.Class == IDCMP_MENUPICK && imsg.Code != MENUNULL)
                 HandleMenu();
+
+#ifdef __MORPHOS__
+			else if (imsg.Class == IDCMP_MENUHELP)
+#else
             else if (imsg.Class == IDCMP_MENUHELP || (imsg.Class == IDCMP_RAWKEY && imsg.Code == RAWKEY_HELP))
+#endif
             {
 				ProcessAppCmd(rxpage, "HELP");
 			}
@@ -2635,7 +2655,7 @@ InitHelp(struct Screen *scr)
 #endif
 		// must stay valid until the guide is created...
 
-#ifndef __amigaos4__
+#if defined  __amigaos4__  || defined __MORPHOS__
 	AmigaGuideBase = OpenLibrary("amigaguide.library", 39L);
 #endif
 	if (AmigaGuideBase == NULL)
@@ -2830,7 +2850,8 @@ main(int argc, char **argv)
     else if ((sm = (struct WBStartup *)argv) != 0)
         wbstart((struct List *)&files, sm->sm_ArgList, 1, sm->sm_NumArgs);
 
-#ifndef __amigaos4__
+	
+#if !defined __amigaos4__
     shelldir = CurrentDir(GetProgramDir());
 	if ((GTDragBase = OpenLibrary("gtdrag.library", 3)) != 0) {
 #else

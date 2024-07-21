@@ -3278,7 +3278,11 @@ SaveIOTypeDescription(struct IOType *io)
 				if (ln->ln_Succ->ln_Succ)
 					FPutC(file, '\n');
 			}
+		#if defined __MORPHOS__
+			Flush(file);
+		#else
 			FFlush(file);
+		#endif
 			Close(file);
 		}
 #ifdef __amigaos4__

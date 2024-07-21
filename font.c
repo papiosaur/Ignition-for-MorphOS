@@ -27,7 +27,7 @@ OpenFontEngine(struct FontFamily *ff, long style)
 {
 	struct Font *fo, *fallback = NULL;
 	char   engine[64], *name;
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 	BOOL found = FALSE;
 #endif
 	if (!ff)

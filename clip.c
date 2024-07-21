@@ -780,7 +780,7 @@ PasteClipboard(struct Page *page, struct ClipboardHandle *cbh, UBYTE mode)
 									if (t != NULL)
 										length = t - s;
 									else
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 										length = (uint8 *)sp->sp_Data + sp->sp_Size	- (uint8 *)s;
 #else
 										length = (uint8 *)sp->sp_Data + sp->sp_Size	- s;

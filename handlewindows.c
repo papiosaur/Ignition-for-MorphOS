@@ -7,9 +7,10 @@
 
 #include "types.h"
 #include "funcs.h"
-#ifdef __amigaos4__
+#if defined  __amigaos4__  || defined __MORPHOS__
 	#include <gadgets/texteditor.h>
 #endif
+  
 
 extern void CreateGClassesGadgets(struct winData *wd, long wid, long hei);
 extern void CreateScriptsGadgets(struct winData *wd, long wid, long hei);

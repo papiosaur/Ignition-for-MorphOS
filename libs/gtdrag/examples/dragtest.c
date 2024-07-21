@@ -39,15 +39,9 @@ quit
 #include <libraries/asl.h>
 #include <dos/dos.h>
 
-#include "SDI_compiler.h"
-
-#if defined(__SASC)
-#	include <pragmas/gtdrag_pragmas.h>
-#	include <clib/alib_stdio_protos.h>
-#endif
-
 #include <clib/alib_protos.h>
-#include <proto/gtdrag.h>
+#include <clib/alib_stdio_protos.h>
+#include <clib/gtdrag_protos.h>
 #include <proto/exec.h>
 #include <proto/gadtools.h>
 #include <proto/intuition.h>
@@ -55,27 +49,29 @@ quit
 #include <proto/layers.h>
 #include <proto/utility.h>
 #include <proto/dos.h>
+#include <pragmas/gtdrag_pragmas.h>
 
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 
+void main(int, char **);
 
 #define TLn(t) TextLength(&scr->RastPort,t,strlen(t))
 
 
-UBYTE CHIP newImgData[104] =
+UWORD chip newImgData[52] =
 {
         /* Plane 0 */
-        0x00,0x00,0x00,0x20,0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,
-        0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,
-        0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,0x3F,0xFF,0xFF,0xE0,
-        0x7F,0xFF,0xFF,0xE0,
+        0x0000,0x0020,0x3FFF,0xFFE0,0x3FFF,0xFFE0,0x3FFF,0xFFE0,
+        0x3FFF,0xFFE0,0x3FFF,0xFFE0,0x3FFF,0xFFE0,0x3FFF,0xFFE0,
+        0x3FFF,0xFFE0,0x3FFF,0xFFE0,0x3FFF,0xFFE0,0x3FFF,0xFFE0,
+        0x7FFF,0xFFE0,
         /* Plane 1 */
-        0xFF,0xFF,0xFF,0xC0,0xFF,0xFF,0xFF,0x80,0xF3,0xBF,0xFF,0x80,0xF3,0xBF,0xFF,0x80,
-        0xF5,0xB3,0x6D,0x80,0xF5,0xAD,0x6D,0x80,0xF6,0xA1,0xAB,0x80,0xF6,0xAF,0xAB,0x80,
-        0xF7,0x2D,0xD7,0x80,0xF7,0x33,0xD7,0x80,0xFF,0xFF,0xFF,0x80,0xFF,0xFF,0xFF,0x80,
-        0x80,0x00,0x00,0x00
+        0xFFFF,0xFFC0,0xFFFF,0xFF80,0xF3BF,0xFF80,0xF3BF,0xFF80,
+        0xF5B3,0x6D80,0xF5AD,0x6D80,0xF6A1,0xAB80,0xF6AF,0xAB80,
+        0xF72D,0xD780,0xF733,0xD780,0xFFFF,0xFF80,0xFFFF,0xFF80,
+        0x8000,0x0000
 };
 
 struct Image newImg = {0,0,27,13,2,newImgData,0x0003,0x0000,NULL};
@@ -151,13 +147,13 @@ void processMsg(void)
   while(!ende)
   {
     WaitPort(win->UserPort);
-    while((msg = GTD_GetIMsg(win->UserPort)) != 0)
+    while(msg = GTD_GetIMsg(win->UserPort))
     {
       imsg = *msg;
 
       if (imsg.Class == IDCMP_OBJECTDROP)
       {
-        if ((dm = imsg.IAddress) != 0)
+        if (dm = imsg.IAddress)
         {
           if (!dm->dm_Object.od_Owner && dm->dm_Target)
           {
@@ -186,7 +182,7 @@ void processMsg(void)
                 {
                   target--;
                   GT_SetGadgetAttrs(lvgad[target],win,NULL,GTLV_Labels,~0L,TAG_END);
-                  if ((node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC)) != 0)
+                  if (node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC))
                   {
                     node->ln_Name = in.in_Name;
                     InsertAt(&list[target],node,dm->dm_TargetEntry);
@@ -203,7 +199,7 @@ void processMsg(void)
                 GT_SetGadgetAttrs(lvgad[source],win,NULL,GTLV_Labels,~0L,TAG_END);
                 if (target == 4)
                 {
-                  if ((node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC)) != 0)
+                  if (node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC))
                   {
                     node->ln_Name = ((struct ImageNode *)dm->dm_Object.od_Object)->in_Name;
                     AddTail(&list[source],node);
@@ -248,7 +244,7 @@ void processMsg(void)
           {
             case 3:
               GT_SetGadgetAttrs(lvgad[0],win,NULL,GTLV_Labels,~0L,TAG_END);
-              if ((node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC)) != 0)
+              if (node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC))
               {
                 node->ln_Name = in.in_Name;
                 AddTail(&list[0],node);
@@ -311,13 +307,13 @@ struct Window *initWindow(void)
   ng.ng_GadgetID++;
   gad[2] = CreateGadget(BUTTON_KIND,gad[1],&ng,TAG_END);
 
-  if ((win = OpenWindowTags(NULL,WA_Title,   "gtdrag - Test",
+  if (win = OpenWindowTags(NULL,WA_Title,   "gtdrag - Test",
                                 WA_Flags,   WFLG_CLOSEGADGET | WFLG_DRAGBAR | WFLG_DEPTHGADGET | WFLG_ACTIVATE,
                                 WA_IDCMP,   IDCMP_CLOSEWINDOW | DRAGIDCMP,
                                 WA_Width,   400,
                                 WA_Height,  fontheight*13+23,
                                 WA_Gadgets, glist,
-                                TAG_END)) != 0)
+                                TAG_END))
   {
     GT_RefreshWindow(win,NULL);
     GTD_AddGadget(LISTVIEW_KIND,lvgad[0],win,GTDA_InternalType, 1,
@@ -349,7 +345,7 @@ void cleanup(void)
   int i;
 
   for(i = 0;i < 2;i++)
-    while((node = RemHead(&list[i])) != 0)
+    while(node = RemHead(&list[i]))
       FreeMem(node,sizeof(struct Node));
 }
 
@@ -363,7 +359,7 @@ void init(void)
 
   for(i = 0;i<20;i++)
   {
-    if ((node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC)) != 0)
+    if (node = AllocMem(sizeof(struct Node),MEMF_CLEAR | MEMF_PUBLIC))
     {
       node->ln_Name = txt[i];
       AddTail(&list[0],node);
@@ -374,19 +370,19 @@ void init(void)
 }
 
 
-int main(int argc, char **argv)
+void main(int argc, char **argv)
 {
-  if ((GTDragBase = OpenLibrary("gtdrag.library",3)) != 0)
+  if (GTDragBase = OpenLibrary("gtdrag.library",3))
   {
     if (GTD_AddApp("dragtest",GTDA_NewStyle,TRUE,TAG_END))
     {
-      if ((scr = LockPubScreen(NULL)) != 0)
+      if (scr = LockPubScreen(NULL))
       {
         vi = GetVisualInfo(scr,TAG_END);
         fontheight = scr->Font->ta_YSize;
         init();
 
-        if ((win = initWindow()) != 0)
+        if (win = initWindow())
         {
           processMsg();
           CloseWindow(win);
@@ -401,5 +397,4 @@ int main(int argc, char **argv)
     }
     CloseLibrary(GTDragBase);
   }
-  return 0;
 }

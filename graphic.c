@@ -8,7 +8,7 @@
 #include "types.h"
 #include "funcs.h"
 #include "classes.h"
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 	#include "lib/safeclip/generic/safeclip.h"
 #else
 	#include "lib/safeclip/sasc-68k/safeclip.h"

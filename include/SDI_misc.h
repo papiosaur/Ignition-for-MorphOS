@@ -7,7 +7,7 @@
         Versionstring:  $VER: SDI_misc.h 1.0 (17.05.2005)
         Author:         Guido Mersmann
         Distribution:   PD
-        Project page:   http://www.sf.net/projects/sditools/
+        Project page:   https://github.com/adtools/SDI
         Description:    defines to hide compiler specific function stuff.
                         This header is ment to keep all minor functions
                         like PutChProc() used by RawDoFMT().
@@ -27,7 +27,7 @@
 ** (e.g. add your name or nick name).
 **
 ** Find the latest version of this file at:
-** http://cvs.sourceforge.net/viewcvs.py/sditools/sditools/headers/
+** https://github.com/adtools/SDI
 **
 ** Guido Mersmann <geit@gmx.de>
 **
@@ -117,4 +117,3 @@
 #endif /* __MORPHOS__ */
 
 #endif /* SDI_MISC_H */
-

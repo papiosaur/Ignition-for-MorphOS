@@ -7,7 +7,7 @@
 
 #include "types.h"
 #include "funcs.h"
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 	#include <proto/gtdrag.h>
 	#include <ctype.h>
 #endif
@@ -2356,7 +2356,7 @@ HandleFormatPrefsIDCMP(REG(a0, struct TagItem *tag))
     double value = 0.0;
     STRPTR t,s;
     long   i;
-#ifdef __amigaos4__
+#if defined  __amigaos4__  || defined __MORPHOS__
 	static BOOL flag = FALSE;
 #endif
 

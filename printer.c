@@ -12,7 +12,7 @@
 #include <dos/dostags.h>
 #include <prefs/prefhdr.h>
 #include <prefs/printertxt.h>
-#ifdef __amigaos4__
+#if defined  __amigaos4__ || defined __MORPHOS__
 	#include <prefs/printergfx.h>
 	
 	BOOL pdf = FALSE;
@@ -28,7 +28,7 @@ struct PrinterDeviceUnitPrefs { char pd_UnitName[40]; };
 
 extern void DrawRastaCellWidth(struct RastPort *rp, long x, long y, long w, long h);
 extern void DrawTFText(struct RastPort *rp, struct Page *page, struct Rectangle *bounds, struct tableField *tf, long x, long y);
-#ifdef __amigaos4__
+#if defined  __amigaos4__ || defined __MORPHOS__
 	#include <prefs/printerps.h>
 	
 	#include "classes.h"
@@ -883,7 +883,11 @@ BOOL PrintGObject(struct RastPort *rp, struct Page *page, struct gObject *go, lo
 	{
 		if (GetAttr(PIA_BitMap, (Object *)gp->gp_Image, (IPTR *)&bm))
 		{
+			#ifdef __MORPHOS__
+			memset(&bsa, 0, sizeof(struct BitScaleArgs));
+			#else
 		    ClearMem(&bsa, sizeof(struct BitScaleArgs));
+			#endif
 			bsa.bsa_SrcX 		= (rect->MinX - go->go_Left < 0 ? 0 : (long)((rect->MinX - go->go_Left) * ((double)gp->gp_Width / (double)(go->go_Right - go->go_Left)))); 
 			bsa.bsa_SrcY 		= (rect->MinY - go->go_Top < 0 ? 0 : (long)((rect->MinY - go->go_Top) * ((double)gp->gp_Height / (double)(go->go_Bottom - go->go_Top))));
 			bsa.bsa_SrcWidth 	= ((wid + go->go_Left) > rect->MaxX ? (rect->MaxX - go->go_Left) * ((double)gp->gp_Width / (go->go_Right - go->go_Left)) : gp->gp_Width - bsa.bsa_SrcX);

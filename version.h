@@ -13,7 +13,7 @@
 	#define IGNITION_COPYRIGHT "Copyright ©1996-2023 pinc Software."
 	#define VERSTRING "$VER: ignitionOS4 " VERSION " (28.07.2023)"
  
-	#define SCREEN_TITLE "ignitionOS4  V" VERSION "    "  IGNITION_COPYRIGHT							
+	#define SCREEN_TITLE "ignitionMOS  V" VERSION "    "  IGNITION_COPYRIGHT							
 #else
 
 	#define SCREEN_TITLE "ignition"

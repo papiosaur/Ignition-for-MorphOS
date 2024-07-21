@@ -9,7 +9,7 @@
 #include "version.h"
 #include "funcs.h"
 
-#ifdef __amigaos4__
+#if defined  __amigaos4__ || defined __MORPHOS__
 	extern char IgnTitle[100];		//ScreenTitle for ignition, must be unique for PubScreen handling
 #endif
 

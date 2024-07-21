@@ -80,6 +80,15 @@
 #	include <proto/cybergraphics.h>
 #	include <proto/console.h>
 #	include <proto/bullet.h>
+#endif
+#ifdef __MORPHOS__
+#include <cybergraphx/cybergraphics.h>
+#include <pragmas/gtdrag_pragmas.h>
+//#include <clib/TextEdit_protos.h>
+#include <pragmas/TextEdit_pragmas.h>
+#include <proto/mathieeedoubbas.h>
+#include <proto/mathieeedoubtrans.h>
+#include <SDI_compiler.h>
 #else
 #	include <cybergraphics/cybergraphics.h>
 #	include <pragmas/cybergraphics_pragmas.h>
@@ -113,11 +122,11 @@
 #define MyRemove(n) Remove((struct Node *)(n))
 
 typedef BYTE int8;
-typedef UBYTE uint8;
-typedef WORD int16;
 typedef UWORD uint16;
-typedef LONG int32;
 typedef ULONG uint32;
+typedef UBYTE uint8;
+typedef LONG int32;
+typedef WORD int16;
 
 #ifndef __cplusplus
     typedef BOOL bool;
@@ -139,6 +148,22 @@ typedef ULONG uint32;
   	#define BE2WORD(w) (w)
   	#define BE2LONG(l) (l)
 
+	#include <proto/gtdrag.h>
+#endif
+#ifdef __MORPHOS__
+#define PI 3.14159265
+    typedef BOOL bool;
+	#define PUBLIC ASM SAVEDS
+	#define ALIGNED
+	#define IPTR ULONG
+	#define SETHOOK(hookname, funcname) hookname.h_Entry = (HOOKFUNC)funcname
+	#define SETDISPATCHER(classname, funcname) classname->cl_Dispatcher.h_Entry = (HOOKFUNC)funcname
+	#define min(a,b) ((a)<(b)?(a):(b))
+	#define max(a,b) ((a)>(b)?(a):(b))
+  	#define WORD2BE(w) (w)
+  	#define LONG2BE(l) (l)
+  	#define BE2WORD(w) (w)
+  	#define BE2LONG(l) (l)
 	#include <proto/gtdrag.h>
 #else
 	#include "SDI_compiler.h"
@@ -224,10 +249,12 @@ struct NewContextMenu {
 
 #include "ignition_strings.h"
 
-#ifndef __amigaos4__
+#if defined __amigaos4__
 CONST_STRPTR ASM GetString(REG(a0, struct LocaleInfo *li), REG(d0, LONG stringNum));
 #endif
- 
+#if defined __MORPHOS__
+STRPTR ASM GetString(REG(a0, struct LocaleInfo *li), REG(d0, LONG stringNum));
+#endif
 /*************************** Printer ***************************/
 
 struct wdtPrinter {

@@ -1,12 +1,12 @@
 #ifndef LIBRARIES_GTDRAG_H
 #define LIBRARIES_GTDRAG_H 1
 /*
-**  $VER: gtdrag.h 3.11 (12.8.2003)
-**  Includes Release 3.6
+**  $VER: gtdrag.h 3.9 (30.6.99)
+**  Includes Release 3.4
 **
 **  Drag&Drop with GadTools
 **
-**  Copyright ©1996-2003 pinc Software.
+**  Copyright ©1999 pinc Software.
 **  All rights Reserved.
 */
 
@@ -16,6 +16,11 @@
 
 #ifndef UTILITY_HOOKS_H
 #include <utility/hooks.h>
+#endif
+
+
+#ifndef reg
+#define reg(x) register __ ## x
 #endif
 
 
@@ -235,16 +240,9 @@ struct ImageNode
 {
   struct ImageNode *in_Succ;
   struct ImageNode *in_Pred;
-#if defined(__AROS__)
-  #warning FIXME when V1 ABI is out
-  STRPTR in_Name;
-  UBYTE  in_Type;
-  BYTE   in_Pri;
-#else
   UBYTE  in_Type;
   BYTE   in_Pri;
   STRPTR in_Name;
-#endif
   struct Image *in_Image;
 };
 
@@ -289,17 +287,10 @@ struct TreeNode
 #define TREENODE(ln) ((struct TreeNode *)((UBYTE *)ln - sizeof(struct ImageNode)))
 
 /* size of the knobs */
-#define TREEKNOBSIZE_X 12	// tree open/close
-#define TREEKNOBSIZE_Y 8
-#define TREEKNOBSIZE 6		// tree add/replace
+#define TREEKNOBSIZE 6
 
 /* is the mouse pointer over the tree-knob? */
-#define MouseOverTreeKnob(tn, h, msg) \
-	((tn)->tn_X != -1 \
-	&& (msg)->MouseX >= (tn)->tn_X \
-	&& (msg)->MouseY >= (tn)->tn_Y + h \
-	&& (msg)->MouseX <= (tn)->tn_X + TREEKNOBSIZE_X \
-	&& (msg)->MouseY <= (tn)->tn_Y + TREEKNOBSIZE_Y + h)
+#define MouseOverTreeKnob(tn,h,msg) ((tn)->tn_X != -1 && (msg)->MouseX >= (tn)->tn_X && (msg)->MouseY >= (tn)->tn_Y+h && (msg)->MouseX <= (tn)->tn_X+TREEKNOBSIZE && (msg)->MouseY <= (tn)->tn_Y+TREEKNOBSIZE+h)
 
 
 #endif  /* LIBRARIES_GTDRAG_H */
