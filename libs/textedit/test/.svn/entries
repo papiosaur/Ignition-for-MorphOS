@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="60"
+   name=""
+   committed-date="2010-12-26T11:12:57.843292Z"
+   url="svn://svn.berlios.de/ignition/trunk/libs/textedit/test"
+   last-author="marust"
+   kind="dir"
+   uuid="b98f760a-4858-0410-b14b-954f04fec5f8"
+   prop-time="2013-05-24T16:54:39.000000Z"
+   revision="62"/>
+<entry
+   committed-rev="53"
+   name="tedit.c"
+   text-time="2013-05-24T16:54:39.000000Z"
+   committed-date="2010-11-20T14:29:20.961397Z"
+   checksum="202c108358a3a251c1438fc587c97dee"
+   last-author="marust"
+   kind="file"
+   prop-time="2013-05-24T16:54:39.000000Z"/>
+</wc-entries>

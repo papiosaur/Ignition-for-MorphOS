@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="62"
+   name=""
+   committed-date="2010-12-27T08:09:17.033074Z"
+   url="svn://svn.berlios.de/ignition/trunk/libs/textedit/include/proto"
+   last-author="marust"
+   kind="dir"
+   uuid="b98f760a-4858-0410-b14b-954f04fec5f8"
+   revision="62"/>
+<entry
+   committed-rev="62"
+   name="TextEdit.h"
+   text-time="2013-05-24T16:54:40.000000Z"
+   committed-date="2010-12-27T08:09:17.033074Z"
+   checksum="bf99167164dd5d592c427c52fcd760e9"
+   last-author="marust"
+   kind="file"
+   prop-time="2013-05-24T16:54:40.000000Z"/>
+</wc-entries>

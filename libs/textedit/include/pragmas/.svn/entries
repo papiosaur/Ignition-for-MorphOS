@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="61"
+   name=""
+   committed-date="2010-12-26T17:10:29.261822Z"
+   url="svn://svn.berlios.de/ignition/trunk/libs/textedit/include/pragmas"
+   last-author="marust"
+   kind="dir"
+   uuid="b98f760a-4858-0410-b14b-954f04fec5f8"
+   revision="62"/>
+<entry
+   committed-rev="61"
+   name="TextEdit_pragmas.h"
+   text-time="2013-05-24T16:54:40.000000Z"
+   committed-date="2010-12-26T17:10:29.261822Z"
+   checksum="d36bf07e5f9c9e363ccd52439f57a33f"
+   last-author="marust"
+   kind="file"
+   prop-time="2013-05-24T16:54:40.000000Z"/>
+</wc-entries>

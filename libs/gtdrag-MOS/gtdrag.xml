@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library name="gtdrag" basename="GTDragBase" openname="gtdrag.library">
+	<include>exec/types.h</include>
+	<include>libraries/gtdrag.h</include>
+	<interface name="main" version="1.0" struct="GtdragIFace" prefix="_Gtdrag_" asmprefix="IGtdrag" global="IGtdrag">
+		<method name="Obtain" result="ULONG"/>
+		<method name="Release" result="ULONG"/>
+		<method name="Expunge" result="void" status="unimplemented"/>
+		<method name="Clone" result="struct Interface *" status="unimplemented"/>
+		<method name="GTD_GetIMsg" result="struct IntuiMessage *">
+			<arg name="iport" type="struct MsgPort *"/>
+		</method>
+		<method name="GTD_ReplyIMsg" result="void">
+			<arg name="msg" type="struct IntuiMessage *"/>
+		</method>
+		<method name="GTD_FilterIMsg" result="struct IntuiMessage *">
+			<arg name="msg" type="struct IntuiMessage *"/>
+		</method>
+		<method name="GTD_PostFilterIMsg" result="struct IntuiMessage *">
+			<arg name="msg" type="struct IntuiMessage *"/>
+		</method>
+		<method name="Reserved54" result="void" status="unimplemented"/>
+		<method name="Reserved60" result="void" status="unimplemented"/>
+		<method name="GTD_AddAppA" result="int">
+			<arg name="name" type="STRPTR"/>
+			<arg name="tagList" type="struct TagItem *"/>
+		</method>
+		<method name="GTD_AddApp" result="int">
+			<arg name="name" type="STRPTR"/>
+			<vararg name="tagList" type="ULONG"/>
+		</method>
+		<method name="GTD_RemoveApp" result="void">
+		</method>
+		<method name="GTD_AddWindowA" result="void">
+			<arg name="win" type="struct Window *"/>
+			<arg name="tagList" type="struct TagItem *"/>
+		</method>
+		<method name="GTD_AddWindow" result="void">
+			<arg name="win" type="struct Window *"/>
+			<vararg name="tagList" type="ULONG"/>
+		</method>
+		<method name="GTD_RemoveWindow" result="void">
+			<arg name="win" type="struct Window *"/>
+		</method>
+		<method name="GTD_AddGadgetA" result="void">
+			<arg name="type" type="ULONG"/>
+			<arg name="gad" type="struct Gadget *"/>
+			<arg name="win" type="struct Window *"/>
+			<arg name="tagList" type="struct TagItem *"/>
+		</method>
+		<method name="GTD_AddGadget" result="void">
+			<arg name="type" type="ULONG"/>
+			<arg name="gad" type="struct Gadget *"/>
+			<arg name="win" type="struct Window *"/>
+			<vararg name="tagList" type="ULONG"/>
+		</method>
+		<method name="GTD_RemoveGadget" result="void">
+			<arg name="gad" type="struct Gadget *"/>
+		</method>
+		<method name="GTD_RemoveGadgets" result="void">
+			<arg name="gad" type="struct Window *"/>
+		</method>
+		<method name="GTD_SetAttrsA" result="void">
+			<arg name="gad" type="APTR"/>
+			<arg name="tags" type="struct TagItem *"/>
+		</method>
+		<method name="GTD_SetAttrs" result="void">
+			<arg name="gad" type="APTR"/>
+			<vararg name="tags" type="ULONG"/>
+		</method>
+		<method name="GTD_GetAttr" result="BOOL">
+			<arg name="gad" type="APTR"/>
+			<arg name="d0arg" type="ULONG"/>
+			<arg name="storage" type="ULONG *"/>
+		</method>
+		<method name="GTD_GetHook" result="struct Hook *">
+			<arg name="num" type="ULONG"/>
+		</method>
+		<method name="GTD_GetString" result="STRPTR">
+			<arg name="od" type="struct ObjectDescription *"/>
+			<arg name="buf" type="STRPTR"/>
+			<arg name="len" type="LONG"/>
+		</method>
+		<method name="GTD_PrepareDrag" result="BOOL">
+			<arg name="gad" type="struct Gadget *"/>
+			<arg name="gpi" type="struct gpInput *"/>
+		</method>
+		<method name="GTD_BeginDrag" result="BOOL">
+			<arg name="gad" type="struct Gadget *"/>
+			<arg name="gpi" type="struct gpInput *"/>
+		</method>
+		<method name="GTD_HandleInput" result="ULONG">
+			<arg name="gad" type="struct Gadget *"/>
+			<arg name="gpi" type="struct gpInput *"/>
+		</method>
+		<method name="GTD_StopDrag" result="void">
+			<arg name="gad" type="struct Gadget *"/>
+		</method>
+		<method name="FreeTreeList" result="void">
+			<arg name="pool" type="APTR"/>
+			<arg name="treelist" type="struct TreeList *"/>
+		</method>
+		<method name="InitTreeList" result="void">
+			<arg name="treelist" type="struct TreeList *"/>
+		</method>
+		<method name="FreeTreeNodes" result="void">
+			<arg name="pool" type="APTR"/>
+			<arg name="list" type="struct MinList *"/>
+		</method>
+		<method name="AddTreeNode" result="struct TreeNode *">
+			<arg name="pool" type="APTR"/>
+			<arg name="tree" type="struct MinList *"/>
+			<arg name="name" type="STRPTR"/>
+			<arg name="image" type="struct Image *"/>
+			<arg name="flags" type="UWORD"/>
+		</method>
+		<method name="CloseTreeNode" result="void">
+			<arg name="main" type="struct MinList *"/>
+			<arg name="treenode" type="struct TreeNode *"/>
+		</method>
+		<method name="OpenTreeNode" result="LONG">
+			<arg name="main" type="struct MinList *"/>
+			<arg name="treenode" type="struct TreeNode *"/>
+		</method>
+		<method name="ToggleTreeNode" result="LONG">
+			<arg name="main" type="struct MinList *"/>
+			<arg name="treenode" type="struct TreeNode *"/>
+		</method>
+		<method name="GetTreeContainer" result="struct TreeNode *">
+			<arg name="treenode" type="struct TreeNode *"/>
+		</method>
+		<method name="GetTreePath" result="STRPTR">
+			<arg name="treenode" type="struct TreeNode *"/>
+			<arg name="buffer" type="STRPTR"/>
+			<arg name="len" type="LONG"/>
+		</method>
+		<method name="FindTreePath" result="struct TreeNode *">
+			<arg name="tree" type="struct MinList *"/>
+			<arg name="path" type="STRPTR"/>
+		</method>
+		<method name="FindTreeSpecial" result="struct TreeNode *">
+			<arg name="tree" type="struct MinList *"/>
+			<arg name="special" type="APTR"/>
+		</method>
+		<method name="FindListSpecial" result="struct TreeNode *">
+			<arg name="list" type="struct MinList *"/>
+			<arg name="special" type="APTR"/>
+		</method>
+		<method name="ToggleTree" result="BOOL">
+			<arg name="gad" type="struct Gadget *"/>
+			<arg name="treenode" type="struct TreeNode *"/>
+			<arg name="msg" type="struct IntuiMessage *"/>
+		</method>
+	</interface>
+</library>

@@ -18,10 +18,10 @@
 
 	#define SCREEN_TITLE "ignition"
 
-	#define VERSION "1.0 beta 1"
-	#define INFODATE "24. Januar 2009"
-	#define IGNITION_COPYRIGHT "Copyright ©1996-2009 pinc Software."
-	#define VERSTRING "$VER: ignition " VERSION " (24.1.2009)"
+	#define VERSION "1.3 beta 1"
+	#define INFODATE "21. Julio 2024"
+	#define IGNITION_COPYRIGHT "Copyright ©1996-2024 pinc Software."
+	#define VERSTRING "$VER: ignition " VERSION " (21.7.2024)"
 #endif
 #endif	/* VERSION_H */
 

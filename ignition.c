@@ -37,6 +37,7 @@
 	#include <proto/scroller.h>
 	#include <gadgets/scroller.h>
 	#include <proto/colorwheel.h>
+	#include <proto/datatypes.h>
 	#include <gadgets/colorwheel.h>
 	#include <gadgets/gradientslider.h>
 	//#include <proto/elf.h>
@@ -2018,9 +2019,9 @@ InitApp(void)
     struct DiskObject *dio;
     BPTR   olddir;
     long   i;
-
+	
     iconpath = AllocString("icons/");  projpath = AllocString("sheets/");  graphicpath = AllocString("graphic/");
-
+	
 	MyNewList(&gProjects);  MyNewList(&locks);
     MyNewList(&toolobjs);  MyNewList(&usedfuncs);
     MyNewList(&fonts);  MyNewList(&errors);
@@ -2029,6 +2030,7 @@ InitApp(void)
     MyNewList(&families);  MyNewList(&colors);  MyNewList(&infos);
     MyNewList(&clips);  MyNewList(&images);  MyNewList(&sizes);
 
+	
 	if (sm && sm->sm_NumArgs) {
 		i = sm->sm_NumArgs - 1;
 #ifdef __amigaos4__
@@ -2083,20 +2085,27 @@ InitApp(void)
 
     if (!noabout && (iscr = scr = LockPubScreen(NULL)))
         InitAppScreen(iscr);
-
-    /** create logo-images from PictureImage-Class **/
+	
+	
+	
+		Printf("Falla Datatype image...\n");
+	aqui falla
+	/*
+    //  create logo-images from PictureImage-Class 
 	if ((pincImage = (struct Image *)NewObject(pictureiclass, NULL,
 			PIA_FromImage,	&pincOriginalImage,
 			PIA_WithColors,	standardPalette + 1,
 			PDTA_Screen,	iscr,
 			TAG_END)) != NULL)
         AddImageObj(NULL,pincImage);
-
+	
     if ((logoImage = (struct Image *)NewObject(pictureiclass,NULL,PIA_FromImage, &logoOriginalImage,
                                                                                              PIA_WithColors,standardPalette+1,
                                                                                              PDTA_Screen,   iscr,
                                                                                              TAG_END)) != NULL)
         AddImageObj(NULL,logoImage);
+	*/
+
 
     if (iscr)
     {
@@ -2108,6 +2117,7 @@ InitApp(void)
 		pb = NewProgressBar(win, 8, gHeight - fontheight - 9, gWidth - 16, fontheight + 4);
         UpdateProgressBar(pb,GetString(&gLocaleInfo, MSG_OPEN_CLASSES_PROGRESS),(float)0.04);
     }
+
 
     SETHOOK(passwordEditHook, PasswordEditHook);
     fewftype = 1;
@@ -2124,7 +2134,7 @@ InitApp(void)
 
     if (!(ColorWheelBase = OpenLibrary("gadgets/colorwheel.gadget",39)))
         ErrorOpenLibrary("ColorWheel.gadget",NULL);
-
+	
     UpdateProgressBar(pb,(STRPTR)~0L,(float)0.08);
 
     if (!(ScrollerBase = IgnOpenClass("gadgets","pScroller.gadget",0)))
@@ -2132,20 +2142,29 @@ InitApp(void)
 
     UpdateProgressBar(pb,(STRPTR)~0L,(float)0.10);
 
+
     if (!(TextEditBase = IgnOpenClass("gadgets","pTextEdit.gadget",0)))
         ErrorOpenLibrary("pTextEdit.gadget",NULL);
 #endif
 
 
+
 	InitCalc();
 	InitSearch();
     InitGraphics();
+		Printf("INIT gfx...\n");
     initFuncs();
+		Printf("INIT funcs...\n");
     initIO();
+		Printf("INIT io...\n");
 	InitPrinter();
+		Printf("INIT printer...\n");
 	InitGadgetLabels();
+		Printf("INIT gadget labels...\n");
 	InitPrefsGadgetsLabels();
+		Printf("INIT prefs gadget labels...\n");
     MakeFewFuncs();
+		Printf("INIT new functions...\n");
 
 	MakeStrings(&zooms, "50%", "100%", "125%", "150%", "200%", "400%", "800%",
 		"1000%", "-", GetString(&gLocaleInfo, MSG_ZOOM_OVERVIEW_GAD), NULL);
@@ -2837,6 +2856,7 @@ main(int argc, char **argv)
 #else
     MyNewList(&files);
 #endif
+	
 	if (argc) {
 		if ((rc = dosstart((struct List *)&files)) != 0) {
 #ifdef __amigaos4__
@@ -2849,17 +2869,16 @@ main(int argc, char **argv)
     }
     else if ((sm = (struct WBStartup *)argv) != 0)
         wbstart((struct List *)&files, sm->sm_ArgList, 1, sm->sm_NumArgs);
-
 	
 #if !defined __amigaos4__
     shelldir = CurrentDir(GetProgramDir());
-	if ((GTDragBase = OpenLibrary("gtdrag.library", 3)) != 0) {
+	if ((GTDragBase = OpenLibrary("gtdrag.library", 3)) != 0){
 #else
     shelldir = SetCurrentDir(GetProgramDir());
 	{
 #endif
         InitAppClasses();
-
+		
 		if (GTD_AddApp("ignition", GTDA_NewStyle, TRUE, TAG_END)) {
 #ifdef __amigaos4__
 			if ((iport = AllocSysObjectTags(ASOT_PORT, TAG_END)) != 0) {

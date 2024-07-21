@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="53"
+   name=""
+   committed-date="2010-11-20T14:29:20.961397Z"
+   url="svn://svn.berlios.de/ignition/trunk/libs/scroller/include/gadgets"
+   last-author="marust"
+   kind="dir"
+   uuid="b98f760a-4858-0410-b14b-954f04fec5f8"
+   revision="62"/>
+<entry
+   committed-rev="53"
+   name="Scroller.h"
+   text-time="2013-05-24T16:54:37.000000Z"
+   committed-date="2010-11-20T14:29:20.961397Z"
+   checksum="3517f810fc221fa6e79cc149cd4f1926"
+   last-author="marust"
+   kind="file"
+   prop-time="2013-05-24T16:54:37.000000Z"/>
+</wc-entries>

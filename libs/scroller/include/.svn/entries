@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="53"
+   name=""
+   committed-date="2010-11-20T14:29:20.961397Z"
+   url="svn://svn.berlios.de/ignition/trunk/libs/scroller/include"
+   last-author="marust"
+   kind="dir"
+   uuid="b98f760a-4858-0410-b14b-954f04fec5f8"
+   revision="62"/>
+<entry
+   name="gadgets"
+   kind="dir"/>
+</wc-entries>

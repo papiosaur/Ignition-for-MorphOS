@@ -25,7 +25,7 @@ static struct AreaInfo sAreaInfo;
 static PLANEPTR sTempBitmap = NULL;
 static APTR *sAreaBuffer = NULL;
 
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 
 #define PI 3.14159265
 #define DEGREE_STEPS PI/128
@@ -312,7 +312,7 @@ InitGraphics(void)
 	char   t[16];
 
 	InitGClasses();
-
+	
 	if (IsListEmpty((struct List *)&colors)) {
 		AddColor(&colors, NULL, 170, 170, 170);   // grey
 		AddColor(&colors, NULL,   0,   0,   0);   // black
@@ -325,7 +325,7 @@ InitGraphics(void)
 	}
 
 	//Standardfarben für ignition GUI setzen
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 	struct Screen *tscr;
 	
 	if ((tscr = LockPubScreen("Workbench")) != 0) {
@@ -397,7 +397,7 @@ const APTR gClassFuncTable[] = {
 	/* 32 */ FreeString,
 	/* 33 */ AllocString,
 	/* 34 */ AllocStringLength,
-#ifdef __amigaos4__
+#if defined __amigaos4__ || defined __MORPHOS__
 	/* 35 */ gAreaArcMove,
 	/* 36 */ gAreaArc,
 	/* 37 */ DrawArc,

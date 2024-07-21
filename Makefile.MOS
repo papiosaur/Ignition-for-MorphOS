@@ -79,7 +79,7 @@ realclean:
 
 ignition: $(ignition_OBJ)
 	@echo "Linking ignition.debug"
-	ppc-morphos-gcc-11 -noixemul -o ignition.debug $(ignition_OBJ) -lm -lauto libs/libgtdrag.a -noixemul
+	ppc-morphos-gcc-11 -noixemul -o ignition.debug $(ignition_OBJ) -lm libs/libgtdrag.a -noixemul
 	@echo "Creating non-debug target: ignition"
 	@strip -s ignition.debug -o ignition
 

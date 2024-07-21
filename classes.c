@@ -1512,8 +1512,10 @@ FreeGClasses(void)
 void
 InitGClasses(void)
 {
+	Printf("Enter init gclasses...\n");
+	
 	struct gClass *gc, *dgc;
-#ifdef __amigaos4__
+#if defined __amigaos4__ 
 	struct AnchorPath *ap;
 #else
 	struct AnchorPath ALIGNED ap;
@@ -1526,8 +1528,12 @@ InitGClasses(void)
 	MyNewList(&gdiagrams);
 	MyNewList(&intclasses);
 
+	Printf("NEW LISTS...\n");	
+	
 	/* initialize internal classes */
 
+		Aqui falla
+	
 	if ((gc = MakeGClass("root", GCT_ROOT | GCT_INTERNAL, NULL, NULL, NULL, gRootDispatch, NULL, gRootInterface, sizeof(struct gObject))) != 0) {
 		if ((dgc = MakeGClass("diagram", GCT_ROOT | GCT_INTERNAL, gc, NULL, NULL, gDiagramDispatch, NULL, gDiagramInterface, sizeof(struct gDiagram) - sizeof(struct gObject))) != 0) {
 #ifdef ENABLE_DIAGRAM_3D
@@ -1541,10 +1547,12 @@ InitGClasses(void)
 			MakeGClass(gcNames[i], gcTypes[i] | GCT_INTERNAL, FindGClass(gcSuper[i]), gcLabels[i], gcImages[i], gcDispatch[i], gcDraw[i], gcInterface[i], gcObjSize[i]);
 	}
 
+	Printf("Make Gclass...\n");	
+
 	/* load external class descriptions */
 
 	if ((dir = Lock(CLASSES_PATH, ACCESS_READ)) != 0) {
-#ifdef __amigaos4__
+#if defined __amigaos4__
 		olddir = SetCurrentDir(dir);
 		ap = AllocDosObjectTags(	DOS_ANCHORPATH, 
 	                         	  	ADO_Mask, SIGBREAKF_CTRL_C,
@@ -1552,9 +1560,13 @@ InitGClasses(void)
 	                         		TAG_END ); 
 #else
 		olddir = CurrentDir(dir);
-		memset(&ap, 0, sizeof(struct AnchorPath));
+		//memset(&ap, 0, sizeof(struct AnchorPath));
 #endif
-#ifdef __amigaos4__
+		
+		Printf("Lock...\n");
+		
+		
+#if defined __amigaos4__
 		for (rc = MatchFirst("#?.gcdescr", ap); !rc; rc = MatchNext(ap)) {
 			if ((dat = Open(ap->ap_Info.fib_FileName, MODE_OLDFILE)) != 0) {
 				STRPTR name = NULL, super = NULL, icon = NULL, filename;
@@ -1565,6 +1577,10 @@ InitGClasses(void)
 
 				if ((filename = AllocPooled(pool, i = strlen(ap->ap_Info.fib_FileName) - 4)) != 0)
 					CopyMem(ap->ap_Info.fib_FileName, filename, i - 1);
+				
+				
+	Printf("Match...\n");			
+				
 #else
 		for (rc = MatchFirst("#?.gcdescr", &ap); !rc; rc = MatchNext(&ap)) {
 			if ((dat = Open(ap.ap_Info.fib_FileName, MODE_OLDFILE)) != 0) {
@@ -1577,6 +1593,9 @@ InitGClasses(void)
 				if ((filename = AllocPooled(pool, i = strlen(ap.ap_Info.fib_FileName) - 4)) != 0)
 					CopyMem(ap.ap_Info.fib_FileName, filename, i - 1);
 #endif				
+				
+				Printf("Match...\n");	
+				
 				for (i = 0; i < 10; i++)
 					localizedNames[i] = NULL;
 
@@ -1620,7 +1639,7 @@ InitGClasses(void)
 				Close(dat);
 			}
 		}
-#ifdef __amigaos4__
+#if defined __amigaos4__
 		MatchEnd(ap);
 		FreeDosObject(DOS_ANCHORPATH,ap);
 		SetCurrentDir(olddir);
@@ -1629,6 +1648,8 @@ InitGClasses(void)
 		CurrentDir(olddir);
 #endif
 		UnLock(dir);
+	
+		Printf("Free...\n");
 	}
 	sortList(&gclasses);
 	sortList(&gdiagrams);

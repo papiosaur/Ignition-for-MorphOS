@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<FlowStudioProjectFile>
+    <FileVersion major="0" minor="1"/>
+    <Project>
+        <Option projectname="ignition"/>
+        <Option autosave="1"/>
+        <Option buildcommand="gg:bin/make -f"/>
+        <Option makefile="Makefile.MOS"/>
+        <Option manualmakefile="1"/>
+        <Option quietoutput="1"/>
+        <Option cvscommand="gg:bin/cvs"/>
+        <Option defaulttarget="RELEASE"/>
+        <Option activetarget="RELEASE"/>
+        <Option crossbuild="0"/>
+        <Option crossserver=""/>
+        <Option crosslogin=""/>
+        <Option crossdir=""/>
+        <Target name="RELEASE">
+            <Option type="2"/>
+            <Option execfile="ignition"/>
+            <Option execdir=""/>
+            <Option objectsdir=""/>
+            <Option arguments=""/>
+            <Option depsfile=""/>
+            <Option autodeps="1"/>
+            <Option customcompiler="0"/>
+            <Option customlinker="0"/>
+        </Target>
+        <Target name="DEBUG">
+            <Option type="2"/>
+            <Option execfile="ignition_DEBUG"/>
+            <Option execdir=""/>
+            <Option objectsdir=""/>
+            <Option arguments=""/>
+            <Option depsfile=""/>
+            <Option autodeps="1"/>
+            <Option customcompiler="1"/>
+            <Option customlinker="1"/>
+            <CompilerSettings>
+                <Option cc_predefined="0"/>
+                <Option cc="ppc-morphos-gcc"/>
+                <Option cflags="-g -O0"/>
+                <Option cincludes=""/>
+                <Option cdefines=""/>
+                <Option cxx_predefined="0"/>
+                <Option cxx="ppc-morphos-g++"/>
+                <Option cppflags="-g -O0"/>
+                <Option cppincludes=""/>
+                <Option cppdefines=""/>
+                <Option objcc_predefined="8"/>
+                <Option objcc="ppc-morphos-clang"/>
+                <Option objcflags="-fobjc-runtime=objfw -fconstant-string-class=OBConstantString -g -O0"/>
+                <Option objcincludes="-I/SDK/Frameworks/include"/>
+                <Option objcdefines=""/>
+            </CompilerSettings>
+            <LinkerSettings>
+                <Option linkerpath="ppc-morphos-gcc"/>
+                <Option linkerflags="-g"/>
+                <Option linkerlibraries=""/>
+            </LinkerSettings>
+        </Target>
+        <LinkerSettings>
+            <Option linkerpath="ppc-morphos-gcc"/>
+            <Option linkerflags=""/>
+            <Option linkerlibraries=""/>
+        </LinkerSettings>
+        <CompilerSettings>
+            <Option cc_predefined="0"/>
+            <Option cc="ppc-morphos-gcc"/>
+            <Option cflags=""/>
+            <Option cincludes=""/>
+            <Option cdefines=""/>
+            <Option cxx_predefined="0"/>
+            <Option cxx="ppc-morphos-g++"/>
+            <Option cppflags=""/>
+            <Option cppincludes=""/>
+            <Option cppdefines=""/>
+            <Option objcc_predefined="8"/>
+            <Option objcc="ppc-morphos-clang"/>
+            <Option objcflags="-fobjc-runtime=objfw -fconstant-string-class=OBConstantString"/>
+            <Option objcincludes="-I/SDK/Frameworks/include"/>
+            <Option objcdefines=""/>
+        </CompilerSettings>
+        <FileUnit filepath="boopsi.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="calc.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="cell.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="classes.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="clip.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="cmd.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="color.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="compatibility.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="database.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="debug.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="diagram.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="edit.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="font.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="functions.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="gadgets.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="graphic.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="handleprefs.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="handlewindows.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="hooks.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="ignition.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="images.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="initwindows.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="io.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="locale.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="lock.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="menu.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="objects.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="pointer.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="popper.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="prefs.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="prefsgadgets.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="prefsio.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="printer.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="project.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="reference.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="rexx.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="screen.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="search.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="support.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="table.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="undo.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="windows.c">
+            <Option inproject="1"/>
+            <Option filetype="1"/>
+        </FileUnit>
+        <FileUnit filepath="calc.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="classes.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="debug.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="font.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="funcs.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="gadgets.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="graphic.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="ignition_strings.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="images.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="io.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="prefs.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="table.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="types.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="version.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="wdt.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="windefs.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="windows.h">
+            <Option inproject="1"/>
+            <Option filetype="2"/>
+        </FileUnit>
+        <FileUnit filepath="Makefile.MOS">
+            <Option inproject="1"/>
+            <Option filetype="9"/>
+        </FileUnit>
+    </Project>
+</FlowStudioProjectFile>
